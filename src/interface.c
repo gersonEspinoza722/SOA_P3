@@ -46,7 +46,7 @@ void generate_semaphores();
 //Funtions code
 void load_interface() {
     //MAP load
-    insertDict(MAP, create_item("images/MAP_2.PNG", MAP, 0.5, 1.0), hashImages, SIZE);
+    insertDict(MAP, create_item("images/MAP.png", MAP, 0.5, 1.0), hashImages, SIZE);
     //SEMAPHORE load
     insertDict(SEMAPHORED, create_item("images/SD.png", SEMAPHORED, 0.16, 0.020), hashImages, SIZE);
     insertDict(SEMAPHOREU, create_item("images/SU.png", SEMAPHOREU, 0.16, 0.020), hashImages, SIZE);
@@ -98,20 +98,20 @@ void load_interface() {
     insertDict(ORANGEBUSB, create_item("images/ORANGE_BB.png", ORANGEBUSB, 0.050, 0.015), hashImages, SIZE);
     insertDict(ORANGEBUSF, create_item("images/ORANGE_BF.png", ORANGEBUSF, 0.050, 0.015), hashImages, SIZE);
     //Ambulance load
-    insertDict(AMBULANCEL, create_item("images/AMBULANCEL.jpg", AMBULANCEL, 0.025, 0.015), hashImages, SIZE);
-    insertDict(AMBULANCER, create_item("images/AMBULANCER.jpg", AMBULANCER, 0.025, 0.015), hashImages, SIZE);
-    insertDict(AMBULANCEB, create_item("images/AMBULANCEB.jpg", AMBULANCEB, 0.025, 0.015), hashImages, SIZE);
-    insertDict(AMBULANCEF, create_item("images/AMBULANCEF.jpg", AMBULANCEF, 0.025, 0.015), hashImages, SIZE);
+    insertDict(AMBULANCEL, create_item("images/AMBULANCEL.png", AMBULANCEL, 0.025, 0.015), hashImages, SIZE);
+    insertDict(AMBULANCER, create_item("images/AMBULANCER.png", AMBULANCER, 0.025, 0.015), hashImages, SIZE);
+    insertDict(AMBULANCEB, create_item("images/AMBULANCEB.png", AMBULANCEB, 0.025, 0.015), hashImages, SIZE);
+    insertDict(AMBULANCEF, create_item("images/AMBULANCEF.png", AMBULANCEF, 0.025, 0.015), hashImages, SIZE);
     //Red car load  
     insertDict(REDCARL, create_item("images/REDL.jpg", REDCARL, 0.025, 0.015), hashImages, SIZE);
     insertDict(REDCARR, create_item("images/REDR.jpg", REDCARR, 0.025, 0.015), hashImages, SIZE);
     insertDict(REDCARB, create_item("images/REDB.jpg", REDCARB, 0.025, 0.015), hashImages, SIZE);
     insertDict(REDCARF, create_item("images/REDF.jpg", REDCARF, 0.025, 0.015), hashImages, SIZE);
     //Green car load    
-    insertDict(GREENCARL, create_item("images/GREENL.jpg", GREENCARL, 0.025, 0.015), hashImages, SIZE);
-    insertDict(GREENCARR, create_item("images/GREENR.jpg", GREENCARR, 0.025, 0.015), hashImages, SIZE);
-    insertDict(GREENCARB, create_item("images/GREENB.jpg", GREENCARB, 0.025, 0.015), hashImages, SIZE);
-    insertDict(GREENCARF, create_item("images/GREENF.jpg", GREENCARF, 0.025, 0.015), hashImages, SIZE);
+    insertDict(GREENCARL, create_item("images/GREENL.png", GREENCARL, 0.025, 0.015), hashImages, SIZE);
+    insertDict(GREENCARR, create_item("images/GREENR.png", GREENCARR, 0.025, 0.015), hashImages, SIZE);
+    insertDict(GREENCARB, create_item("images/GREENB.png", GREENCARB, 0.025, 0.015), hashImages, SIZE);
+    insertDict(GREENCARF, create_item("images/GREENF.png", GREENCARF, 0.025, 0.015), hashImages, SIZE);
     //Blue car load
     insertDict(BLUECARL, create_item("images/BLUEL.jpg", BLUECARL, 0.025, 0.015), hashImages, SIZE);
     insertDict(BLUECARR, create_item("images/BLUER.jpg", BLUECARR, 0.025, 0.015), hashImages, SIZE);
