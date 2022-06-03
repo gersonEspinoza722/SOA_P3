@@ -2,7 +2,7 @@
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <threadville_maintenance.h>
-#include <bridge_handlers.h>
+#include <handlers_puentes.h>
 #include "threadville_map.h"
 #include "interface.h"
 #include "floyd.h"
@@ -27,11 +27,11 @@ extern int N;
 //    cond_larry = (pthread_cond_t *) malloc(sizeof(pthread_cond_t) * 2);
 //    tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
 //
-//    bool* nextDirection = create_shared_memory(sizeof(bool));
+//    bool* siguienteDireccion = create_shared_memory(sizeof(bool));
 //
 //    // Linking semaphores
-//    LarryJoeInformation* northInfo = createLarryJoeInfo(false, LARRY, nextDirection);
-//    LarryJoeInformation* southInfo = createLarryJoeInfo(true, LARRY, nextDirection);
+//    LarryJoeInformacion* northInfo = crearLarryJoeInfo(false, LARRY, siguienteDireccion);
+//    LarryJoeInformacion* southInfo = crearLarryJoeInfo(true, LARRY, siguienteDireccion);
 //
 //    pthread_create(&tid[0], NULL, handleCurlyShemp, (void *) northInfo);
 //    pthread_create(&tid[1], NULL, handleCurlyShemp, (void *) southInfo);
@@ -44,8 +44,8 @@ extern int N;
 //}
 
 void startShemp(
-        int start_north_id, int end_north_id,
-        int start_south_id, int end_south_id
+        int idInicioNorte, int idFinNorte,
+        int idInicioSur, int idFinSur
 ) {
     pthread_t *tid;
     extern pthread_cond_t *cond_shemp;
@@ -56,17 +56,17 @@ void startShemp(
     mutex_shemp = get_mutex(get_mutex_attributes());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
 
-    bool* nextDirection = create_shared_memory(sizeof(bool));
+    bool* siguienteDireccion = create_shared_memory(sizeof(bool));
 
-    CurlyShempInformation* northInfo = createCurlyShempInfo(
-            NORTH_DIR_BRIDGE, SHEMP, nextDirection,
-            start_north_id, end_north_id,
-            start_south_id, end_south_id
+    CurlyShempInformacion* northInfo = crearCurlyShempInfo(
+            PUENTE_DIR_NORTE, SHEMP, siguienteDireccion,
+            idInicioNorte, idFinNorte,
+            idInicioSur, idFinSur
     );
-    CurlyShempInformation* southInfo = createCurlyShempInfo(
-            SOUTH_DIR_BRIDGE, SHEMP, nextDirection,
-            start_north_id, end_north_id,
-            start_south_id, end_south_id
+    CurlyShempInformacion* southInfo = crearCurlyShempInfo(
+            PUENTE_DIR_SUR, SHEMP, siguienteDireccion,
+            idInicioNorte, idFinNorte,
+            idInicioSur, idFinSur
     );
 
     pthread_create(&tid[0], NULL, handleCurlyShemp, (void *) northInfo);
@@ -75,8 +75,8 @@ void startShemp(
     pthread_detach(tid[1]);
 }
 
-void startCurl(int start_north_id, int end_north_id,
-               int start_south_id, int end_south_id) {
+void startCurl(int idInicioNorte, int idFinNorte,
+               int idInicioSur, int idFinSur) {
     pthread_t *tid;
     extern pthread_cond_t *cond_curly;
     extern pthread_mutex_t *mutex_curly;
@@ -86,17 +86,17 @@ void startCurl(int start_north_id, int end_north_id,
     mutex_curly = get_mutex(get_mutex_attributes());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
 
-    bool* nextDirection = create_shared_memory(sizeof(bool));
+    bool* siguienteDireccion = create_shared_memory(sizeof(bool));
 
-    CurlyShempInformation* northInfo = createCurlyShempInfo(
-            NORTH_DIR_BRIDGE, CURLY, nextDirection,
-            start_north_id, end_north_id,
-            start_south_id, end_south_id
+    CurlyShempInformacion* northInfo = crearCurlyShempInfo(
+            PUENTE_DIR_NORTE, CURLY, siguienteDireccion,
+            idInicioNorte, idFinNorte,
+            idInicioSur, idFinSur
     );
-    CurlyShempInformation* southInfo = createCurlyShempInfo(
-            SOUTH_DIR_BRIDGE, CURLY, nextDirection,
-            start_north_id, end_north_id,
-            start_south_id, end_south_id
+    CurlyShempInformacion* southInfo = crearCurlyShempInfo(
+            PUENTE_DIR_SUR, CURLY, siguienteDireccion,
+            idInicioNorte, idFinNorte,
+            idInicioSur, idFinSur
     );
 
     pthread_create(&tid[0], NULL, handleCurlyShemp, (void *) southInfo);
@@ -105,8 +105,8 @@ void startCurl(int start_north_id, int end_north_id,
     pthread_detach(tid[1]);
 }
 
-void startLarry(int start_north_id, int end_north_id,
-                int start_south_id, int end_south_id) {
+void startLarry(int idInicioNorte, int idFinNorte,
+                int idInicioSur, int idFinSur) {
     pthread_t *tid;
     extern pthread_cond_t *cond_larry;
     extern pthread_mutex_t *mutex_larry;
@@ -117,17 +117,17 @@ void startLarry(int start_north_id, int end_north_id,
     mutex_larry = get_mutex(get_mutex_attributes());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
 
-    bool* nextDirection = create_shared_memory(sizeof(bool));
+    bool* siguienteDireccion = create_shared_memory(sizeof(bool));
 
-    LarryJoeInformation* northInfo = createLarryJoeInfo(
-            NORTH_DIR_BRIDGE, LARRY, nextDirection,
-            start_north_id, end_north_id,
-            start_south_id, end_south_id
+    LarryJoeInformacion* northInfo = crearLarryJoeInfo(
+            PUENTE_DIR_NORTE, LARRY, siguienteDireccion,
+            idInicioNorte, idFinNorte,
+            idInicioSur, idFinSur
     );
-    LarryJoeInformation* southInfo = createLarryJoeInfo(
-            SOUTH_DIR_BRIDGE, LARRY, nextDirection,
-            start_north_id, end_north_id,
-            start_south_id, end_south_id
+    LarryJoeInformacion* southInfo = crearLarryJoeInfo(
+            PUENTE_DIR_SUR, LARRY, siguienteDireccion,
+            idInicioNorte, idFinNorte,
+            idInicioSur, idFinSur
     );
 
     pthread_create(&tid[0], NULL, handleLarryJoe, (void *) northInfo);
@@ -136,8 +136,8 @@ void startLarry(int start_north_id, int end_north_id,
     pthread_detach(tid[1]);
 }
 
-void startJoe(int start_north_id, int end_north_id,
-              int start_south_id, int end_south_id) {
+void startJoe(int idInicioNorte, int idFinNorte,
+              int idInicioSur, int idFinSur) {
     pthread_t *tid;
     extern pthread_cond_t *cond_joe;
     extern pthread_mutex_t *mutex_joe;
@@ -148,17 +148,17 @@ void startJoe(int start_north_id, int end_north_id,
     mutex_joe = get_mutex(get_mutex_attributes());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
 
-    bool* nextDirection = create_shared_memory(sizeof(bool));
+    bool* siguienteDireccion = create_shared_memory(sizeof(bool));
 
-    LarryJoeInformation* northInfo = createLarryJoeInfo(
-            NORTH_DIR_BRIDGE, JOE, nextDirection,
-            start_north_id, end_north_id,
-            start_south_id, end_south_id
+    LarryJoeInformacion* northInfo = crearLarryJoeInfo(
+            PUENTE_DIR_NORTE, JOE, siguienteDireccion,
+            idInicioNorte, idFinNorte,
+            idInicioSur, idFinSur
     );
-    LarryJoeInformation* southInfo = createLarryJoeInfo(
-            SOUTH_DIR_BRIDGE, JOE, nextDirection,
-            start_north_id, end_north_id,
-            start_south_id, end_south_id
+    LarryJoeInformacion* southInfo = crearLarryJoeInfo(
+            PUENTE_DIR_SUR, JOE, siguienteDireccion,
+            idInicioNorte, idFinNorte,
+            idInicioSur, idFinSur
     );
 
     pthread_create(&tid[0], NULL, handleLarryJoe, (void *) northInfo);
@@ -170,7 +170,7 @@ void startJoe(int start_north_id, int end_north_id,
 int main(int argc, char *argv[]) {
     print_wellcome();
 //    floyd();  //Solo hay que ejecutarlo una vez para crear el archivo y ya
-//    generate_file();
+//    generar_archivo();
     mapa = create_threadville_map();
 
     //Init

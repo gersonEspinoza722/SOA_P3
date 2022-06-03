@@ -5,68 +5,65 @@
 #include <stdbool.h>
 #include "floyd.h"
 
-#define NODES_COUNT 985
+#define CONTEO_NODOS 985
 
-int threadville_floyd_matrix[NODES_COUNT][NODES_COUNT];
+int threadville_floyd_matriz[CONTEO_NODOS][CONTEO_NODOS];
 
-void print_matrix(int matrix[NODES_COUNT][NODES_COUNT]) {
+void print_matriz(int matrix[CONTEO_NODOS][CONTEO_NODOS]) {
     int i, j;
-    for (i = 0; i < NODES_COUNT; i++) {
-        for (j = 0; j < NODES_COUNT; j++) {
+    for (i = 0; i < CONTEO_NODOS; i++) {
+        for (j = 0; j < CONTEO_NODOS; j++) {
             printf("%d,", matrix[i][j]);
         }
         printf("\n");
     }
 }
 
-void generate_file(){
+void generar_archivo(){
     FILE *fp;
     fp = fopen ("./headers/graph_floyd.h", "w");
     fputs("int threadville_graph_fast[", fp);
 
     char snum[100];
-    sprintf(snum, "%d", NODES_COUNT);
+    sprintf(snum, "%d", CONTEO_NODOS);
     fputs(snum, fp);
     fputs("][", fp);
     fputs(snum, fp);
     fputs("]  =  {", fp);
 
     int i, j;
-    for (i = 0; i < NODES_COUNT; i++) {
-
+    for (i = 0; i < CONTEO_NODOS; i++) {
         fputs("{", fp);
 
-        for (j = 0; j < NODES_COUNT; j++) {
+        for (j = 0; j < CONTEO_NODOS; j++) {
 
-            sprintf(snum, "%d", threadville_floyd_matrix[i][j]);
+            sprintf(snum, "%d", threadville_floyd_matriz[i][j]);
             fputs(snum, fp);
-            if (j+1<NODES_COUNT){
+            if (j+1<CONTEO_NODOS){
                     fputs(" ,", fp);
             }
 
         }
-        if (i+1<NODES_COUNT){
+        if (i+1<CONTEO_NODOS){
             fputs("},\n", fp);
         }else{
             fputs("}};\n", fp);
         }
     }
 
-
     fclose (fp);
-
 }
 
-void initialize_reconstruction_matrix() {
+void inicializar_reconstruccion_matriz() {
     int i, j;
-    for (i = 0; i < NODES_COUNT; i++) {
-        for (j = 0; j < NODES_COUNT; j++) {
-            threadville_floyd_matrix[i][j] = i;
+    for (i = 0; i < CONTEO_NODOS; i++) {
+        for (j = 0; j < CONTEO_NODOS; j++) {
+            threadville_floyd_matriz[i][j] = i;
         }
     }
 }
 
-bool floyd_compare_nodes(int i, int j, int k) {
+bool floyd_comparar_nodos(int i, int j, int k) {
     if (threadville_graph[i][k] < 0 || threadville_graph[k][j] < 0) {
         return false;
     }
@@ -77,47 +74,47 @@ bool floyd_compare_nodes(int i, int j, int k) {
 }
 
 void floyd() {
-    initialize_reconstruction_matrix();
-    for (int k = 0; k < NODES_COUNT; k++) {
-        for (int i = 0; i < NODES_COUNT; i++) {
-            for (int j = 0; j < NODES_COUNT; j++) {
-                if (floyd_compare_nodes(i, j, k)) {
+    inicializar_reconstruccion_matriz();
+    for (int k = 0; k < CONTEO_NODOS; k++) {
+        for (int i = 0; i < CONTEO_NODOS; i++) {
+            for (int j = 0; j < CONTEO_NODOS; j++) {
+                if (floyd_comparar_nodos(i, j, k)) {
                     threadville_graph[i][j] = threadville_graph[i][k] + threadville_graph[k][j];
-                    threadville_floyd_matrix[i][j] = threadville_floyd_matrix[k][j];
+                    threadville_floyd_matriz[i][j] = threadville_floyd_matriz[k][j];
                 }
             }
         }
     }
 }
 
-int *floyd_path_aux(int i, int j, int *floyd_path) {
+int *floyd_path_auxiliar(int i, int j, int *floyd_path) {
     floyd_path[0]++;
     floyd_path[floyd_path[0]] = j;
     if (i != j) {
-        floyd_path_aux(i, threadville_floyd_matrix[i][j], floyd_path);
+        floyd_path_auxiliar(i, threadville_floyd_matriz[i][j], floyd_path);
     }
     return floyd_path;
 }
 
-int *floyd_path_aux_fast(int i, int j, int *floyd_path) {
+int *floyd_path_auxiliar_rapido(int i, int j, int *floyd_path) {
     floyd_path[0]++;
     floyd_path[floyd_path[0]] = j;
     if (i != j) {
-        floyd_path_aux_fast(i, threadville_graph_fast[i][j], floyd_path);
+        floyd_path_auxiliar_rapido(i, threadville_graph_fast[i][j], floyd_path);
     }
     return floyd_path;
 }
 
 int *floyd_path(int i, int j) {
-    int path_buffer[NODES_COUNT*NODES_COUNT];
-    path_buffer[0] = 0;
-    // floyd_path_aux(i, j, path_buffer);
-    floyd_path_aux_fast(i, j, path_buffer);
-    int path_length = path_buffer[0];
-    int *floyd_path = malloc(sizeof(int) * (path_length + 1)); // to accommodate for size as first index
-    floyd_path[0] = path_length;
-    for (i = 0; i < path_length; i++) {
-        floyd_path[path_length - i] = path_buffer[i + 1];
+    int pathBuffer[CONTEO_NODOS*CONTEO_NODOS];
+    pathBuffer[0] = 0;
+    // floyd_path_auxiliar(i, j, pathBuffer);
+    floyd_path_auxiliar_rapido(i, j, pathBuffer);
+    int largoPath = pathBuffer[0];
+    int *floyd_path = malloc(sizeof(int) * (largoPath + 1));
+    floyd_path[0] = largoPath;
+    for (i = 0; i < largoPath; i++) {
+        floyd_path[largoPath - i] = pathBuffer[i + 1];
     }
     return floyd_path;
 }

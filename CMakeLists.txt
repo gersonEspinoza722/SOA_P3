@@ -8,7 +8,7 @@ include_directories(src headers)
 
 add_executable(proyecto3
         headers/bus.h
-        headers/bridge_handlers.h
+        headers/handlers_puentes.h
         headers/controller.h
         headers/dict.h
         headers/floyd.h

@@ -101,7 +101,7 @@ void edit_object_with_node(NodoT *node, images_enum type_image_p, float x_p, flo
 
 void edit_semaphore(int num, images_enum type_image_p);
 
-images_enum from_vehicle_type(TipoVehiculo type, StreetDir direccion);
+images_enum from_vehicle_type(TipoVehiculo tipo, StreetDir direccion);
 
 #endif /* INTERFACE_H */
 

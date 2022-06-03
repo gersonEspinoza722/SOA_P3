@@ -402,8 +402,8 @@ void edit_object_with_node(NodoT *node, images_enum type_image_p, float x_p, flo
     pthread_mutex_unlock(&lock_vehicle);
 }
 
-images_enum from_vehicle_type(TipoVehiculo type, StreetDir direccion) {
-    switch (type) {
+images_enum from_vehicle_type(TipoVehiculo tipo, StreetDir direccion) {
+    switch (tipo) {
         case BUS_ROJO:
             switch (direccion) {
                 case NORTH_DIR:
