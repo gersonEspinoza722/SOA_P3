@@ -48,8 +48,8 @@ void load_interface() {
     //MAP load
     insertar_dict(MAP, create_item("images/MAP.png", MAP, 0.5, 1.0), hashImages, SIZE);
     //SEMAPHORE load
-    insertar_dict(SEMAPHORED, create_item("images/SD.png", SEMAPHORED, 0.16, 0.020), hashImages, SIZE);
-    insertar_dict(SEMAPHOREU, create_item("images/SU.png", SEMAPHOREU, 0.16, 0.020), hashImages, SIZE);
+    insertar_dict(SEMAPHORED, create_item("images/SD.png", SEMAPHORED, 0.16, 0.040), hashImages, SIZE);
+    insertar_dict(SEMAPHOREU, create_item("images/SU.png", SEMAPHOREU, 0.16, 0.040), hashImages, SIZE);
     //REPAIR load
     insertar_dict(REPAIR, create_item("images/REPAIR.jpg", REPAIR, 0.025, 0.015), hashImages, SIZE);
     //Red bus load
@@ -145,11 +145,11 @@ void load_interface() {
 }
 
 void generate_semaphores() {
-    semaphores[0] = create_semaphore(SEMAPHORED, 0.211, 0.42);
-    semaphores[1] = create_semaphore(SEMAPHORED, 0.351, 0.42);
-    semaphores[2] = create_semaphore(SEMAPHORED, 0.491, 0.42);
-    semaphores[3] = create_semaphore(SEMAPHORED, 0.632, 0.42);
-    semaphores[4] = create_semaphore(SEMAPHORED, 0.773, 0.42);
+    semaphores[0] = create_semaphore(SEMAPHORED, 0.200, 0.42);
+    semaphores[1] = create_semaphore(SEMAPHORED, 0.340, 0.42);
+    semaphores[2] = create_semaphore(SEMAPHORED, 0.480, 0.42);
+    semaphores[3] = create_semaphore(SEMAPHORED, 0.621, 0.42);
+    semaphores[4] = create_semaphore(SEMAPHORED, 0.762, 0.42);
 }
 
 NodoData *create_semaphore(images_enum type_image_p, float x, float y) {
