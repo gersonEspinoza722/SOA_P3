@@ -17,8 +17,8 @@ add_executable(proyecto3
         headers/hash_table.h
         headers/hash_table_street_info.h
         headers/interface.h
-        headers/linked_list.h
-        headers/linked_list_cars.h
+        headers/lista_enlazada.h
+        headers/lista_enlazada_carros.h
         headers/priority_semaphore.h
         headers/threadville_maintenance.h
         headers/threadville_map.h

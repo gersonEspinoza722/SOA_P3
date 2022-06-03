@@ -6,8 +6,8 @@
 
 typedef struct Node {
     int key;
-    priority_semaphore *val;
-    struct Node *next;
+    priority_semaphore *valor;
+    struct Node *siguiente;
 } Node;
 
 typedef struct Table {

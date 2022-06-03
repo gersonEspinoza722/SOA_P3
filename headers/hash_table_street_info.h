@@ -17,8 +17,8 @@ typedef struct StreetInfo {
 
 typedef struct NodeStreetInfo {
     int key;
-    StreetInfo *val;
-    struct NodeStreetInfo *next;
+    StreetInfo *valor;
+    struct NodeStreetInfo *siguiente;
 } NodeStreetInfo;
 
 typedef struct TableStreetInfo {

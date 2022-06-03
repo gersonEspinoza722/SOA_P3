@@ -1,10 +1,10 @@
-#ifndef PROYECTO3_VEHICLE_H
-#define PROYECTO3_VEHICLE_H
+#ifndef PROYECTO3_VEHICULO_H
+#define PROYECTO3_VEHICULO_H
 
 #include "utils.h"
-#include "linked_list.h"
+#include "lista_enlazada.h"
 #include "threadville_map.h"
-#include "linked_list_cars.h"
+#include "lista_enlazada_carros.h"
 
 typedef enum TipoVehiculo {
     BUS_ROJO,
@@ -38,11 +38,11 @@ typedef struct Vehiculo {
     DireccionVehiculo direccionVehiculo;
     double velocidad;
     // Ruta para llegar a los destinos
-    LinkedList *ruta_actual;
+    ListaEnlazada *ruta_actual;
     // El vehiculo debe tener 2 destino y un tercero como el punto de salida
     // Los buses tienen n destinos, el elemento final del array debe ser -1
     int *destinos;
-    node_t *info_ui;
+    NodoT *infoUI;
 } Vehiculo;
 
 typedef struct InfoHiloVehiculo {
@@ -55,7 +55,7 @@ int id_carro_aleatorio();
 
 char *get_id_parada(int, int);
 
-LinkedList *crear_ruta(int puntoInicio, int puntoFin);
+ListaEnlazada *crear_ruta(int puntoInicio, int puntoFin);
 
 void crear_ruta_bus(Vehiculo *vehiculo);
 
@@ -83,4 +83,4 @@ int get_tamanio_destinos(const int *destinos);
 
 int *copiar_destinos(int *);
 
-#endif //PROYECTO3_VEHICLE_H
+#endif //PROYECTO3_VEHICULO_H

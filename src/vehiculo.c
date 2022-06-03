@@ -646,24 +646,24 @@ bool get_variable_actual(TipoVehiculo tipo) {
     }
 }
 
-LinkedList *crear_ruta(int puntoInicio, int puntoFin) {
-    LinkedList *l = create_linked_list();
+ListaEnlazada *crear_ruta(int puntoInicio, int puntoFin) {
+    ListaEnlazada *l = crear_lista_enlazada();
     int *path = floyd_path(puntoInicio, puntoFin);
     printf("%s", "CREAR RUTA//////////////////////////////////////////");
     for (int i = path[0]; i >= 1; --i) {
         printf("%d", i);
 
-        push(l, create_node(path[i]));
+        push(l, crear_nodo(path[i]));
     }
     free(path);
     return l;
 }
 
-LinkedList *crear_ruta_auxiliar(int puntoInicio, int puntoFin) {
-    LinkedList *l = create_linked_list();
+ListaEnlazada *crear_ruta_auxiliar(int puntoInicio, int puntoFin) {
+    ListaEnlazada *l = crear_lista_enlazada();
     int *path = floyd_path(puntoInicio, puntoFin);
     for (int i = path[0]; i > 1; --i) {
-        push(l, create_node(path[i]));
+        push(l, crear_nodo(path[i]));
     }
     free(path);
     return l;
@@ -762,18 +762,18 @@ Vehiculo *crear_bus(TipoVehiculo tipo, DireccionVehiculo direccion) {
     // El punto de inicio siempre es Y006R
     StreetInfo *info = lookup_street_info(
             mapa->tablaInfoCalle,
-            vehiculo->ruta_actual->primer_nodo->id_destino
+            vehiculo->ruta_actual->primerNodo->idDestino
     );
-    node_t *info_ui = create_object(
+    NodoT *infoUI = create_object(
             id_actual,
             from_vehicle_type(tipo, info->direccion),
             info->x, info->y,
             get_id_parada(
-                    vehiculo->ruta_actual->primer_nodo->id_destino,
+                    vehiculo->ruta_actual->primerNodo->idDestino,
                     get_tamanio_destinos(vehiculo->destinos)
             )
     );
-    vehiculo->info_ui = info_ui;
+    vehiculo->infoUI = infoUI;
     vehiculo->id_vehiculo = id_actual;
     return vehiculo;
 }
@@ -794,18 +794,18 @@ Vehiculo *crear_vehiculo(TipoVehiculo tipo, DireccionVehiculo direccion, int *de
     // Starting point is always Y006R
     StreetInfo *info = lookup_street_info(
             mapa->tablaInfoCalle,
-            vehiculo->ruta_actual->primer_nodo->id_destino
+            vehiculo->ruta_actual->primerNodo->idDestino
     );
-    node_t *info_ui = create_object(
+    NodoT *infoUI = create_object(
             id_actual,
             from_vehicle_type(tipo, info->direccion),
             info->x, info->y,
             get_id_parada(
-                    vehiculo->ruta_actual->primer_nodo->id_destino,
+                    vehiculo->ruta_actual->primerNodo->idDestino,
                     get_tamanio_destinos(vehiculo->destinos)
             )
     );
-    vehiculo->info_ui = info_ui;
+    vehiculo->infoUI = infoUI;
     vehiculo->id_vehiculo = id_actual;
     return vehiculo;
 }
@@ -831,54 +831,54 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
     int siguienteDestino = 0;
     priority_semaphore *calleActual = NULL;
     priority_semaphore *calleAnterior = NULL;
-    NodeL *nodoActual;
+    NodoL *nodoActual;
 
     while (1) {
-        while (vehiculo->ruta_actual->primer_nodo != NULL) {
-            nodoActual = vehiculo->ruta_actual->primer_nodo;
+        while (vehiculo->ruta_actual->primerNodo != NULL) {
+            nodoActual = vehiculo->ruta_actual->primerNodo;
             calleAnterior = calleActual;
-            calleActual = lookup(mapa->mapa, nodoActual->id_destino);
+            calleActual = lookup(mapa->mapa, nodoActual->idDestino);
 
             //Inicio de Larry y Joe
             //Larry
-            if (nodoActual->id_destino == N018P) { // Larry arriba
+            if (nodoActual->idDestino == N018P) { // Larry arriba
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_arriba += 1;
                 pthread_mutex_unlock(&mutex_larry_con);
 
-            } else if (nodoActual->id_destino == G012P) { // Larry abajo
+            } else if (nodoActual->idDestino == G012P) { // Larry abajo
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_abajo += 1;
                 pthread_mutex_unlock(&mutex_larry_con);
 
-            } else if (nodoActual->id_destino == BU02B) {// Larry arriba get
+            } else if (nodoActual->idDestino == BU02B) {// Larry arriba get
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_arriba -= 1;
                 pthread_mutex_unlock(&mutex_larry_con);
 
-            } else if (nodoActual->id_destino == B002B) {// Larry abajo get
+            } else if (nodoActual->idDestino == B002B) {// Larry abajo get
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_abajo -= 1;
                 pthread_mutex_unlock(&mutex_larry_con);
             }
 
             //Joe
-            if (nodoActual->id_destino == R018P) { // Joe arriba
+            if (nodoActual->idDestino == R018P) { // Joe arriba
                 pthread_mutex_lock(&mutex_joe_con);
                 joe_espera_carros_arriba += 1;
                 pthread_mutex_unlock(&mutex_joe_con);
 
-            } else if (nodoActual->id_destino == K012P) { // Joe abajo
+            } else if (nodoActual->idDestino == K012P) { // Joe abajo
                 pthread_mutex_lock(&mutex_joe_con);
                 joe_espera_carros_abajo += 1;
                 pthread_mutex_unlock(&mutex_joe_con);
 
-            } else if (nodoActual->id_destino == BU26B) {// Joe arriba get
+            } else if (nodoActual->idDestino == BU26B) {// Joe arriba get
                 pthread_mutex_lock(&mutex_joe_con);
                 joe_espera_carros_arriba -= 1;
                 pthread_mutex_unlock(&mutex_joe_con);
 
-            } else if (nodoActual->id_destino == B026B) {// Joe abajo get
+            } else if (nodoActual->idDestino == B026B) {// Joe abajo get
                 pthread_mutex_lock(&mutex_joe_con);
                 joe_espera_carros_abajo -= 1;
                 pthread_mutex_unlock(&mutex_joe_con);
@@ -887,7 +887,7 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
 
             //Inicio de puente central Moe
             //Bloqueo de llegada
-            if (nodoActual->id_destino == B013B) { // Para abajo
+            if (nodoActual->idDestino == B013B) { // Para abajo
                 pthread_mutex_lock(&mutex_chequear_moe);
                 if (moe_direccion == 0 || moe_direccion == 1) {
                     pthread_mutex_unlock(&mutex_chequear_moe);
@@ -904,7 +904,7 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
                     pthread_mutex_unlock(&mutex_chequear_moe);
                 }
 
-            } else if (nodoActual->id_destino == BU13B) {//Para arriba
+            } else if (nodoActual->idDestino == BU13B) {//Para arriba
                 pthread_mutex_lock(&mutex_chequear_moe);
                 if (moe_direccion == 0 || moe_direccion == -1) {
                     pthread_mutex_unlock(&mutex_chequear_moe);
@@ -923,7 +923,7 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
             }
 
             //Bloqueo de salida
-            if (nodoActual->id_destino == B018B || nodoActual->id_destino == BU18B) {// Para abajo
+            if (nodoActual->idDestino == B018B || nodoActual->idDestino == BU18B) {// Para abajo
                 pthread_mutex_lock(&mutex_chequear_moe);
                 moe_carros -= 1;
                 if (moe_carros == 0) {
@@ -940,19 +940,19 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
             }
 
             //Se pinta luego de obtener el semaforo
-            StreetInfo *infoCalle = lookup_street_info(mapa->tablaInfoCalle, nodoActual->id_destino);
+            StreetInfo *infoCalle = lookup_street_info(mapa->tablaInfoCalle, nodoActual->idDestino);
             edit_object_with_node(
-                    vehiculo->info_ui,
+                    vehiculo->infoUI,
                     from_vehicle_type(vehiculo->tipoVehiculo, infoCalle->direccion),
                     infoCalle->x, infoCalle->y,
                     get_id_parada(vehiculo->destinos[siguienteDestino], 3 - siguienteDestino)
             );
 
             //Duerme el tiempo que necesite para pasar la calle
-            usleep((vehiculo->velocidad * 1000000) / multiplicador_carretera(nodoActual->id_destino));
+            usleep((vehiculo->velocidad * 1000000) / multiplicador_carretera(nodoActual->idDestino));
 
-            if (vehiculo->ruta_actual->primer_nodo->next_node == NULL) {
-                destinoInicio = vehiculo->ruta_actual->primer_nodo->id_destino;
+            if (vehiculo->ruta_actual->primerNodo->siguienteNodo == NULL) {
+                destinoInicio = vehiculo->ruta_actual->primerNodo->idDestino;
             }
 
             pop(vehiculo->ruta_actual);
@@ -985,10 +985,10 @@ void manejar_bus(Vehiculo *vehiculo) {
     priority_semaphore *calleActual = NULL;
     priority_semaphore *calleAnterior = NULL;
     priority_semaphore *calleAnteriorAnterior = NULL;
-    NodeL *nodoActual;
+    NodoL *nodoActual;
     int destinoActual = 0;
     StreetInfo *infoCalle;
-    LinkedList *copiaRutaBus = copy_list(vehiculo->ruta_actual);
+    ListaEnlazada *copiaRutaBus = copiar_lista(vehiculo->ruta_actual);
 
     StreetDir direccionActual = 0;
     StreetDir direccionAnterior = 0;
@@ -1005,53 +1005,53 @@ void manejar_bus(Vehiculo *vehiculo) {
 
     // TODO MECANISMO PARA DETENER EL BUS
     while (get_variable_actual(vehiculo->tipoVehiculo)) {
-        while (vehiculo->ruta_actual->primer_nodo != NULL && get_variable_actual(vehiculo->tipoVehiculo)) {
-            nodoActual = vehiculo->ruta_actual->primer_nodo;
+        while (vehiculo->ruta_actual->primerNodo != NULL && get_variable_actual(vehiculo->tipoVehiculo)) {
+            nodoActual = vehiculo->ruta_actual->primerNodo;
             calleAnteriorAnterior = calleAnterior;
             calleAnterior = calleActual;
-            calleActual = lookup(mapa->mapa, nodoActual->id_destino);
+            calleActual = lookup(mapa->mapa, nodoActual->idDestino);
 
             //Incio de Larry y Joe
             //Larry
-            if (nodoActual->id_destino == N018P) { // Larry arriba
+            if (nodoActual->idDestino == N018P) { // Larry arriba
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_arriba += 1;
                 pthread_mutex_unlock(&mutex_larry_con);
 
-            } else if (nodoActual->id_destino == G012P) { // Larry abajo
+            } else if (nodoActual->idDestino == G012P) { // Larry abajo
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_abajo += 1;
                 pthread_mutex_unlock(&mutex_larry_con);
 
-            } else if (nodoActual->id_destino == BU02B) {// Larry arriba get
+            } else if (nodoActual->idDestino == BU02B) {// Larry arriba get
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_arriba -= 1;
                 pthread_mutex_unlock(&mutex_larry_con);
 
-            } else if (nodoActual->id_destino == B002B) {// Larry abajo get
+            } else if (nodoActual->idDestino == B002B) {// Larry abajo get
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_abajo -= 1;
                 pthread_mutex_unlock(&mutex_larry_con);
             }
 
             //Joe
-            if (nodoActual->id_destino == R018P) { // Joe arriba
+            if (nodoActual->idDestino == R018P) { // Joe arriba
 
                 pthread_mutex_lock(&mutex_joe_con);
                 joe_espera_carros_arriba += 1;
                 pthread_mutex_unlock(&mutex_joe_con);
 
-            } else if (nodoActual->id_destino == K012P) { // Joe abajo
+            } else if (nodoActual->idDestino == K012P) { // Joe abajo
                 pthread_mutex_lock(&mutex_joe_con);
                 joe_espera_carros_abajo += 1;
                 pthread_mutex_unlock(&mutex_joe_con);
 
-            } else if (nodoActual->id_destino == BU26B) {// Joe arriba get
+            } else if (nodoActual->idDestino == BU26B) {// Joe arriba get
                 pthread_mutex_lock(&mutex_joe_con);
                 joe_espera_carros_arriba -= 1;
                 pthread_mutex_unlock(&mutex_joe_con);
 
-            } else if (nodoActual->id_destino == B026B) {// Joe abajo get
+            } else if (nodoActual->idDestino == B026B) {// Joe abajo get
                 pthread_mutex_lock(&mutex_joe_con);
                 joe_espera_carros_abajo -= 1;
                 pthread_mutex_unlock(&mutex_joe_con);
@@ -1060,7 +1060,7 @@ void manejar_bus(Vehiculo *vehiculo) {
 
             //Inicio de puente central Moe
             //Bloqueo de llegada
-            if (nodoActual->id_destino == B013B) { // Para abajo
+            if (nodoActual->idDestino == B013B) { // Para abajo
                 pthread_mutex_lock(&mutex_chequear_moe);
                 if (moe_direccion == 0 || moe_direccion == 1) {
                     pthread_mutex_unlock(&mutex_chequear_moe);
@@ -1077,7 +1077,7 @@ void manejar_bus(Vehiculo *vehiculo) {
                     pthread_mutex_unlock(&mutex_chequear_moe);
                 }
 
-            } else if (nodoActual->id_destino == BU13B) {//Para arriba
+            } else if (nodoActual->idDestino == BU13B) {//Para arriba
                 pthread_mutex_lock(&mutex_chequear_moe);
                 if (moe_direccion == 0 || moe_direccion == -1) {
                     pthread_mutex_unlock(&mutex_chequear_moe);
@@ -1096,7 +1096,7 @@ void manejar_bus(Vehiculo *vehiculo) {
             }
 
             //Bloqueo de salida
-            if (nodoActual->id_destino == B018B || nodoActual->id_destino == BU18B) {// Para abajo
+            if (nodoActual->idDestino == B018B || nodoActual->idDestino == BU18B) {// Para abajo
                 pthread_mutex_lock(&mutex_chequear_moe);
                 moe_carros -= 1;
                 if (moe_carros == 0) {
@@ -1112,7 +1112,7 @@ void manejar_bus(Vehiculo *vehiculo) {
                 unlock_priority_semaphore(0, calleAnteriorAnterior);
             }
 
-            infoCalle = lookup_street_info(mapa->tablaInfoCalle, nodoActual->id_destino);
+            infoCalle = lookup_street_info(mapa->tablaInfoCalle, nodoActual->idDestino);
 
             ///Direcciones
             direccionAnteriorAnterior = direccionAnterior;
@@ -1132,7 +1132,7 @@ void manejar_bus(Vehiculo *vehiculo) {
                 yAnterior = yActual;
             }
 
-            if (vehiculo->destinos[destinoActual] == nodoActual->id_destino) {
+            if (vehiculo->destinos[destinoActual] == nodoActual->idDestino) {
                 xUsada = xActual;
                 yUsada = yActual;
 
@@ -1146,7 +1146,7 @@ void manejar_bus(Vehiculo *vehiculo) {
             }
 
             edit_object_with_node(
-                    vehiculo->info_ui,
+                    vehiculo->infoUI,
                     from_vehicle_type(vehiculo->tipoVehiculo, mejor_direccion(direccionActual, direccionAnterior, direccionAnteriorAnterior)),
                     xUsada,
                     yUsada,
@@ -1157,7 +1157,7 @@ void manejar_bus(Vehiculo *vehiculo) {
             );
 
             //Si llego a una parada duermo 5 segundos
-            if (vehiculo->destinos[destinoActual] == nodoActual->id_destino) {
+            if (vehiculo->destinos[destinoActual] == nodoActual->idDestino) {
                 calleAnteriorAnterior = NULL;
 
                 if (calleAnterior != NULL) {
@@ -1168,14 +1168,14 @@ void manejar_bus(Vehiculo *vehiculo) {
                 sleep(5);
                 destinoActual++;
             } else {
-                usleep((vehiculo->velocidad * 1000000) / multiplicador_carretera(nodoActual->id_destino));
+                usleep((vehiculo->velocidad * 1000000) / multiplicador_carretera(nodoActual->idDestino));
             }
 
             pop(vehiculo->ruta_actual);
 
         }
         destinoActual = 0;
-        vehiculo->ruta_actual = copy_list(copiaRutaBus);
+        vehiculo->ruta_actual = copiar_lista(copiaRutaBus);
     }
 
     //Detener el bus

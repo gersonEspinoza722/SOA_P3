@@ -25,21 +25,21 @@ int hash_code_street_info(TableStreetInfo *t, int key) {
     return key % t->size;
 }
 
-void insert_street_info(TableStreetInfo *t, int key, StreetInfo* val) {
+void insert_street_info(TableStreetInfo *t, int key, StreetInfo* valor) {
     int pos = hash_code_street_info(t, key);
     NodeStreetInfo *list = t->list[pos];
     NodeStreetInfo *newNode = (NodeStreetInfo *) malloc(sizeof(NodeStreetInfo));
     NodeStreetInfo *temp = list;
     while (temp) {
         if (temp->key == key) {
-            temp->val = val;
+            temp->valor = valor;
             return;
         }
-        temp = temp->next;
+        temp = temp->siguiente;
     }
     newNode->key = key;
-    newNode->val = val;
-    newNode->next = list;
+    newNode->valor = valor;
+    newNode->siguiente = list;
     t->list[pos] = newNode;
 }
 
@@ -49,9 +49,9 @@ StreetInfo* lookup_street_info(TableStreetInfo *t, int key) {
     NodeStreetInfo *temp = list;
     while (temp) {
         if (temp->key == key) {
-            return temp->val;
+            return temp->valor;
         }
-        temp = temp->next;
+        temp = temp->siguiente;
     }
     return NULL;
 }

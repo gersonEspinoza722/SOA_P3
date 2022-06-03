@@ -6,7 +6,7 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <stdbool.h>
 #include "interface.h"
-#include "linked_list_cars.h"
+#include "lista_enlazada_carros.h"
 #include "vehiculo.h"
 #include "utils.h"
 #include "priority_semaphore.h"

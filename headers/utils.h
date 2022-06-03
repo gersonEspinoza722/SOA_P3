@@ -2,8 +2,8 @@
 #define PROYECTO3_UTILS_H
 
 #include <stdlib.h>
-#include "linked_list.h"
-#include "linked_list_cars.h"
+#include "lista_enlazada.h"
+#include "lista_enlazada_carros.h"
 
 #define MAX_ID_NUMBER 984
 

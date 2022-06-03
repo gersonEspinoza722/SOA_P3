@@ -1,4 +1,4 @@
-#include "linked_list.h"
+#include "lista_enlazada.h"
 #include "vehiculo.h"
 
 #ifndef PROYECTO3_BUS_H

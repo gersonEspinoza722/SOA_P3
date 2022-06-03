@@ -5,7 +5,7 @@
 #include<pthread.h>
 #include<string.h>
 #include"dict.h"
-#include"linked_list_cars.h"
+#include"lista_enlazada_carros.h"
 #include "utils.h"
 
 
@@ -17,12 +17,12 @@
 
 //Variables to calculate the responsive in a quick time
 static struct DataItem *hashImages[SIZE];
-static struct data_node *semaphores[5];
+static struct NodoData *semaphores[5];
 static int before_height = 0;
 static int before_width = 0;
 static int map_height = 0;
 static int map_width = 0;
-static node_t *vehicle_list = NULL;
+static NodoT *vehicle_list = NULL;
 static gint64 last_tick = 0;
 static int fps = 60;
 static pthread_mutex_t lock_vehicle;
@@ -39,7 +39,7 @@ void paint_all_map(cairo_t *cr);
 
 void paint_vehicles(cairo_t *cr);
 
-data_node *create_semaphore(images_enum type_image_p, float x, float y);
+NodoData *create_semaphore(images_enum type_image_p, float x, float y);
 
 void generate_semaphores();
 
@@ -152,13 +152,13 @@ void generate_semaphores() {
     semaphores[4] = create_semaphore(SEMAPHORED, 0.773, 0.42);
 }
 
-data_node *create_semaphore(images_enum type_image_p, float x, float y) {
-    struct data_node *data_add = (struct data_node *) malloc(sizeof(struct data_node));
+NodoData *create_semaphore(images_enum type_image_p, float x, float y) {
+    struct NodoData *data_add = (struct NodoData *) malloc(sizeof(struct NodoData));
 
     //Data to draw images
     data_add->width = x;
     data_add->height = y;
-    data_add->type_image = type_image_p;
+    data_add->tipoImagen = type_image_p;
     return data_add;
 }
 
@@ -166,7 +166,7 @@ void paint_semaphores(cairo_t *cr) {
     struct DataItem *item = NULL;
 
     for (int i = 0; i < 5; ++i) {
-        item = search(semaphores[i]->type_image, hashImages, SIZE);
+        item = search(semaphores[i]->tipoImagen, hashImages, SIZE);
         gdk_cairo_set_source_pixbuf(cr,
                                     item->imagen_trans,
                                     semaphores[i]->width * map_width,
@@ -181,10 +181,10 @@ void paint_vehicles(cairo_t *cr) {
     }
 
     struct DataItem *item = NULL;
-    node_t *current = vehicle_list;
+    NodoT *current = vehicle_list;
     while (current != NULL) {
         //Draw vehicule
-        item = search(current->data->type_image, hashImages, SIZE);
+        item = search(current->data->tipoImagen, hashImages, SIZE);
         gdk_cairo_set_source_pixbuf(cr,
                                     item->imagen_trans,
                                     current->data->width * map_width,
@@ -200,15 +200,15 @@ void paint_vehicles(cairo_t *cr) {
 
         cairo_set_source_rgb(cr, 0.0, 0.0, 0.0);
         cairo_move_to(cr, current->data->width * map_width, current->data->height * map_height + (1.3 * (total_h) / 2));
-        cairo_text_path(cr, current->data->next_stop);
+        cairo_text_path(cr, current->data->siguienteParada);
         cairo_stroke(cr);
 
         cairo_set_source_rgb(cr, 255.0, 255.0, 255.0);
         cairo_move_to(cr, current->data->width * map_width, current->data->height * map_height + (1.3 * (total_h) / 2));
-        cairo_show_text(cr, current->data->next_stop);
+        cairo_show_text(cr, current->data->siguienteParada);
         cairo_fill(cr);
         //Next element
-        current = current->next;
+        current = current->siguiente;
     }
 
 }
@@ -341,17 +341,17 @@ gboolean on_window_draw(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
     return TRUE;
 }
 
-node_t *create_object(int num, images_enum type_image_p, double x, double y, char *next_stop_p) {
-    struct data_node *data_add = (struct data_node *) malloc(sizeof(struct data_node));
+NodoT *create_object(int num, images_enum type_image_p, double x, double y, char *next_stop_p) {
+    struct NodoData *data_add = (struct NodoData *) malloc(sizeof(struct NodoData));
 
     //Data to draw images
     data_add->width = x;
     data_add->height = y;
-    data_add->type_image = type_image_p;
-    strcpy(data_add->next_stop, next_stop_p);
+    data_add->tipoImagen = type_image_p;
+    strcpy(data_add->siguienteParada, next_stop_p);
 
     pthread_mutex_lock(&lock_vehicle);
-    vehicle_list = push_begin(vehicle_list, num, data_add);
+    vehicle_list = iniciar_push(vehicle_list, num, data_add);
     pthread_mutex_unlock(&lock_vehicle);
     fflush(stdout);
     return vehicle_list;
@@ -364,22 +364,22 @@ void delete_object(int num) {
         return;
     }
 
-    vehicle_list = remove_by_val(vehicle_list, num);
+    vehicle_list = remover_por_valor(vehicle_list, num);
     pthread_mutex_unlock(&lock_vehicle);
 }
 
 void edit_object(int num, images_enum type_image_p, float x_p, float y_p, char *next_stop_p) {
     pthread_mutex_lock(&lock_vehicle);
-    node_t *current = vehicle_list;
+    NodoT *current = vehicle_list;
     while (current != NULL) {
-        if (current->val == num) {
+        if (current->valor == num) {
             current->data->width = x_p;
             current->data->height = y_p;
-            current->data->type_image = type_image_p;
-            strcpy(current->data->next_stop, next_stop_p);
+            current->data->tipoImagen = type_image_p;
+            strcpy(current->data->siguienteParada, next_stop_p);
             break;
         }
-        current = current->next;
+        current = current->siguiente;
     }
     pthread_mutex_unlock(&lock_vehicle);
 }
@@ -387,18 +387,18 @@ void edit_object(int num, images_enum type_image_p, float x_p, float y_p, char *
 void edit_semaphore(int num, images_enum type_image_p) {
     if (num >= 0 && num < 5) {
         pthread_mutex_lock(&lock_semaphore);
-        semaphores[num]->type_image = type_image_p;
+        semaphores[num]->tipoImagen = type_image_p;
         pthread_mutex_unlock(&lock_semaphore);
     }
 }
 
-void edit_object_with_node(node_t *node, images_enum type_image_p, float x_p, float y_p, char *next_stop_p) {
+void edit_object_with_node(NodoT *node, images_enum type_image_p, float x_p, float y_p, char *next_stop_p) {
     fflush(stdout);
     pthread_mutex_lock(&lock_vehicle);
     node->data->width = x_p;
     node->data->height = y_p;
-    node->data->type_image = type_image_p;
-    strcpy(node->data->next_stop, next_stop_p);
+    node->data->tipoImagen = type_image_p;
+    strcpy(node->data->siguienteParada, next_stop_p);
     pthread_mutex_unlock(&lock_vehicle);
 }
 

@@ -18,21 +18,21 @@ int hash_code(Table *t, int key) {
     return key % t->size;
 }
 
-void insert(Table *t, int key, priority_semaphore* val) {
+void insert(Table *t, int key, priority_semaphore* valor) {
     int pos = hash_code(t, key);
     Node *list = t->list[pos];
     Node *newNode = (Node *) malloc(sizeof(Node));
     Node *temp = list;
     while (temp) {
         if (temp->key == key) {
-            temp->val = val;
+            temp->valor = valor;
             return;
         }
-        temp = temp->next;
+        temp = temp->siguiente;
     }
     newNode->key = key;
-    newNode->val = val;
-    newNode->next = list;
+    newNode->valor = valor;
+    newNode->siguiente = list;
     t->list[pos] = newNode;
 }
 
@@ -42,9 +42,9 @@ priority_semaphore * lookup(Table *t, int key) {
     Node *temp = list;
     while (temp) {
         if (temp->key == key) {
-            return temp->val;
+            return temp->valor;
         }
-        temp = temp->next;
+        temp = temp->siguiente;
     }
     return NULL;
 }

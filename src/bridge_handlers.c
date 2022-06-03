@@ -184,7 +184,7 @@ void *handleLarryJoe(void *arg) {
         pthread_mutex_unlock(&currentSemaphore->mutex);
         unlock_bridge_semaphores(oppositeSemaphore[0], oppositeSemaphore[1]);
 
-        // weak up next thread
+        // weak up siguiente thread
         pthread_cond_signal(&cond[*information->nextDirection]);
         pthread_mutex_unlock(mutex);
     }
@@ -238,7 +238,7 @@ void *handleCurlyShemp(void *arg) {
         }
         *information->nextDirection = !*information->nextDirection;
 
-        // weak up next thread
+        // weak up siguiente thread
         pthread_cond_signal(&cond[*information->nextDirection]);
         pthread_mutex_unlock(mutex);
     }
