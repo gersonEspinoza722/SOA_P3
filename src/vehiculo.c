@@ -649,7 +649,6 @@ bool get_variable_actual(TipoVehiculo tipo) {
 ListaEnlazada *crear_ruta(int puntoInicio, int puntoFin) {
     ListaEnlazada *l = crear_lista_enlazada();
     int *path = floyd_path(puntoInicio, puntoFin);
-    printf("%s", "CREAR RUTA//////////////////////////////////////////");
     for (int i = path[0]; i >= 1; --i) {
         printf("%d", i);
 

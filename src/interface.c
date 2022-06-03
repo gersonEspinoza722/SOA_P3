@@ -58,10 +58,10 @@ void load_interface() {
     insertar_dict(REDBUSB, create_item("images/RED_BB.png", REDBUSB, 0.050, 0.015), hashImages, SIZE);
     insertar_dict(REDBUSF, create_item("images/RED_BF.png", REDBUSF, 0.050, 0.015), hashImages, SIZE);
     //Grenn bus load
-    insertar_dict(GREENBUSL, create_item("images/GREEN_BL.png", GREENBUSL, 0.025, 0.030), hashImages, SIZE);
-    insertar_dict(GREENBUSR, create_item("images/GREEN_BR.png", GREENBUSR, 0.025, 0.030), hashImages, SIZE);
-    insertar_dict(GREENBUSB, create_item("images/GREEN_BB.png", GREENBUSB, 0.050, 0.015), hashImages, SIZE);
-    insertar_dict(GREENBUSF, create_item("images/GREEN_BF.png", GREENBUSF, 0.050, 0.015), hashImages, SIZE);
+    insertar_dict(GREENBUSL, create_item("images/GREEN_BL.png", GREENBUSL, 0.040, 0.045), hashImages, SIZE);
+    insertar_dict(GREENBUSR, create_item("images/GREEN_BR.png", GREENBUSR, 0.040, 0.045), hashImages, SIZE);
+    insertar_dict(GREENBUSB, create_item("images/GREEN_BB.png", GREENBUSB, 0.065, 0.020), hashImages, SIZE);
+    insertar_dict(GREENBUSF, create_item("images/GREEN_BF.png", GREENBUSF, 0.065, 0.020), hashImages, SIZE);
     //Blue bus load
     insertar_dict(BLUEBUSL, create_item("images/BLUE_BL.png", BLUEBUSL, 0.025, 0.030), hashImages, SIZE);
     insertar_dict(BLUEBUSR, create_item("images/BLUE_BR.png", BLUEBUSR, 0.025, 0.030), hashImages, SIZE);
@@ -108,10 +108,10 @@ void load_interface() {
     insertar_dict(REDCARB, create_item("images/REDB.jpg", REDCARB, 0.025, 0.015), hashImages, SIZE);
     insertar_dict(REDCARF, create_item("images/REDF.jpg", REDCARF, 0.025, 0.015), hashImages, SIZE);
     //Green car load    
-    insertar_dict(GREENCARL, create_item("images/GREENL.png", GREENCARL, 0.025, 0.015), hashImages, SIZE);
-    insertar_dict(GREENCARR, create_item("images/GREENR.png", GREENCARR, 0.025, 0.015), hashImages, SIZE);
-    insertar_dict(GREENCARB, create_item("images/GREENB.png", GREENCARB, 0.025, 0.015), hashImages, SIZE);
-    insertar_dict(GREENCARF, create_item("images/GREENF.png", GREENCARF, 0.025, 0.015), hashImages, SIZE);
+    insertar_dict(GREENCARL, create_item("images/GREENL.png", GREENCARL, 0.035, 0.025), hashImages, SIZE);
+    insertar_dict(GREENCARR, create_item("images/GREENR.png", GREENCARR, 0.035, 0.025), hashImages, SIZE);
+    insertar_dict(GREENCARB, create_item("images/GREENB.png", GREENCARB, 0.035, 0.025), hashImages, SIZE);
+    insertar_dict(GREENCARF, create_item("images/GREENF.png", GREENCARF, 0.035, 0.025), hashImages, SIZE);
     //Blue car load
     insertar_dict(BLUECARL, create_item("images/BLUEL.jpg", BLUECARL, 0.025, 0.015), hashImages, SIZE);
     insertar_dict(BLUECARR, create_item("images/BLUER.jpg", BLUECARR, 0.025, 0.015), hashImages, SIZE);
@@ -196,7 +196,7 @@ void paint_vehicles(cairo_t *cr) {
         //Write text for vehicule
         // cairo_move_to(cr, current->data->width * map_width, current->data->height * map_height + (1.3 * (total_h) / 2));
 
-        cairo_set_font_size(cr, (0.80) * min(total_w, total_h));
+        cairo_set_font_size(cr, (0.6) * min(total_w, total_h));
 
         cairo_set_source_rgb(cr, 0.0, 0.0, 0.0);
         cairo_move_to(cr, current->data->width * map_width, current->data->height * map_height + (1.3 * (total_h) / 2));
