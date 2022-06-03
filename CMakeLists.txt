@@ -23,7 +23,7 @@ add_executable(proyecto3
         headers/threadville_maintenance.h
         headers/threadville_map.h
         headers/utils.h
-        headers/vehicle.h
+        headers/vehiculo.h
         src/bridge_handlers.c
         src/controller.c
         src/dict.c
@@ -38,7 +38,7 @@ add_executable(proyecto3
         src/threadville_maintenance.c
         src/threadville_map.c
         src/utils.c
-        src/vehicle.c
+        src/vehiculo.c
         src/bus.c)
 
 find_package(PkgConfig REQUIRED)

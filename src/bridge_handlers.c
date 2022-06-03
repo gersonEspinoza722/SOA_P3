@@ -9,7 +9,7 @@
 
 extern pthread_mutex_t mutex_KMN;
 
-extern ThreadvilleMap *map;
+extern ThreadvilleMap *mapa;
 
 pthread_cond_t *get_conditional_mutex(BridgesType type) {
     extern pthread_cond_t *cond_larry;
@@ -53,7 +53,7 @@ pthread_mutex_t *get_bridge_mutex(BridgesType type) {
 
 void lock_bridge_semaphores(int starting_id, int ending_id) {
     for (int i = starting_id; i <= ending_id; i++) {
-        priority_semaphore *current = lookup(map->map, i);
+        priority_semaphore *current = lookup(mapa->mapa, i);
         if (current != NULL) {
             lock_priority_semaphore(0, current);
         }
@@ -62,7 +62,7 @@ void lock_bridge_semaphores(int starting_id, int ending_id) {
 
 void unlock_bridge_semaphores(int starting_id, int ending_id) {
     for (int i = ending_id; i >= starting_id; i--) {
-        priority_semaphore *current = lookup(map->map, i);
+        priority_semaphore *current = lookup(mapa->mapa, i);
         if (current != NULL) {
             unlock_priority_semaphore(0, current);
         }
@@ -70,18 +70,18 @@ void unlock_bridge_semaphores(int starting_id, int ending_id) {
 }
 
 bool can_chance(BridgesType type, bool direction) {
-    extern int larry_cars_waitu;
-    extern int joe_cars_waitu;
-    extern int larry_cars_waitd;
-    extern int joe_cars_waitd;
+    extern int larry_espera_carros_arriba;
+    extern int joe_espera_carros_arriba;
+    extern int larry_espera_carros_abajo;
+    extern int joe_espera_carros_abajo;
 
-    if (type == LARRY && !direction && larry_cars_waitu > 0) {
+    if (type == LARRY && !direction && larry_espera_carros_arriba > 0) {
         return true;
-    } else if (type == LARRY && direction && larry_cars_waitd > 0) {
+    } else if (type == LARRY && direction && larry_espera_carros_abajo > 0) {
         return true;
-    } else if (type == JOE && !direction && joe_cars_waitu > 0) {
+    } else if (type == JOE && !direction && joe_espera_carros_arriba > 0) {
         return true;
-    } else if (type == JOE && direction && joe_cars_waitd > 0) {
+    } else if (type == JOE && direction && joe_espera_carros_abajo > 0) {
         return true;
     }
 
@@ -136,11 +136,11 @@ void *handleLarryJoe(void *arg) {
     // South direction
     if (information->direction) {
         oppositeSemaphore = information->north_side_range;
-        currentSemaphore = lookup(map->map, information->south_side_range[0]);
+        currentSemaphore = lookup(mapa->mapa, information->south_side_range[0]);
         bridge_image = SEMAPHOREU;
     } else {
         oppositeSemaphore = information->south_side_range;
-        currentSemaphore = lookup(map->map, information->north_side_range[0]);
+        currentSemaphore = lookup(mapa->mapa, information->north_side_range[0]);
         bridge_image = SEMAPHORED;
     }
     while (1) {
@@ -161,9 +161,9 @@ void *handleLarryJoe(void *arg) {
             timespec_get(&time, TIME_UTC);
             time.tv_sec += 5;
 
-            const int res = pthread_cond_timedwait(&currentSemaphore->mutex_condition, &currentSemaphore->mutex,
+            const int resultado = pthread_cond_timedwait(&currentSemaphore->mutex_condition, &currentSemaphore->mutex,
                                                    &time);
-            if (res) {
+            if (resultado) {
                 if (can_chance(information->type, information->direction) == true) {
                     break;
                 }

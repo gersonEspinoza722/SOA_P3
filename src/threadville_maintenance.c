@@ -37,10 +37,10 @@ _Noreturn void* run_maintenance(void *arg) {
         StreetInfo *streetInfo = NULL;
         while(streetInfo==NULL){
             threadville_id = random_threadville_id();
-            streetInfo = lookup_street_info(map->streetInfoTable, threadville_id);
+            streetInfo = lookup_street_info(mapa->tablaInfoCalle, threadville_id);
         }
         
-        priority_semaphore *mutex = lookup(map->map, threadville_id);
+        priority_semaphore *mutex = lookup(mapa->mapa, threadville_id);
         lock_priority_semaphore(3, mutex);
         create_object(
                 tid,

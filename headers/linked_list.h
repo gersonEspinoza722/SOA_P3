@@ -3,11 +3,11 @@
 
 typedef struct NodeL {
     struct NodeL *next_node;
-    int destination_id;
+    int id_destino;
 } NodeL;
 
 typedef struct LinkedList {
-    NodeL* first_node;
+    NodeL* primer_nodo;
 } LinkedList;
 
 LinkedList *create_linked_list();

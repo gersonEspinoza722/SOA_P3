@@ -7,7 +7,7 @@
 #include <stdbool.h>
 #include "interface.h"
 #include "linked_list_cars.h"
-#include "vehicle.h"
+#include "vehiculo.h"
 #include "utils.h"
 #include "priority_semaphore.h"
 #include <stdbool.h>
@@ -19,17 +19,17 @@ extern int K;
 extern int M;
 extern int N;
 
-extern bool isa_bred;
-extern bool isa_bgreen;
-extern bool isa_borange;
-extern bool isa_bblue;
-extern bool isa_bgray;
-extern bool isa_bpink;
-extern bool isa_blblue;
-extern bool isa_bwhite;
-extern bool isa_bblack;
+extern bool is_bus_rojo;
+extern bool is_bus_verde;
+extern bool is_bus_naranja;
+extern bool is_bus_azul;
+extern bool is_bus_gris;
+extern bool is_bus_rosado;
+extern bool is_bus_celeste;
+extern bool is_bus_blanco;
+extern bool is_bus_negro;
 
-extern pthread_mutex_t mutex_bus_active;
+extern pthread_mutex_t mutex_bus_activo;
 extern pthread_mutex_t mutex_KMN;
 
 //Definition funtions
@@ -53,17 +53,17 @@ void on_window_main_destroy(GtkWidget *widget, gpointer user_data) {
 }
 
 void on_press_btn_create_car_aleatory(GtkWidget *widget, gpointer user_data) {
-    int *destinations = calloc(4, sizeof(int));
-    destinations[0] = random_stop_id();
-    destinations[1] = random_stop_id();
-    destinations[2] = Z006R;
-    destinations[3] = -1;
+    int *destinos = calloc(4, sizeof(int));
+    destinos[0] = id_parada_aleatoria();
+    destinos[1] = id_parada_aleatoria();
+    destinos[2] = Z006R;
+    destinos[3] = -1;
 
-    Vehicle *v = create_vehicle(random_car_id(), NORTH, destinations);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_vehiculo(id_carro_aleatorio(), NORTE, destinos);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t vehicle_thread;
-    pthread_create(&vehicle_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&vehicle_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(vehicle_thread);
 
     printf("%s\n", "\033[0;32mAleatory car created\033[0m");
@@ -86,31 +86,31 @@ void on_press_btn_create_car_config(GtkWidget *widget, gpointer user_data) {
         switch (active) {
             case 0:
                 // Rojo
-                create_vehicle_in_map(RED_CAR, destinosSplit_final);
+                create_vehicle_in_map(CARRO_ROJO, destinosSplit_final);
                 break;
             case 1:
                 // Azul
-                create_vehicle_in_map(BLUE_CAR, destinosSplit_final);
+                create_vehicle_in_map(CARRO_AZUL, destinosSplit_final);
                 break;
             case 2:
                 // Verde
-                create_vehicle_in_map(GREEN_CAR, destinosSplit_final);
+                create_vehicle_in_map(CARRO_VERDE, destinosSplit_final);
                 break;
             case 3:
                 // Negro
-                create_vehicle_in_map(BLACK_CAR, destinosSplit_final);
+                create_vehicle_in_map(CARRO_NEGRO, destinosSplit_final);
                 break;
             case 4:
                 // Blanco
-                create_vehicle_in_map(WHITE_CAR, destinosSplit_final);
+                create_vehicle_in_map(CARRO_BLANCO, destinosSplit_final);
                 break;
             case 5:
                 // Amarillo
-                create_vehicle_in_map(YELLOW_CAR, destinosSplit_final);
+                create_vehicle_in_map(CARRO_AMARILLO, destinosSplit_final);
                 break;
             case 6:
                 // Ambulance
-                create_vehicle_in_map(AMBULANCE, destinosSplit_final);
+                create_vehicle_in_map(AMBULANCIA, destinosSplit_final);
                 break;
             default:
                 break;
@@ -134,15 +134,15 @@ void on_press_btn_create_car_config(GtkWidget *widget, gpointer user_data) {
 void on_press_btn_create_bus_red(GtkWidget *widget, gpointer user_data) {
     
     change_botons_sensitive("btn_dbr", "btn_cbr");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bred  = true;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_rojo  = true;
+    pthread_mutex_unlock(&mutex_bus_activo);
 
-    Vehicle *v = create_bus(RED_BUS, NORTH);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_bus(BUS_ROJO, NORTE);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(maintenance_thread);
     printf("%s\n", "Red bus created");
 }
@@ -150,24 +150,24 @@ void on_press_btn_create_bus_red(GtkWidget *widget, gpointer user_data) {
 void on_press_btn_delete_bus_red(GtkWidget *widget, gpointer user_data) {
     //change_botons_sensitive("btn_cbr", "btn_dbr");
     desactive_botons_sensitive("btn_dbr");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bred  = false;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_rojo  = false;
+    pthread_mutex_unlock(&mutex_bus_activo);
     printf("%s\n", "Red bus removal process started");
 }
 
 void on_press_btn_create_bus_gray(GtkWidget *widget, gpointer user_data) {
     
     change_botons_sensitive("btn_dbg", "btn_cbg");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bgray  = true;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_gris  = true;
+    pthread_mutex_unlock(&mutex_bus_activo);
 
-    Vehicle *v = create_bus(GRAY_BUS, NORTH);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_bus(BUS_GRIS, NORTE);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(maintenance_thread);
     printf("%s\n", "Gray bus created");
 }
@@ -175,24 +175,24 @@ void on_press_btn_create_bus_gray(GtkWidget *widget, gpointer user_data) {
 void on_press_btn_delete_bus_gray(GtkWidget *widget, gpointer user_data) {
     //change_botons_sensitive("btn_cbg", "btn_dbg");
     desactive_botons_sensitive("btn_dbg");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bgray  = false;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_gris  = false;
+    pthread_mutex_unlock(&mutex_bus_activo);
     printf("%s\n", "Gray bus removal process started");
 }
 
 void on_press_btn_create_bus_green(GtkWidget *widget, gpointer user_data) {
     
     change_botons_sensitive("btn_dbgr", "btn_cbgr");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bgreen  = true;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_verde  = true;
+    pthread_mutex_unlock(&mutex_bus_activo);
 
-    Vehicle *v = create_bus(GREEN_BUS, NORTH);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_bus(BUS_VERDE, NORTE);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(maintenance_thread);
     printf("%s\n", "Green bus created");
 }
@@ -200,23 +200,23 @@ void on_press_btn_create_bus_green(GtkWidget *widget, gpointer user_data) {
 void on_press_btn_delete_bus_green(GtkWidget *widget, gpointer user_data) {
     //change_botons_sensitive("btn_cbgr", "btn_dbgr");
     desactive_botons_sensitive("btn_dbgr");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bgreen  = false;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_verde  = false;
+    pthread_mutex_unlock(&mutex_bus_activo);
     printf("%s\n", "Green bus removal process started");
 }
 
 void on_press_btn_create_bus_pink(GtkWidget *widget, gpointer user_data) {
     change_botons_sensitive("btn_dbp", "btn_cbp");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bpink  = true;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_rosado  = true;
+    pthread_mutex_unlock(&mutex_bus_activo);
 
-    Vehicle *v = create_bus(PINK_BUS, NORTH);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_bus(BUS_ROSADO, NORTE);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(maintenance_thread);
     printf("%s\n", "Pink bus created");
 
@@ -225,24 +225,24 @@ void on_press_btn_create_bus_pink(GtkWidget *widget, gpointer user_data) {
 void on_press_btn_delete_bus_pink(GtkWidget *widget, gpointer user_data) {
     //change_botons_sensitive("btn_cbp", "btn_dbp");
     desactive_botons_sensitive("btn_dbp");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bpink  = false;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_rosado  = false;
+    pthread_mutex_unlock(&mutex_bus_activo);
     printf("%s\n", "Pink bus removal process started");
 }
 
 void on_press_btn_create_bus_orange(GtkWidget *widget, gpointer user_data) {
     
     change_botons_sensitive("btn_dbo", "btn_cbo");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_borange  = true;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_naranja  = true;
+    pthread_mutex_unlock(&mutex_bus_activo);
 
-    Vehicle *v = create_bus(ORANGE_BUS, NORTH);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_bus(BUS_NARANJA, NORTE);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(maintenance_thread);
     printf("%s\n", "Orange bus created");
 }
@@ -250,24 +250,24 @@ void on_press_btn_create_bus_orange(GtkWidget *widget, gpointer user_data) {
 void on_press_btn_delete_bus_orange(GtkWidget *widget, gpointer user_data) {
     //change_botons_sensitive("btn_cbo", "btn_dbo");
     desactive_botons_sensitive("btn_dbo");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_borange  = false;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_naranja  = false;
+    pthread_mutex_unlock(&mutex_bus_activo);
     printf("%s\n", "Orange bus removal process started");
 }
 
 void on_press_btn_create_bus_lblue(GtkWidget *widget, gpointer user_data) {
     
     change_botons_sensitive("btn_dblb", "btn_cblb");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_blblue  = true;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_celeste  = true;
+    pthread_mutex_unlock(&mutex_bus_activo);
 
-    Vehicle *v = create_bus(LIGHT_BLUE_BUS, NORTH);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_bus(BUS_CELESTE, NORTE);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(maintenance_thread);
     printf("%s\n", "Light blue bus created");
 }
@@ -275,24 +275,24 @@ void on_press_btn_create_bus_lblue(GtkWidget *widget, gpointer user_data) {
 void on_press_btn_delete_bus_lblue(GtkWidget *widget, gpointer user_data) {
     //change_botons_sensitive("btn_cblb", "btn_dblb");
     desactive_botons_sensitive("btn_dblb");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_blblue  = false;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_celeste  = false;
+    pthread_mutex_unlock(&mutex_bus_activo);
     printf("%s\n", "Light blue bus removal process started");
 }
 
 void on_press_btn_create_bus_blue(GtkWidget *widget, gpointer user_data) {
     
     change_botons_sensitive("btn_dbb", "btn_cbb");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bblue   = true;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_azul   = true;
+    pthread_mutex_unlock(&mutex_bus_activo);
 
-    Vehicle *v = create_bus(BLUE_BUS, NORTH);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_bus(BUS_AZUL, NORTE);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(maintenance_thread);
     printf("%s\n", "Blue bus created");
 }
@@ -300,24 +300,24 @@ void on_press_btn_create_bus_blue(GtkWidget *widget, gpointer user_data) {
 void on_press_btn_delete_bus_blue(GtkWidget *widget, gpointer user_data) {
     //change_botons_sensitive("btn_cbb", "btn_dbb");
     desactive_botons_sensitive("btn_dbb");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bblue   = false;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_azul   = false;
+    pthread_mutex_unlock(&mutex_bus_activo);
     printf("%s\n", "Blue bus removal process started");
 }
 
 void on_press_btn_create_bus_white(GtkWidget *widget, gpointer user_data) {
     
     change_botons_sensitive("btn_dbw", "btn_cbw");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bwhite   = true;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_blanco   = true;
+    pthread_mutex_unlock(&mutex_bus_activo);
 
-    Vehicle *v = create_bus(WHITE_BUS, NORTH);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_bus(BUS_BLANCO, NORTE);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(maintenance_thread);
     printf("%s\n", "White bus created");
 }
@@ -325,24 +325,24 @@ void on_press_btn_create_bus_white(GtkWidget *widget, gpointer user_data) {
 void on_press_btn_delete_bus_white(GtkWidget *widget, gpointer user_data) {
     //change_botons_sensitive("btn_cbw", "btn_dbw");
     desactive_botons_sensitive("btn_dbw");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bwhite   = false;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_blanco   = false;
+    pthread_mutex_unlock(&mutex_bus_activo);
     printf("%s\n", "White bus removal process started");
 }
 
 void on_press_btn_create_bus_black(GtkWidget *widget, gpointer user_data) {
     
     change_botons_sensitive("btn_dbbl", "btn_cbbl");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bblack  = true;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_negro  = true;
+    pthread_mutex_unlock(&mutex_bus_activo);
 
-    Vehicle *v = create_bus(BLACK_BUS, NORTH);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_bus(BUS_NEGRO, NORTE);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(maintenance_thread);
     printf("%s\n", "Black bus created");
 }
@@ -350,25 +350,25 @@ void on_press_btn_create_bus_black(GtkWidget *widget, gpointer user_data) {
 void on_press_btn_delete_bus_black(GtkWidget *widget, gpointer user_data) {
     //change_botons_sensitive("btn_cbbl", "btn_dbbl");
     desactive_botons_sensitive("btn_dbbl");
-    pthread_mutex_lock(&mutex_bus_active);
-    isa_bblack  = false;
-    pthread_mutex_unlock(&mutex_bus_active);
+    pthread_mutex_lock(&mutex_bus_activo);
+    is_bus_negro  = false;
+    pthread_mutex_unlock(&mutex_bus_activo);
     printf("%s\n", "Black bus removal process started");
 }
 
 void on_press_btn_create_ambulance(GtkWidget *widget, gpointer user_data) {
     
-    int *destinations = calloc(4, sizeof(int));
-    destinations[0] = random_stop_id();
-    destinations[1] = random_stop_id();
-    destinations[2] = Z006R;
-    destinations[3] = -1;
+    int *destinos = calloc(4, sizeof(int));
+    destinos[0] = id_parada_aleatoria();
+    destinos[1] = id_parada_aleatoria();
+    destinos[2] = Z006R;
+    destinos[3] = -1;
 
-    Vehicle *v = create_vehicle(AMBULANCE, NORTH, destinations);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_vehiculo(AMBULANCIA, NORTE, destinos);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(maintenance_thread);
     printf("%s\n", "\033[0;33mAmbulance created\033[0m");
 
@@ -473,52 +473,52 @@ int compare_string(char *s1, char *s2, int length) {
 void create_vehicle_in_map(int type_vehicule, char *destinosSplit) {
     int total = 3;
     int actual_pos = 0;
-    int *destinations = (int *) malloc(total * sizeof(int));
+    int *destinos = (int *) malloc(total * sizeof(int));
     int var = 0;
 
     for (char *p = strtok(destinosSplit, ","); p != NULL; p = strtok(NULL, ",")) {
         remove_spaces(p);
         total += 1;
         var = string_to_id(p);
-        if (destinations[actual_pos - 1] != var) {
-            destinations = (int *) realloc(destinations, total);
-            destinations[actual_pos] = var;
+        if (destinos[actual_pos - 1] != var) {
+            destinos = (int *) realloc(destinos, total);
+            destinos[actual_pos] = var;
             actual_pos += 1;
         }
     }
 
-    destinations[actual_pos] = Z006R;
-    destinations[actual_pos + 1] = -1;
-    destinations[actual_pos + 2] = '\0';
+    destinos[actual_pos] = Z006R;
+    destinos[actual_pos + 1] = -1;
+    destinos[actual_pos + 2] = '\0';
 
-    Vehicle *v = create_vehicle(type_vehicule, NORTH, destinations);
-    VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+    Vehiculo *v = crear_vehiculo(type_vehicule, NORTE, destinos);
+    InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+    pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
     pthread_detach(maintenance_thread);
 }
 
 void active_all_buses(){
 
 
-    isa_bred  = true;
-    isa_bgreen  = true;
-    isa_borange  = true;
-    isa_bblue  = true;
-    isa_bgray  = true;
-    isa_bpink  = true;
-    isa_blblue  = true;
-    isa_bwhite  = true;
-    isa_bblack  = true;
+    is_bus_rojo  = true;
+    is_bus_verde  = true;
+    is_bus_naranja  = true;
+    is_bus_azul  = true;
+    is_bus_gris  = true;
+    is_bus_rosado  = true;
+    is_bus_celeste  = true;
+    is_bus_blanco  = true;
+    is_bus_negro  = true;
 
-    for (int i = RED_BUS; i <= ORANGE_BUS; ++i)
+    for (int i = BUS_ROJO; i <= BUS_NARANJA; ++i)
     {
-        Vehicle *v = create_bus(i, NORTH);
-        VehicleThreadInfo *vi = create_vehicle_thread_info(v);
+        Vehiculo *v = crear_bus(i, NORTE);
+        InfoHiloVehiculo *vi = crear_info_hilo_vehiculo(v);
 
         pthread_t maintenance_thread;
-        pthread_create(&maintenance_thread, NULL, &handle_vehicle, vi);
+        pthread_create(&maintenance_thread, NULL, &manejar_vehiculo, vi);
         pthread_detach(maintenance_thread);
     }
 

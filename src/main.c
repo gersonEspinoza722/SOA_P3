@@ -12,7 +12,7 @@
 extern GtkWidget *window;
 GtkWidget *drA_maps_images;
 
-extern ThreadvilleMap *map;
+extern ThreadvilleMap *mapa;
 extern GtkBuilder *builder;
 
 extern int K;
@@ -171,7 +171,7 @@ int main(int argc, char *argv[]) {
     print_wellcome();
 //    floyd();  //Solo hay que ejecutarlo una vez para crear el archivo y ya
 //    generate_file();
-    map = create_threadville_map();
+    mapa = create_threadville_map();
 
     //Init
     gtk_init(&argc, &argv);

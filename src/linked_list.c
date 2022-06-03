@@ -3,21 +3,21 @@
 
 LinkedList *create_linked_list() {
     LinkedList *list = malloc(sizeof(LinkedList));
-    list->first_node = NULL;
+    list->primer_nodo = NULL;
     return list;
 }
 
-NodeL *create_node(int destination_id) {
+NodeL *create_node(int id_destino) {
     NodeL *node = malloc(sizeof(NodeL));
-    node->destination_id = destination_id;
+    node->id_destino = id_destino;
     node->next_node = NULL;
     return node;
 }
 
 void append(LinkedList *list, NodeL *node) {
-    NodeL *nextNode = list->first_node;
+    NodeL *nextNode = list->primer_nodo;
     if (nextNode == NULL) {
-        list->first_node = node;
+        list->primer_nodo = node;
         return;
     }
     while (nextNode->next_node != NULL) {
@@ -27,21 +27,21 @@ void append(LinkedList *list, NodeL *node) {
 }
 
 void push(LinkedList *list, NodeL *node) {
-    node->next_node = list->first_node;
-    list->first_node = node;
+    node->next_node = list->primer_nodo;
+    list->primer_nodo = node;
 }
 
 void pop(LinkedList *list) {
-    NodeL *deleted = list->first_node;
-    list->first_node = deleted->next_node;
+    NodeL *deleted = list->primer_nodo;
+    list->primer_nodo = deleted->next_node;
     free(deleted);
 }
 
 LinkedList *copy_list(LinkedList *l) {
     LinkedList *list = create_linked_list();
-    NodeL *nextNode = l->first_node;
+    NodeL *nextNode = l->primer_nodo;
     while (nextNode->next_node != NULL) {
-        append(list, create_node(nextNode->destination_id));
+        append(list, create_node(nextNode->id_destino));
         nextNode = nextNode->next_node;
     }
     return list;

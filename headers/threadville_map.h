@@ -6,8 +6,8 @@
 #include "utils.h"
 
 typedef struct ThreadvilleMap {
-    Table *map;
-    TableStreetInfo* streetInfoTable;
+    Table *mapa;
+    TableStreetInfo* tablaInfoCalle;
 } ThreadvilleMap;
 
 ThreadvilleMap *create_threadville_map();

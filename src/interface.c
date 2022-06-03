@@ -135,7 +135,7 @@ void load_interface() {
 
 
     if (pthread_mutex_init(&lock_vehicle, NULL) != 0) {
-        printf("\n Mutex of vehicle init failed\n");
+        printf("\n Mutex of vehiculo init failed\n");
     }
     if (pthread_mutex_init(&lock_semaphore, NULL) != 0) {
         printf("\n Mutex of semaphore init failed\n");
@@ -317,7 +317,7 @@ gboolean on_window_draw(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
         map_height = gdk_pixbuf_get_height(item_map->imagen_trans);
         map_width = gdk_pixbuf_get_width(item_map->imagen_trans);
 
-        //All imagen responsive about the map
+        //All imagen responsive about the mapa
         for (int i = 0; i < SIZE; i++) {
             if (i != MAP) {
                 if (hashImages[i] != NULL) {
@@ -402,10 +402,10 @@ void edit_object_with_node(node_t *node, images_enum type_image_p, float x_p, fl
     pthread_mutex_unlock(&lock_vehicle);
 }
 
-images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
+images_enum from_vehicle_type(TipoVehiculo type, StreetDir direccion) {
     switch (type) {
-        case RED_BUS:
-            switch (dir) {
+        case BUS_ROJO:
+            switch (direccion) {
                 case NORTH_DIR:
                     return REDBUSB;
                 case SOUTH_DIR:
@@ -416,8 +416,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return REDBUSR;
             }
             break;
-        case GREEN_BUS:
-            switch (dir) {
+        case BUS_VERDE:
+            switch (direccion) {
                 case NORTH_DIR:
                     return GREENBUSB;
                 case SOUTH_DIR:
@@ -428,8 +428,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return GREENBUSR;
             }
             break;
-        case BLUE_BUS:
-            switch (dir) {
+        case BUS_AZUL:
+            switch (direccion) {
                 case NORTH_DIR:
                     return BLUEBUSB;
                 case SOUTH_DIR:
@@ -440,8 +440,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return BLUEBUSR;
             }
             break;
-        case WHITE_BUS:
-            switch (dir) {
+        case BUS_BLANCO:
+            switch (direccion) {
                 case NORTH_DIR:
                     return WHITEBUSB;
                 case SOUTH_DIR:
@@ -452,8 +452,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return WHITEBUSR;
             }
             break;
-        case GRAY_BUS:
-            switch (dir) {
+        case BUS_GRIS:
+            switch (direccion) {
                 case NORTH_DIR:
                     return GRAYBUSB;
                 case SOUTH_DIR:
@@ -464,8 +464,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return GRAYBUSR;
             }
             break;
-        case BLACK_BUS:
-            switch (dir) {
+        case BUS_NEGRO:
+            switch (direccion) {
                 case NORTH_DIR:
                     return BLACKBUSB;
                 case SOUTH_DIR:
@@ -476,8 +476,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return BLACKBUSR;
             }
             break;
-        case PINK_BUS:
-            switch (dir) {
+        case BUS_ROSADO:
+            switch (direccion) {
                 case NORTH_DIR:
                     return PINKBUSB;
                 case SOUTH_DIR:
@@ -488,8 +488,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return PINKBUSR;
             }
             break;
-        case LIGHT_BLUE_BUS:
-            switch (dir) {
+        case BUS_CELESTE:
+            switch (direccion) {
                 case NORTH_DIR:
                     return LIGHTBLUEBUSB;
                 case SOUTH_DIR:
@@ -500,8 +500,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return LIGHTBLUEBUSR;
             }
             break;
-        case ORANGE_BUS:
-            switch (dir) {
+        case BUS_NARANJA:
+            switch (direccion) {
                 case NORTH_DIR:
                     return ORANGEBUSB;
                 case SOUTH_DIR:
@@ -512,8 +512,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return ORANGEBUSR;
             }
             break;
-        case AMBULANCE:
-            switch (dir) {
+        case AMBULANCIA:
+            switch (direccion) {
                 case NORTH_DIR:
                     return AMBULANCEB;
                 case SOUTH_DIR:
@@ -524,8 +524,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return AMBULANCER;
             }
             break;
-        case RED_CAR:
-            switch (dir) {
+        case CARRO_ROJO:
+            switch (direccion) {
                 case NORTH_DIR:
                     return REDCARB;
                 case SOUTH_DIR:
@@ -536,8 +536,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return REDCARR;
             }
             break;
-        case BLUE_CAR:
-            switch (dir) {
+        case CARRO_AZUL:
+            switch (direccion) {
                 case NORTH_DIR:
                     return BLUECARB;
                 case SOUTH_DIR:
@@ -548,8 +548,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return BLUECARR;
             }
             break;
-        case GREEN_CAR:
-            switch (dir) {
+        case CARRO_VERDE:
+            switch (direccion) {
                 case NORTH_DIR:
                     return GREENCARB;
                 case SOUTH_DIR:
@@ -560,8 +560,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return GREENCARR;
             }
             break;
-        case BLACK_CAR:
-            switch (dir) {
+        case CARRO_NEGRO:
+            switch (direccion) {
                 case NORTH_DIR:
                     return BLACKCARB;
                 case SOUTH_DIR:
@@ -572,8 +572,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return BLACKCARR;
             }
             break;
-        case WHITE_CAR:
-            switch (dir) {
+        case CARRO_BLANCO:
+            switch (direccion) {
                 case NORTH_DIR:
                     return WHITECARB;
                 case SOUTH_DIR:
@@ -584,8 +584,8 @@ images_enum from_vehicle_type(VehicleType type, StreetDir dir) {
                     return WHITECARR;
             }
             break;
-        case YELLOW_CAR:
-            switch (dir) {
+        case CARRO_AMARILLO:
+            switch (direccion) {
                 case NORTH_DIR:
                     return YELLOWCARB;
                 case SOUTH_DIR:

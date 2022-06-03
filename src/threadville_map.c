@@ -3,15 +3,15 @@
 
 ThreadvilleMap *create_threadville_map() {
     ThreadvilleMap *threadvilleMap = create_shared_memory(sizeof(ThreadvilleMap));
-    threadvilleMap->map = create_table(984);
-    threadvilleMap->streetInfoTable = create_table_street_info(984);
+    threadvilleMap->mapa = create_table(984);
+    threadvilleMap->tablaInfoCalle = create_table_street_info(984);
 
-    insert_highways(threadvilleMap->map, threadvilleMap->streetInfoTable);
-    insert_bridges(threadvilleMap->map, threadvilleMap->streetInfoTable);
-    insert_roundabouts(threadvilleMap->map, threadvilleMap->streetInfoTable);
-    insert_stops(threadvilleMap->map, threadvilleMap->streetInfoTable);
-    insert_streets(threadvilleMap->map, threadvilleMap->streetInfoTable);
-    insert_corners(threadvilleMap->map, threadvilleMap->streetInfoTable);
+    insert_highways(threadvilleMap->mapa, threadvilleMap->tablaInfoCalle);
+    insert_bridges(threadvilleMap->mapa, threadvilleMap->tablaInfoCalle);
+    insert_roundabouts(threadvilleMap->mapa, threadvilleMap->tablaInfoCalle);
+    insert_stops(threadvilleMap->mapa, threadvilleMap->tablaInfoCalle);
+    insert_streets(threadvilleMap->mapa, threadvilleMap->tablaInfoCalle);
+    insert_corners(threadvilleMap->mapa, threadvilleMap->tablaInfoCalle);
     return threadvilleMap;
 }
 

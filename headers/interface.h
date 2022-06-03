@@ -8,7 +8,7 @@
 #include<gdk-pixbuf/gdk-pixbuf.h>
 #include<cairo.h>
 #include<stdio.h>
-#include <vehicle.h>
+#include <vehiculo.h>
 
 
 typedef enum {
@@ -101,7 +101,7 @@ void edit_object_with_node(node_t *node, images_enum type_image_p, float x_p, fl
 
 void edit_semaphore(int num, images_enum type_image_p);
 
-images_enum from_vehicle_type(VehicleType type, StreetDir dir);
+images_enum from_vehicle_type(TipoVehiculo type, StreetDir direccion);
 
 #endif /* INTERFACE_H */
 

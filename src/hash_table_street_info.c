@@ -11,11 +11,11 @@ TableStreetInfo *create_table_street_info(int size) {
     return t;
 }
 
-StreetInfo *create_street_info(double x, double y, StreetDir dir) {
+StreetInfo *create_street_info(double x, double y, StreetDir direccion) {
     StreetInfo *i = (StreetInfo *) malloc(sizeof(StreetInfo));
     i->x = (float) x;
     i->y = (float) y;
-    i->dir = dir;
+    i->direccion = direccion;
     return i;
 }
 

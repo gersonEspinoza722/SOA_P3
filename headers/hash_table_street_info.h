@@ -12,7 +12,7 @@ typedef enum StreetDir {
 typedef struct StreetInfo {
     float x;
     float y;
-    StreetDir dir;
+    StreetDir direccion;
 } StreetInfo;
 
 typedef struct NodeStreetInfo {
