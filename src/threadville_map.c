@@ -15,49 +15,49 @@ ThreadvilleMap *create_threadville_map() {
     return threadvilleMap;
 }
 
-void insert_highways(Tabla *table, TablaInfoCalle *streetInfo) {
+void insert_highways(Tabla *table, TablaInfoCalle *infoCalle) {
     for (int i = H001H; i <= H144H; ++i) {
         insertar(table, i, get_semaforo_prioridad());
-        insert_street_info_highways(streetInfo, i);
+        insert_street_info_highways(infoCalle, i);
     }
 }
 
-void insert_bridges(Tabla *table, TablaInfoCalle *streetInfo) {
+void insert_bridges(Tabla *table, TablaInfoCalle *infoCalle) {
     for (int i = B001B; i <= B030B; ++i) {
         insertar(table, i, get_semaforo_prioridad());
-        insert_street_info_bridge(streetInfo, i);
+        insert_street_info_bridge(infoCalle, i);
     }
     for (int i = BU01B; i <= BU30B; ++i) {
         insertar(table, i, get_semaforo_prioridad());
-        insert_street_info_bridge_up(streetInfo, i);
+        insert_street_info_bridge_up(infoCalle, i);
     }
 }
 
-void insert_roundabouts(Tabla *table, TablaInfoCalle *streetInfo) {
+void insert_roundabouts(Tabla *table, TablaInfoCalle *infoCalle) {
     for (int i = Y001R; i <= Z006R; ++i) {
         insertar(table, i, get_semaforo_prioridad());
-        insert_street_info_roundabouts(streetInfo, i);
+        insert_street_info_roundabouts(infoCalle, i);
     }
 }
 
-void insert_stops(Tabla *table, TablaInfoCalle *streetInfo) {
+void insert_stops(Tabla *table, TablaInfoCalle *infoCalle) {
     for (int i = A001S; i <= R006S; ++i) {
         insertar(table, i, get_semaforo_prioridad());
-        insert_street_info_stops(streetInfo, i);
+        insert_street_info_stops(infoCalle, i);
     }
 }
 
-void insert_streets(Tabla *table, TablaInfoCalle *streetInfo) {
+void insert_streets(Tabla *table, TablaInfoCalle *infoCalle) {
     for (int i = A001P; i <= R018P; ++i) {
         insertar(table, i, get_semaforo_prioridad());
-        insert_street_info_streets(streetInfo, i);
+        insert_street_info_streets(infoCalle, i);
     }
 }
 
-void insert_corners(Tabla *table, TablaInfoCalle *streetInfo) {
+void insert_corners(Tabla *table, TablaInfoCalle *infoCalle) {
     for (int i = A001C; i <= X004C; ++i) {
         insertar(table, i, get_semaforo_prioridad());
-        insert_street_info_corners(streetInfo, i);
+        insert_street_info_corners(infoCalle, i);
     }
 }
 

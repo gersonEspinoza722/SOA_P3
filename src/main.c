@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <threadville_maintenance.h>
+#include <threadville_mantenimiento.h>
 #include <handlers_puentes.h>
 #include "threadville_map.h"
 #include "interface.h"
@@ -183,7 +183,7 @@ int main(int argc, char *argv[]) {
 
     // Maintenance thread
     pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &run_maintenance, NULL);
+    pthread_create(&maintenance_thread, NULL, &hacer_mantenimiento, NULL);
     pthread_detach(maintenance_thread);
 
     // Curly bridge initialization
