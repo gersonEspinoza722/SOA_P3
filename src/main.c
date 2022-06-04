@@ -3,7 +3,7 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <threadville_mantenimiento.h>
 #include <handlers_puentes.h>
-#include "threadville_map.h"
+#include "threadville_mapa.h"
 #include "interface.h"
 #include "floyd.h"
 #include "controller.h"
@@ -12,7 +12,7 @@
 extern GtkWidget *window;
 GtkWidget *drA_maps_images;
 
-extern ThreadvilleMap *mapa;
+extern ThreadvilleMapa *mapa;
 extern GtkBuilder *builder;
 
 extern int K;
@@ -171,7 +171,7 @@ int main(int argc, char *argv[]) {
     print_wellcome();
 //    floyd();  //Solo hay que ejecutarlo una vez para crear el archivo y ya
 //    generar_archivo();
-    mapa = create_threadville_map();
+    mapa = crear_threadville_mapa();
 
     //Init
     gtk_init(&argc, &argv);

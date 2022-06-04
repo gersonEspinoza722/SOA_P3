@@ -21,7 +21,7 @@ extern bool is_bus_celeste;
 extern bool is_bus_blanco;
 extern bool is_bus_negro;
 
-extern ThreadvilleMap *mapa;
+extern ThreadvilleMapa *mapa;
 extern GtkBuilder *builder;
 
 

@@ -7,14 +7,14 @@
 
 #include <gtk/gtk.h>
 #include <gtk/gtktypes.h>
-#include "threadville_map.h"
+#include "threadville_mapa.h"
 #include <stdbool.h>
 #include <pthread.h>
 
 GtkBuilder *builder;
 GtkWidget *window;
 
-ThreadvilleMap *mapa;
+ThreadvilleMapa *mapa;
 
 pthread_mutex_t mutex_KMN = PTHREAD_MUTEX_INITIALIZER;
 volatile int K = 5;

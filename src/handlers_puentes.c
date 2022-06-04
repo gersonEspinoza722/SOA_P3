@@ -1,4 +1,4 @@
-#include "threadville_map.h"
+#include "threadville_mapa.h"
 #include "handlers_puentes.h"
 #include <pthread.h>
 #include <stdio.h>
@@ -9,7 +9,7 @@
 
 extern pthread_mutex_t mutex_KMN;
 
-extern ThreadvilleMap *mapa;
+extern ThreadvilleMapa *mapa;
 
 pthread_cond_t *get_mutex_condicional(TipoPuentes tipo) {
     extern pthread_cond_t *cond_larry;

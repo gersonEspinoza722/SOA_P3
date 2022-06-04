@@ -1,7 +1,7 @@
 #ifndef PROYECTO3_THREADVILLE_MANTENIMIENTO_H
 #define PROYECTO3_THREADVILLE_MANTENIMIENTO_H
 
-#include "threadville_map.h"
+#include "threadville_mapa.h"
 
 _Noreturn void* hacer_mantenimiento(void *arg);
 
