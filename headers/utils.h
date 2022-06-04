@@ -7,16 +7,16 @@
 
 #define MAX_ID_NUMBER 984
 
-void *create_shared_memory(size_t);
+void *crear_memoria_compartida(size_t);
 
-pthread_condattr_t get_conditional_attribute();
+pthread_condattr_t get_atributo_condicional();
 
-pthread_mutexattr_t *get_mutex_attributes();
+pthread_mutexattr_t *get_atributos_mutex();
 
 pthread_mutex_t *get_mutex(pthread_mutexattr_t *);
 
-typedef enum HighwayIds {
-    // FROM Z TO Y 1
+typedef enum IdsCarreteras {
+    // De Z a Y 1
     H001H = 1,
     H002H = 2,
     H003H = 3,
@@ -53,7 +53,7 @@ typedef enum HighwayIds {
     H034H = 34,
     H035H = 35,
     H036H = 36,
-    // FROM Z TO Y 2
+    // De Z a Y 2
     H037H = 37,
     H038H = 38,
     H039H = 39,
@@ -90,7 +90,7 @@ typedef enum HighwayIds {
     H070H = 70,
     H071H = 71,
     H072H = 72,
-    // FROM Y TO Z 1
+    // De Y a Z 1
     H073H = 73,
     H074H = 74,
     H075H = 75,
@@ -127,7 +127,7 @@ typedef enum HighwayIds {
     H106H = 106,
     H107H = 107,
     H108H = 108,
-    // FROM Y TO Z 2
+    // De Y a Z 2
     H109H = 109,
     H110H = 110,
     H111H = 111,
@@ -164,9 +164,9 @@ typedef enum HighwayIds {
     H142H = 142,
     H143H = 143,
     H144H = 144,
-} HighwaysIds;
+} IdsCarreteras;
 
-typedef enum BridgeIds {
+typedef enum IdsPuentes {
     // Larry
     B001B = 145,
     B002B = 146,
@@ -232,9 +232,9 @@ typedef enum BridgeIds {
     BU28B = 982,
     BU29B = 983,
     BU30B = 984,
-} BridgeIds;
+} IdsPuentes;
 
-typedef enum RoundaboutIds {
+typedef enum IdsRotondas {
     Y001R = 175,
     Y002R = 176,
     Y003R = 177,
@@ -247,9 +247,9 @@ typedef enum RoundaboutIds {
     Z004R = 184,
     Z005R = 185,
     Z006R = 186,
-} RoundaboutIds;
+} IdsRotondas;
 
-typedef enum StopIds {
+typedef enum IdsParadas {
     A001S = 187,
     A002S = 188,
     A003S = 189,
@@ -418,9 +418,9 @@ typedef enum StopIds {
     R004S = 352,
     R005S = 353,
     R006S = 354,
-} StopIds;
+} IdsParadas;
 
-typedef enum StreetIds {
+typedef enum IdsCalles {
     A001P = 355,
     A002P = 356,
     A003P = 357,
@@ -925,9 +925,9 @@ typedef enum StreetIds {
     R016P = 856,
     R017P = 857,
     R018P = 858,
-} StreetIds;
+} IdsCalles;
 
-typedef enum CornersIds {
+typedef enum IdsEsquinas {
     A001C = 859,
     A002C = 860,
     A003C = 861,
@@ -1000,6 +1000,6 @@ typedef enum CornersIds {
     X002C = 929,
     X003C = 953,
     X004C = 954
-} CornersIds;
+} IdsEsquinas;
 
 #endif //PROYECTO3_UTILS_H

@@ -8,7 +8,7 @@ for i in range(0, 984 + 1):
     G.add_node(i)
 
 # Lista de aristas
-# ++++++++++++++++++HighwayIds
+# ++++++++++++++++++IdsCarreteras
 # FROM Z TO Y 1
 for i in range(1, 36):
     G.add_edge(i, i + 1, w=3)
@@ -22,7 +22,7 @@ for i in range(73, 108):
 for i in range(109, 144):
     G.add_edge(i, i + 1, w=3)
 
-# ++++++++++++++++++BridgeIds
+# ++++++++++++++++++IdsPuentes
 # Larry
 for i in range(145, 150):
     G.add_edge(i, i + 1, w=6)
@@ -49,7 +49,7 @@ for i in range(169, 174):
 for i in range(979, 984):
     G.add_edge(i, i + 1, w=6)
 
-# ++++++++++++++++++RoundaboutIds
+# ++++++++++++++++++IdsRotondas
 # Y
 for i in range(180, 175, -1):
     G.add_edge(i, i - 1, w=6)
@@ -60,7 +60,7 @@ for i in range(181, 186):
     G.add_edge(i, i + 1, w=6)
 G.add_edge(186, 181, w=6)
 
-# ++++++++++++++++++StreetIds
+# ++++++++++++++++++IdsCalles
 # A
 # 1
 for i in range(355, 360):
@@ -421,7 +421,7 @@ for i in range(619, 624):
 for i in range(853, 858):
     G.add_edge(i, i + 1, w=6)
 
-# ++++++++++++++++++HighwayIds
+# ++++++++++++++++++IdsCarreteras
 # A
 G.add_edge(859, 355, w=6)
 

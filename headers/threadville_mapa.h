@@ -24,18 +24,18 @@ void insertar_calles(Tabla *, TablaInfoCalle *);
 
 void insertar_esquinas(Tabla *, TablaInfoCalle *);
 
-void insertar_info_calle_carreteras(TablaInfoCalle *, HighwaysIds);
+void insertar_info_calle_carreteras(TablaInfoCalle *, IdsCarreteras);
 
-void insertar_info_calle_puente(TablaInfoCalle *, BridgeIds);
+void insertar_info_calle_puente(TablaInfoCalle *, IdsPuentes);
 
-void insertar_info_calle_puente_arriba(TablaInfoCalle *t, BridgeIds id);
+void insertar_info_calle_puente_arriba(TablaInfoCalle *t, IdsPuentes id);
 
-void insertar_info_calle_rotondas(TablaInfoCalle *, RoundaboutIds);
+void insertar_info_calle_rotondas(TablaInfoCalle *, IdsRotondas);
 
-void insertar_info_calle_paradas(TablaInfoCalle *, StopIds);
+void insertar_info_calle_paradas(TablaInfoCalle *, IdsParadas);
 
-void insertar_info_calle_calles(TablaInfoCalle *, StreetIds);
+void insertar_info_calle_calles(TablaInfoCalle *, IdsCalles);
 
-void insertar_info_calle_esquinas(TablaInfoCalle *, CornersIds);
+void insertar_info_calle_esquinas(TablaInfoCalle *, IdsEsquinas);
 
 #endif //PROYECTO3_THREADVILLE_MAPA_H

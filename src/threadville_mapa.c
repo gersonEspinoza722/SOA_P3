@@ -2,7 +2,7 @@
 #include "utils.h"
 
 ThreadvilleMapa *crear_threadville_mapa() {
-    ThreadvilleMapa *threadvilleMapa = create_shared_memory(sizeof(ThreadvilleMapa));
+    ThreadvilleMapa *threadvilleMapa = crear_memoria_compartida(sizeof(ThreadvilleMapa));
     threadvilleMapa->mapa = crear_tabla(984);
     threadvilleMapa->tablaInfoCalle = crear_tabla_info_calle(984);
 
@@ -61,7 +61,7 @@ void insertar_esquinas(Tabla *tabla, TablaInfoCalle *infoCalle) {
     }
 }
 
-void insertar_info_calle_carreteras(TablaInfoCalle *tablaInfo, HighwaysIds id) {
+void insertar_info_calle_carreteras(TablaInfoCalle *tablaInfo, IdsCarreteras id) {
     switch (id) {
         case H072H:
             insertar_info_calle(tablaInfo, id, crear_info_calle(0.143, 0.465, DIR_OESTE));
@@ -500,7 +500,7 @@ void insertar_info_calle_carreteras(TablaInfoCalle *tablaInfo, HighwaysIds id) {
     }
 }
 
-void insertar_info_calle_paradas(TablaInfoCalle *tablaInfo, StopIds id) {
+void insertar_info_calle_paradas(TablaInfoCalle *tablaInfo, IdsParadas id) {
     switch (id) {
         case A001S:
             insertar_info_calle(tablaInfo, id, crear_info_calle(0.117, 0.040, DIR_NORTE));
@@ -1034,7 +1034,7 @@ void insertar_info_calle_paradas(TablaInfoCalle *tablaInfo, StopIds id) {
     }
 }
 
-void insertar_info_calle_rotondas(TablaInfoCalle *tablaInfo, RoundaboutIds id) {
+void insertar_info_calle_rotondas(TablaInfoCalle *tablaInfo, IdsRotondas id) {
     switch (id) {
         case Y001R:
             insertar_info_calle(tablaInfo, id, crear_info_calle(0.111, 0.45, DIR_NORTE));
@@ -1077,7 +1077,7 @@ void insertar_info_calle_rotondas(TablaInfoCalle *tablaInfo, RoundaboutIds id) {
     }
 }
 
-void insertar_info_calle_puente_arriba(TablaInfoCalle *tablaInfo, BridgeIds id) {
+void insertar_info_calle_puente_arriba(TablaInfoCalle *tablaInfo, IdsPuentes id) {
     switch (id) {
         case BU06B:
             insertar_info_calle(tablaInfo, id, crear_info_calle(0.213, 0.420, DIR_NORTE));
@@ -1178,7 +1178,7 @@ void insertar_info_calle_puente_arriba(TablaInfoCalle *tablaInfo, BridgeIds id) 
     }
 }
 
-void insertar_info_calle_puente(TablaInfoCalle *tablaInfo, BridgeIds id) {
+void insertar_info_calle_puente(TablaInfoCalle *tablaInfo, IdsPuentes id) {
     switch (id) {
         case B001B:
             insertar_info_calle(tablaInfo, id, crear_info_calle(0.213, 0.420, DIR_SUR));
@@ -1279,7 +1279,7 @@ void insertar_info_calle_puente(TablaInfoCalle *tablaInfo, BridgeIds id) {
     }
 }
 
-void insertar_info_calle_calles(TablaInfoCalle *tablaInfo, StreetIds id) {
+void insertar_info_calle_calles(TablaInfoCalle *tablaInfo, IdsCalles id) {
     switch (id) {
         //++Fila0
 //Segmento 0
@@ -2642,7 +2642,7 @@ void insertar_info_calle_calles(TablaInfoCalle *tablaInfo, StreetIds id) {
     }
 }
 
-void insertar_info_calle_esquinas(TablaInfoCalle *tablaInfo, CornersIds id) {
+void insertar_info_calle_esquinas(TablaInfoCalle *tablaInfo, IdsEsquinas id) {
     switch (id) {
         case X004C:
             insertar_info_calle(tablaInfo, id, crear_info_calle(0.785, 0.965, DIR_OESTE));

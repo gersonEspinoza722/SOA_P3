@@ -6,7 +6,7 @@
 #include "threadville_mapa.h"
 #include "interface.h"
 #include "floyd.h"
-#include "controller.h"
+#include "controlador.h"
 
 //Interface variables
 extern GtkWidget *window;
@@ -27,7 +27,7 @@ extern int N;
 //    cond_larry = (pthread_cond_t *) malloc(sizeof(pthread_cond_t) * 2);
 //    tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
 //
-//    bool* siguienteDireccion = create_shared_memory(sizeof(bool));
+//    bool* siguienteDireccion = crear_memoria_compartida(sizeof(bool));
 //
 //    // Linking semaphores
 //    LarryJoeInformacion* northInfo = crearLarryJoeInfo(false, LARRY, siguienteDireccion);
@@ -52,11 +52,11 @@ void startShemp(
     extern pthread_mutex_t *mutex_shemp;
     // allocate memory to cond (conditional variable),
     // thread id's and array of tamanio threads
-    cond_shemp = (pthread_cond_t *) create_shared_memory(sizeof(pthread_cond_t) * 2);
-    mutex_shemp = get_mutex(get_mutex_attributes());
+    cond_shemp = (pthread_cond_t *) crear_memoria_compartida(sizeof(pthread_cond_t) * 2);
+    mutex_shemp = get_mutex(get_atributos_mutex());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
 
-    bool* siguienteDireccion = create_shared_memory(sizeof(bool));
+    bool* siguienteDireccion = crear_memoria_compartida(sizeof(bool));
 
     CurlyShempInformacion* northInfo = crearCurlyShempInfo(
             PUENTE_DIR_NORTE, SHEMP, siguienteDireccion,
@@ -82,11 +82,11 @@ void startCurl(int idInicioNorte, int idFinNorte,
     extern pthread_mutex_t *mutex_curly;
     // allocate memory to cond (conditional variable),
     // thread id's and array of tamanio threads
-    cond_curly = (pthread_cond_t *) create_shared_memory(sizeof(pthread_cond_t) * 2);
-    mutex_curly = get_mutex(get_mutex_attributes());
+    cond_curly = (pthread_cond_t *) crear_memoria_compartida(sizeof(pthread_cond_t) * 2);
+    mutex_curly = get_mutex(get_atributos_mutex());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
 
-    bool* siguienteDireccion = create_shared_memory(sizeof(bool));
+    bool* siguienteDireccion = crear_memoria_compartida(sizeof(bool));
 
     CurlyShempInformacion* northInfo = crearCurlyShempInfo(
             PUENTE_DIR_NORTE, CURLY, siguienteDireccion,
@@ -113,11 +113,11 @@ void startLarry(int idInicioNorte, int idFinNorte,
 
     // allocate memory to cond (conditional variable),
     // thread id's and array of tamanio threads
-    cond_larry = (pthread_cond_t *) create_shared_memory(sizeof(pthread_cond_t) * 2);
-    mutex_larry = get_mutex(get_mutex_attributes());
+    cond_larry = (pthread_cond_t *) crear_memoria_compartida(sizeof(pthread_cond_t) * 2);
+    mutex_larry = get_mutex(get_atributos_mutex());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
 
-    bool* siguienteDireccion = create_shared_memory(sizeof(bool));
+    bool* siguienteDireccion = crear_memoria_compartida(sizeof(bool));
 
     LarryJoeInformacion* northInfo = crearLarryJoeInfo(
             PUENTE_DIR_NORTE, LARRY, siguienteDireccion,
@@ -144,11 +144,11 @@ void startJoe(int idInicioNorte, int idFinNorte,
 
     // allocate memory to cond (conditional variable),
     // thread id's and array of tamanio threads
-    cond_joe = (pthread_cond_t *) create_shared_memory(sizeof(pthread_cond_t) * 2);
-    mutex_joe = get_mutex(get_mutex_attributes());
+    cond_joe = (pthread_cond_t *) crear_memoria_compartida(sizeof(pthread_cond_t) * 2);
+    mutex_joe = get_mutex(get_atributos_mutex());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
 
-    bool* siguienteDireccion = create_shared_memory(sizeof(bool));
+    bool* siguienteDireccion = crear_memoria_compartida(sizeof(bool));
 
     LarryJoeInformacion* northInfo = crearLarryJoeInfo(
             PUENTE_DIR_NORTE, JOE, siguienteDireccion,
@@ -182,9 +182,9 @@ int main(int argc, char *argv[]) {
     gtk_builder_add_from_file(builder, "glade/threadville.glade", NULL);
 
     // Maintenance thread
-    pthread_t maintenance_thread;
-    pthread_create(&maintenance_thread, NULL, &hacer_mantenimiento, NULL);
-    pthread_detach(maintenance_thread);
+    pthread_t hiloMantenimiento;
+    pthread_create(&hiloMantenimiento, NULL, &hacer_mantenimiento, NULL);
+    pthread_detach(hiloMantenimiento);
 
     // Curly bridge initialization
     startCurl(
@@ -227,7 +227,7 @@ int main(int argc, char *argv[]) {
     input= GTK_WIDGET(gtk_builder_get_object(builder, "input_N"));
     sprintf(int_char, "%d", N);
     gtk_entry_set_text(GTK_ENTRY(input), int_char);
-    active_all_buses();
+    activar_todos_buses();
     gtk_main();
 
     return 0;

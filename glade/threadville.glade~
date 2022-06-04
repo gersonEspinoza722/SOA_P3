@@ -92,7 +92,7 @@
                             <property name="margin_right">2</property>
                             <property name="margin_top">2</property>
                             <property name="margin_bottom">2</property>
-                            <signal name="button-press-event" handler="on_press_btn_create_car_aleatory" swapped="no"/>
+                            <signal name="button-press-event" handler="on_press_boton_crear_carro_aleatorio" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -110,7 +110,7 @@
                             <property name="margin_right">2</property>
                             <property name="margin_top">2</property>
                             <property name="margin_bottom">2</property>
-                            <signal name="button-press-event" handler="on_press_btn_create_ambulance" swapped="no"/>
+                            <signal name="button-press-event" handler="on_press_boton_crear_ambulancia" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -152,7 +152,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="input_stops">
+                      <object class="GtkEntry" id="inputParadas">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="margin_top">2</property>
@@ -166,7 +166,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText" id="cb_type_cars">
+                      <object class="GtkComboBoxText" id="cbTipoCarros">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="margin_top">2</property>
@@ -196,7 +196,7 @@
                         <property name="receives_default">True</property>
                         <property name="margin_top">2</property>
                         <property name="margin_bottom">2</property>
-                        <signal name="button-press-event" handler="on_press_btn_create_car_config" swapped="no"/>
+                        <signal name="button-press-event" handler="on_press_boton_crear_carro_configurado" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -261,7 +261,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_create_bus_red" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_crear_bus_rojo" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -279,7 +279,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_delete_bus_red" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_borrar_bus_rojo" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -310,7 +310,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_create_bus_gray" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_crear_bus_gris" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -328,7 +328,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_delete_bus_gray" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_borrar_bus_gris" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -371,7 +371,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_create_bus_green" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_crear_bus_verde" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -389,7 +389,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_delete_bus_green" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_borrar_bus_verde" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -420,7 +420,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_create_bus_pink" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_crear_bus_rosado" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -438,7 +438,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_delete_bus_pink" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_borrar_bus_rosado" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -481,7 +481,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_create_bus_orange" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_crear_bus_naranja" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -499,7 +499,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_delete_bus_orange" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_borrar_bus_naranja" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -530,7 +530,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_create_bus_lblue" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_crear_bus_celeste" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -548,7 +548,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_delete_bus_lblue" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_borrar_bus_celeste" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -591,7 +591,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_create_bus_blue" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_crear_bus_azul" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -609,7 +609,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_delete_bus_blue" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_borrar_bus_azul" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -640,7 +640,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_create_bus_white" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_crear_bus_blanco" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -658,7 +658,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_delete_bus_white" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_borrar_bus_blanco" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -701,7 +701,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_create_bus_black" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_crear_bus_negro" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -719,7 +719,7 @@
                                 <property name="margin_right">2</property>
                                 <property name="margin_top">2</property>
                                 <property name="margin_bottom">2</property>
-                                <signal name="button-press-event" handler="on_press_btn_delete_bus_black" swapped="no"/>
+                                <signal name="button-press-event" handler="on_press_boton_borrar_bus_negro" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -893,7 +893,7 @@
                         <property name="margin_right">2</property>
                         <property name="margin_top">2</property>
                         <property name="margin_bottom">2</property>
-                        <signal name="button-press-event" handler="on_press_btn_update_values" swapped="no"/>
+                        <signal name="button-press-event" handler="on_press_boton_actualizar_valores" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">True</property>

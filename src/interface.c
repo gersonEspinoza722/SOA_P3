@@ -290,7 +290,7 @@ GdkPixbuf *transform_image_relation(GdkPixbuf *imagen, float h_real, float w_rea
     return final_image;
 }
 
-gboolean on_window_draw(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
+gboolean on_window_draw(GtkWidget *widget, cairo_t *cr, gpointer datosUsuario) {
     int actual_height = gtk_widget_get_allocated_height(widget);
     int actual_width = gtk_widget_get_allocated_width(widget);
     int flat = 0;

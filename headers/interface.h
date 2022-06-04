@@ -87,7 +87,7 @@ void print_wellcome();
 
 void load_interface();
 
-gboolean on_window_draw(GtkWidget *widget, cairo_t *cr, gpointer user_data);
+gboolean on_window_draw(GtkWidget *widget, cairo_t *cr, gpointer datosUsuario);
 
 gboolean on_tick(gpointer *parameters);
 

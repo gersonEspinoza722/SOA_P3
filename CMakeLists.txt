@@ -9,7 +9,7 @@ include_directories(src headers)
 add_executable(proyecto3
         headers/bus.h
         headers/handlers_puentes.h
-        headers/controller.h
+        headers/controlador.h
         headers/dict.h
         headers/floyd.h
         headers/globales.h
@@ -25,7 +25,7 @@ add_executable(proyecto3
         headers/utils.h
         headers/vehiculo.h
         src/handlers_puentes.c
-        src/controller.c
+        src/controlador.c
         src/dict.c
         src/floyd.c
         src/hash_table.c
