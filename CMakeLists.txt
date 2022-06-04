@@ -16,7 +16,7 @@ add_executable(proyecto3
         headers/grafico.h
         headers/hash_table.h
         headers/hash_table_info_calle.h
-        headers/interface.h
+        headers/interfaz.h
         headers/lista_enlazada.h
         headers/lista_enlazada_carros.h
         headers/semaforo_prioridad.h
@@ -30,7 +30,7 @@ add_executable(proyecto3
         src/floyd.c
         src/hash_table.c
         src/hash_table_info_calle.c
-        src/interface.c
+        src/interfaz.c
         src/lista_enlazada.c
         src/lista_enlazada_carros.c
         src/semaforo_prioridad.c

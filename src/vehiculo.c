@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include "utils.h"
 #include "hash_table.h"
-#include "interface.h"
+#include "interfaz.h"
 #include "floyd.h"
 #include "bus.h"
 #include <stdbool.h>
@@ -763,9 +763,9 @@ Vehiculo *crear_bus(TipoVehiculo tipo, DireccionVehiculo direccion) {
             mapa->tablaInfoCalle,
             vehiculo->ruta_actual->primerNodo->idDestino
     );
-    NodoT *infoUI = create_object(
+    NodoT *infoUI = crear_objeto(
             id_actual,
-            from_vehicle_type(tipo, info->direccion),
+            imagen_tipo_vehiculo(tipo, info->direccion),
             info->x, info->y,
             get_id_parada(
                     vehiculo->ruta_actual->primerNodo->idDestino,
@@ -795,9 +795,9 @@ Vehiculo *crear_vehiculo(TipoVehiculo tipo, DireccionVehiculo direccion, int *de
             mapa->tablaInfoCalle,
             vehiculo->ruta_actual->primerNodo->idDestino
     );
-    NodoT *infoUI = create_object(
+    NodoT *infoUI = crear_objeto(
             id_actual,
-            from_vehicle_type(tipo, info->direccion),
+            imagen_tipo_vehiculo(tipo, info->direccion),
             info->x, info->y,
             get_id_parada(
                     vehiculo->ruta_actual->primerNodo->idDestino,
@@ -893,7 +893,7 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
                     pthread_mutex_lock(&mutex_moe);
                     moe_direccion = -1;
                     printf("\033[0;31m%s\033[0m\n", "Moe cambio direccion a: Sur");
-                    edit_semaphore(2, SEMAPHORED);
+                    editar_semaforo(2, SEMAFOROABAJO);
 
                     pthread_mutex_lock(&mutex_chequear_moe);
                     moe_carros += 1;
@@ -910,7 +910,7 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
                     pthread_mutex_lock(&mutex_moe);
                     moe_direccion = 1;
                     printf("\033[0;31m%s\033[0m\n", "Moe cambio direccion a: Norte");
-                    edit_semaphore(2, SEMAPHOREU);
+                    editar_semaforo(2, SEMAFOROARRIBA);
 
                     pthread_mutex_lock(&mutex_chequear_moe);
                     moe_carros += 1;
@@ -940,9 +940,9 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
 
             //Se pinta luego de obtener el semaforo
             InfoCalle *infoCalle = lookup_info_calle(mapa->tablaInfoCalle, nodoActual->idDestino);
-            edit_object_with_node(
+            editar_objeto_con_nodo(
                     vehiculo->infoUI,
-                    from_vehicle_type(vehiculo->tipoVehiculo, infoCalle->direccion),
+                    imagen_tipo_vehiculo(vehiculo->tipoVehiculo, infoCalle->direccion),
                     infoCalle->x, infoCalle->y,
                     get_id_parada(vehiculo->destinos[siguienteDestino], 3 - siguienteDestino)
             );
@@ -1066,7 +1066,7 @@ void manejar_bus(Vehiculo *vehiculo) {
                     pthread_mutex_lock(&mutex_moe);
                     moe_direccion = -1;
                     printf("\033[0;31m%s\033[0m\n", "Moe cambio direccion a: Sur");
-                    edit_semaphore(2, SEMAPHORED);
+                    editar_semaforo(2, SEMAFOROABAJO);
 
                     pthread_mutex_lock(&mutex_chequear_moe);
                     moe_carros += 1;
@@ -1083,7 +1083,7 @@ void manejar_bus(Vehiculo *vehiculo) {
                     pthread_mutex_lock(&mutex_moe);
                     moe_direccion = 1;
                     printf("\033[0;31m%s\033[0m\n", "Moe cambio direccion a: Norte");
-                    edit_semaphore(2, SEMAPHOREU);
+                    editar_semaforo(2, SEMAFOROARRIBA);
 
                     pthread_mutex_lock(&mutex_chequear_moe);
                     moe_carros += 1;
@@ -1144,9 +1144,9 @@ void manejar_bus(Vehiculo *vehiculo) {
                 yUsada = yActual;
             }
 
-            edit_object_with_node(
+            editar_objeto_con_nodo(
                     vehiculo->infoUI,
-                    from_vehicle_type(vehiculo->tipoVehiculo, mejor_direccion(direccionActual, direccionAnterior, direccionAnteriorAnterior)),
+                    imagen_tipo_vehiculo(vehiculo->tipoVehiculo, mejor_direccion(direccionActual, direccionAnterior, direccionAnteriorAnterior)),
                     xUsada,
                     yUsada,
                     get_id_parada(
@@ -1178,7 +1178,7 @@ void manejar_bus(Vehiculo *vehiculo) {
     }
 
     //Detener el bus
-    delete_object(vehiculo->id_vehiculo);
+    borrar_objeto(vehiculo->id_vehiculo);
     unlock_semaforo_prioridad(5, calleActual);
     if (calleAnterior != NULL) {
         unlock_semaforo_prioridad(0, calleAnterior);
@@ -1217,7 +1217,7 @@ void *manejar_vehiculo(void *arg) {
         default:
             break;
     }
-    delete_object(vehiculo->id_vehiculo);
+    borrar_objeto(vehiculo->id_vehiculo);
     free(vehiculo);
     return NULL;
 }

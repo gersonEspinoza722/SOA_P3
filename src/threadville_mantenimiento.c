@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <pthread.h>
 #include "utils.h"
-#include "interface.h"
+#include "interfaz.h"
 #include "globales.h"
 #include<time.h> 
 
@@ -42,11 +42,11 @@ _Noreturn void* hacer_mantenimiento(void *arg) {
         
         SemaforoPrioridad *mutex = lookup(mapa->mapa, threadvilleId);
         lock_semaforo_prioridad(3, mutex);
-        create_object(tId, REPAIR, infoCalle->x, infoCalle->y, "");
+        crear_objeto(tId, REPARACION, infoCalle->x, infoCalle->y, "");
         tiempoMantenimiento = ((rand() % 4) + 1) * 5;
         sleep(tiempoMantenimiento);
         unlock_semaforo_prioridad(3, mutex);
-        delete_object(tId);
+        borrar_objeto(tId);
         tiempoEsperaActual = ran_expo();
     }
 }

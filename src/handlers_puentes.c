@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <sys/mman.h>
-#include <interface.h>
+#include <interfaz.h>
 
 extern pthread_mutex_t mutex_KMN;
 
@@ -129,18 +129,18 @@ void *handleLarryJoe(void *arg) {
     pthread_mutex_t *mutex = get_mutex_puente(informacion->tipo);
     SemaforoPrioridad *semaforoActual;
     int *semaforoOpuesto;
-    images_enum imagenPuente;
+    EnumImagenes imagenPuente;
     //Mantener contador de los carros que deben de pasar
     int contadorLocal = 0;
     //Sur
     if (informacion->direccion) {
         semaforoOpuesto = informacion->rango_lado_norte;
         semaforoActual = lookup(mapa->mapa, informacion->rango_lado_sur[0]);
-        imagenPuente = SEMAPHOREU;
+        imagenPuente = SEMAFOROARRIBA;
     } else {
         semaforoOpuesto = informacion->rango_lado_sur;
         semaforoActual = lookup(mapa->mapa, informacion->rango_lado_norte[0]);
-        imagenPuente = SEMAPHORED;
+        imagenPuente = SEMAFOROABAJO;
     }
     while (1) {
         kLocal = get_k();
@@ -153,7 +153,7 @@ void *handleLarryJoe(void *arg) {
         }
 
         lock_semaforos_puente(semaforoOpuesto[0], semaforoOpuesto[1]);
-        edit_semaphore(informacion->tipo, imagenPuente);
+        editar_semaforo(informacion->tipo, imagenPuente);
         pthread_mutex_lock(&semaforoActual->mutex);
 
         while (contadorLocal < kLocal) {
@@ -198,15 +198,15 @@ void *handleCurlyShemp(void *arg) {
     pthread_cond_t *cond = get_mutex_condicional(informacion->tipo);
     pthread_mutex_t *mutex = get_mutex_puente(informacion->tipo);
     int *prioridadSemaforo;
-    images_enum imagenPuente;
+    EnumImagenes imagenPuente;
     int *segundos;
     //Sur
     if (informacion->direccion) {
         prioridadSemaforo = informacion->rango_lado_norte;
-        imagenPuente = SEMAPHOREU;
+        imagenPuente = SEMAFOROARRIBA;
     } else {
         prioridadSemaforo = informacion->rango_lado_sur;
-        imagenPuente = SEMAPHORED;
+        imagenPuente = SEMAFOROABAJO;
     }
     while (1) {
         //Actualizar valores en tiempo real
@@ -227,7 +227,7 @@ void *handleCurlyShemp(void *arg) {
         }
 
         lock_semaforos_puente(prioridadSemaforo[0], prioridadSemaforo[1]);
-        edit_semaphore(informacion->tipo, imagenPuente);
+        editar_semaforo(informacion->tipo, imagenPuente);
         sleep(*segundos);
         unlock_semaforos_puente(prioridadSemaforo[0], prioridadSemaforo[1]);
         if (informacion->tipo == CURLY) {

@@ -4,11 +4,11 @@
 #include <threadville_mantenimiento.h>
 #include <handlers_puentes.h>
 #include "threadville_mapa.h"
-#include "interface.h"
+#include "interfaz.h"
 #include "floyd.h"
 #include "controlador.h"
 
-//Interface variables
+//Variables de interfaz
 extern GtkWidget *window;
 GtkWidget *drA_maps_images;
 
@@ -19,7 +19,7 @@ extern int K;
 extern int M;
 extern int N;
 
-//void startBridgeLarry() {
+//void iniciarPuenteLarry() {
 //    pthread_t *tid;
 //    volatile int i;
 //    extern pthread_cond_t *cond_larry;
@@ -29,7 +29,7 @@ extern int N;
 //
 //    bool* siguienteDireccion = crear_memoria_compartida(sizeof(bool));
 //
-//    // Linking semaphores
+//    // Linking semaforos
 //    LarryJoeInformacion* northInfo = crearLarryJoeInfo(false, LARRY, siguienteDireccion);
 //    LarryJoeInformacion* southInfo = crearLarryJoeInfo(true, LARRY, siguienteDireccion);
 //
@@ -43,15 +43,14 @@ extern int N;
 //
 //}
 
-void startShemp(
+void iniciarShemp(
         int idInicioNorte, int idFinNorte,
         int idInicioSur, int idFinSur
 ) {
     pthread_t *tid;
     extern pthread_cond_t *cond_shemp;
     extern pthread_mutex_t *mutex_shemp;
-    // allocate memory to cond (conditional variable),
-    // thread id's and array of tamanio threads
+
     cond_shemp = (pthread_cond_t *) crear_memoria_compartida(sizeof(pthread_cond_t) * 2);
     mutex_shemp = get_mutex(get_atributos_mutex());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
@@ -75,7 +74,7 @@ void startShemp(
     pthread_detach(tid[1]);
 }
 
-void startCurl(int idInicioNorte, int idFinNorte,
+void iniciarCurl(int idInicioNorte, int idFinNorte,
                int idInicioSur, int idFinSur) {
     pthread_t *tid;
     extern pthread_cond_t *cond_curly;
@@ -168,14 +167,14 @@ void startJoe(int idInicioNorte, int idFinNorte,
 }
 
 int main(int argc, char *argv[]) {
-    print_wellcome();
+    imprimir_bienvenida();
 //    floyd();  //Solo hay que ejecutarlo una vez para crear el archivo y ya
 //    generar_archivo();
     mapa = crear_threadville_mapa();
 
     //Init
     gtk_init(&argc, &argv);
-    load_interface();
+    cargar_interfaz();
 
     //Add glade files
     builder = gtk_builder_new();
@@ -187,12 +186,12 @@ int main(int argc, char *argv[]) {
     pthread_detach(hiloMantenimiento);
 
     // Curly bridge initialization
-    startCurl(
+    iniciarCurl(
             B007B, B012B,
             BU07B, BU12B
     );
     // Shemp bridge initialization
-    startShemp(
+    iniciarShemp(
             B019B, B024B,
             BU19B, BU24B
     );
