@@ -2,49 +2,49 @@
 #include <stdlib.h>
 #include "hash_table.h"
 
-Table *create_table(int tamanio) {
-    Table *t = (Table *) malloc(sizeof(Table));
-    t->tamanio = tamanio;
-    t->lista = (Node **) malloc(sizeof(Node *) * tamanio);
+Tabla *crear_tabla(int tamanio) {
+    Tabla *tabla = (Tabla *) malloc(sizeof(Tabla));
+    tabla->tamanio = tamanio;
+    tabla->lista = (NodoH **) malloc(sizeof(NodoH *) * tamanio);
     int i;
     for (i = 0; i < tamanio; i++)
-        t->lista[i] = NULL;
-    return t;
+        tabla->lista[i] = NULL;
+    return tabla;
 }
 
-int hash_code(Table *t, int llave) {
+int hash_code(Tabla *tabla, int llave) {
     if (llave < 0)
-        return -(llave % t->tamanio);
-    return llave % t->tamanio;
+        return -(llave % tabla->tamanio);
+    return llave % tabla->tamanio;
 }
 
-void insert(Table *t, int llave, priority_semaphore* valor) {
-    int pos = hash_code(t, llave);
-    Node *lista = t->lista[pos];
-    Node *newNode = (Node *) malloc(sizeof(Node));
-    Node *temp = lista;
-    while (temp) {
-        if (temp->llave == llave) {
-            temp->valor = valor;
+void insertar(Tabla *tabla, int llave, SemaforoPrioridad* valor) {
+    int posicion = hash_code(tabla, llave);
+    NodoH *lista = tabla->lista[posicion];
+    NodoH *nuevoNodo = (NodoH *) malloc(sizeof(NodoH));
+    NodoH *temporal = lista;
+    while (temporal) {
+        if (temporal->llave == llave) {
+            temporal->valor = valor;
             return;
         }
-        temp = temp->siguiente;
+        temporal = temporal->siguiente;
     }
-    newNode->llave = llave;
-    newNode->valor = valor;
-    newNode->siguiente = lista;
-    t->lista[pos] = newNode;
+    nuevoNodo->llave = llave;
+    nuevoNodo->valor = valor;
+    nuevoNodo->siguiente = lista;
+    tabla->lista[posicion] = nuevoNodo;
 }
 
-priority_semaphore * lookup(Table *t, int llave) {
-    int pos = hash_code(t, llave);
-    Node *lista = t->lista[pos];
-    Node *temp = lista;
-    while (temp) {
-        if (temp->llave == llave) {
-            return temp->valor;
+SemaforoPrioridad * lookup(Tabla *tabla, int llave) {
+    int posicion = hash_code(tabla, llave);
+    NodoH *lista = tabla->lista[posicion];
+    NodoH *temporal = lista;
+    while (temporal) {
+        if (temporal->llave == llave) {
+            return temporal->valor;
         }
-        temp = temp->siguiente;
+        temporal = temporal->siguiente;
     }
     return NULL;
 }

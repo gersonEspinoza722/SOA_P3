@@ -2,25 +2,25 @@
 #define PROYECTO3_HASH_TABLE_H
 
 #include <pthread.h>
-#include "priority_semaphore.h"
+#include "semaforo_prioridad.h"
 
-typedef struct Node {
+typedef struct NodoH {
     int llave;
-    priority_semaphore *valor;
-    struct Node *siguiente;
-} Node;
+    SemaforoPrioridad *valor;
+    struct NodoH *siguiente;
+} NodoH;
 
-typedef struct Table {
+typedef struct Tabla {
     int tamanio;
-    Node **lista;
-} Table;
+    NodoH **lista;
+} Tabla;
 
-Table *create_table(int tamanio);
+Tabla *crear_tabla(int tamanio);
 
-int hash_code(Table*, int);
+int hash_code(Tabla*, int);
 
-void insert(Table*, int, priority_semaphore*);
+void insertar(Tabla*, int, SemaforoPrioridad*);
 
-priority_semaphore *lookup(Table *t, int);
+SemaforoPrioridad *lookup(Tabla *t, int);
 
 #endif //PROYECTO3_HASH_TABLE_H

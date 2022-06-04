@@ -828,8 +828,8 @@ int get_tamanio_destinos(const int *destinos) {
 void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
     int destinoInicio;
     int siguienteDestino = 0;
-    priority_semaphore *calleActual = NULL;
-    priority_semaphore *calleAnterior = NULL;
+    SemaforoPrioridad *calleActual = NULL;
+    SemaforoPrioridad *calleAnterior = NULL;
     NodoL *nodoActual;
 
     while (1) {
@@ -932,10 +932,10 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
             }
 
             //Fin de puente central
-            lock_priority_semaphore(prioridad, calleActual);
+            lock_semaforo_prioridad(prioridad, calleActual);
 
             if (calleAnterior != NULL) {
-                unlock_priority_semaphore(prioridad, calleAnterior);
+                unlock_semaforo_prioridad(prioridad, calleAnterior);
             }
 
             //Se pinta luego de obtener el semaforo
@@ -965,7 +965,7 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
         }
     }
 
-    unlock_priority_semaphore(prioridad, calleActual);
+    unlock_semaforo_prioridad(prioridad, calleActual);
 }
 
 DireccionCalle mejor_direccion(DireccionCalle direccionActualP, DireccionCalle direccionPreviaP, DireccionCalle previaPreviaP) {
@@ -981,9 +981,9 @@ DireccionCalle mejor_direccion(DireccionCalle direccionActualP, DireccionCalle d
 }
 
 void manejar_bus(Vehiculo *vehiculo) {
-    priority_semaphore *calleActual = NULL;
-    priority_semaphore *calleAnterior = NULL;
-    priority_semaphore *calleAnteriorAnterior = NULL;
+    SemaforoPrioridad *calleActual = NULL;
+    SemaforoPrioridad *calleAnterior = NULL;
+    SemaforoPrioridad *calleAnteriorAnterior = NULL;
     NodoL *nodoActual;
     int destinoActual = 0;
     InfoCalle *infoCalle;
@@ -1105,10 +1105,10 @@ void manejar_bus(Vehiculo *vehiculo) {
             }
             //Fin de puente central
 
-            lock_priority_semaphore(5, calleActual);
+            lock_semaforo_prioridad(5, calleActual);
 
             if (calleAnteriorAnterior != NULL) {
-                unlock_priority_semaphore(0, calleAnteriorAnterior);
+                unlock_semaforo_prioridad(0, calleAnteriorAnterior);
             }
 
             infoCalle = lookup_info_calle(mapa->tablaInfoCalle, nodoActual->idDestino);
@@ -1160,7 +1160,7 @@ void manejar_bus(Vehiculo *vehiculo) {
                 calleAnteriorAnterior = NULL;
 
                 if (calleAnterior != NULL) {
-                    unlock_priority_semaphore(0, calleAnterior);
+                    unlock_semaforo_prioridad(0, calleAnterior);
                     calleAnterior = NULL;
                 }
 
@@ -1179,9 +1179,9 @@ void manejar_bus(Vehiculo *vehiculo) {
 
     //Detener el bus
     delete_object(vehiculo->id_vehiculo);
-    unlock_priority_semaphore(5, calleActual);
+    unlock_semaforo_prioridad(5, calleActual);
     if (calleAnterior != NULL) {
-        unlock_priority_semaphore(0, calleAnterior);
+        unlock_semaforo_prioridad(0, calleAnterior);
     }
 
     GtkWidget *active_w = GTK_WIDGET(gtk_builder_get_object(builder, get_boton_activo(vehiculo->tipoVehiculo)));

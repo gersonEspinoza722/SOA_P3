@@ -6,23 +6,23 @@
 #include "utils.h"
 
 typedef struct ThreadvilleMap {
-    Table *mapa;
+    Tabla *mapa;
     TablaInfoCalle* tablaInfoCalle;
 } ThreadvilleMap;
 
 ThreadvilleMap *create_threadville_map();
 
-void insert_highways(Table *, TablaInfoCalle *);
+void insert_highways(Tabla *, TablaInfoCalle *);
 
-void insert_bridges(Table *, TablaInfoCalle *);
+void insert_bridges(Tabla *, TablaInfoCalle *);
 
-void insert_roundabouts(Table *, TablaInfoCalle *);
+void insert_roundabouts(Tabla *, TablaInfoCalle *);
 
-void insert_stops(Table *, TablaInfoCalle *);
+void insert_stops(Tabla *, TablaInfoCalle *);
 
-void insert_streets(Table *, TablaInfoCalle *);
+void insert_streets(Tabla *, TablaInfoCalle *);
 
-void insert_corners(Table *, TablaInfoCalle *);
+void insert_corners(Tabla *, TablaInfoCalle *);
 
 void insert_street_info_highways(TablaInfoCalle *, HighwaysIds);
 

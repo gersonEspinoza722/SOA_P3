@@ -19,21 +19,21 @@ add_executable(proyecto3
         headers/interface.h
         headers/lista_enlazada.h
         headers/lista_enlazada_carros.h
-        headers/priority_semaphore.h
+        headers/semaforo_prioridad.h
         headers/threadville_maintenance.h
         headers/threadville_map.h
         headers/utils.h
         headers/vehiculo.h
-        src/bridge_handlers.c
+        src/handlers_puentes.c
         src/controller.c
         src/dict.c
         src/floyd.c
         src/hash_table.c
-        src/hash_table_street_info.c
+        src/hash_table_info_calle.c
         src/interface.c
-        src/linked_list.c
-        src/linked_lists_cars.c
-        src/priority_semaphore.c
+        src/lista_enlazada.c
+        src/lista_enlazada_carros.c
+        src/semaforo_prioridad.c
         src/main.c
         src/threadville_maintenance.c
         src/threadville_map.c

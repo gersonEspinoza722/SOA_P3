@@ -40,8 +40,8 @@ _Noreturn void* run_maintenance(void *arg) {
             streetInfo = lookup_info_calle(mapa->tablaInfoCalle, threadville_id);
         }
         
-        priority_semaphore *mutex = lookup(mapa->mapa, threadville_id);
-        lock_priority_semaphore(3, mutex);
+        SemaforoPrioridad *mutex = lookup(mapa->mapa, threadville_id);
+        lock_semaforo_prioridad(3, mutex);
         create_object(
                 tid,
                 REPAIR,
@@ -51,7 +51,7 @@ _Noreturn void* run_maintenance(void *arg) {
         );
         maintenance_time = ((rand() % 4) + 1) * 5;
         sleep(maintenance_time);
-        unlock_priority_semaphore(3, mutex);
+        unlock_semaforo_prioridad(3, mutex);
         delete_object(tid);
         current_waiting_time = ran_expo();
     }

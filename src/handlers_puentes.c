@@ -53,18 +53,18 @@ pthread_mutex_t *get_mutex_puente(TipoPuentes tipo) {
 
 void lock_semaforos_puente(int idInicial, int idFinal) {
     for (int i = idInicial; i <= idFinal; i++) {
-        priority_semaphore *actual = lookup(mapa->mapa, i);
+        SemaforoPrioridad *actual = lookup(mapa->mapa, i);
         if (actual != NULL) {
-            lock_priority_semaphore(0, actual);
+            lock_semaforo_prioridad(0, actual);
         }
     }
 }
 
 void unlock_semaforos_puente(int idInicial, int idFinal) {
     for (int i = idFinal; i >= idInicial; i--) {
-        priority_semaphore *actual = lookup(mapa->mapa, i);
+        SemaforoPrioridad *actual = lookup(mapa->mapa, i);
         if (actual != NULL) {
-            unlock_priority_semaphore(0, actual);
+            unlock_semaforo_prioridad(0, actual);
         }
     }
 }
@@ -127,7 +127,7 @@ void *handleLarryJoe(void *arg) {
     LarryJoeInformacion *informacion = (LarryJoeInformacion *) arg;
     pthread_cond_t *cond = get_mutex_condicional(informacion->tipo);
     pthread_mutex_t *mutex = get_mutex_puente(informacion->tipo);
-    priority_semaphore *semaforoActual;
+    SemaforoPrioridad *semaforoActual;
     int *semaforoOpuesto;
     images_enum imagenPuente;
     //Mantener contador de los carros que deben de pasar
@@ -160,7 +160,7 @@ void *handleLarryJoe(void *arg) {
             timespec_get(&tiempo, TIME_UTC);
             tiempo.tv_sec += 5;
 
-            const int resultado = pthread_cond_timedwait(&semaforoActual->mutex_condition, &semaforoActual->mutex,
+            const int resultado = pthread_cond_timedwait(&semaforoActual->mutexCondicion, &semaforoActual->mutex,
                                                    &tiempo);
             if (resultado) {
                 if (tiene_oportunidad(informacion->tipo, informacion->direccion) == true) {

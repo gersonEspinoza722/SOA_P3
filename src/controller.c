@@ -9,7 +9,7 @@
 #include "lista_enlazada_carros.h"
 #include "vehiculo.h"
 #include "utils.h"
-#include "priority_semaphore.h"
+#include "semaforo_prioridad.h"
 #include <stdbool.h>
 
 extern GtkWidget *window;
