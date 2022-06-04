@@ -12,10 +12,10 @@ add_executable(proyecto3
         headers/controller.h
         headers/dict.h
         headers/floyd.h
-        headers/globals.h
-        headers/graph.h
+        headers/globales.h
+        headers/grafico.h
         headers/hash_table.h
-        headers/hash_table_street_info.h
+        headers/hash_table_info_calle.h
         headers/interface.h
         headers/lista_enlazada.h
         headers/lista_enlazada_carros.h

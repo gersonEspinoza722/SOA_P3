@@ -402,197 +402,197 @@ void edit_object_with_node(NodoT *node, images_enum type_image_p, float x_p, flo
     pthread_mutex_unlock(&lock_vehicle);
 }
 
-images_enum from_vehicle_type(TipoVehiculo tipo, StreetDir direccion) {
+images_enum from_vehicle_type(TipoVehiculo tipo, DireccionCalle direccion) {
     switch (tipo) {
         case BUS_ROJO:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return REDBUSB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return REDBUSF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return REDBUSL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return REDBUSR;
             }
             break;
         case BUS_VERDE:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return GREENBUSB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return GREENBUSF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return GREENBUSL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return GREENBUSR;
             }
             break;
         case BUS_AZUL:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return BLUEBUSB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return BLUEBUSF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return BLUEBUSL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return BLUEBUSR;
             }
             break;
         case BUS_BLANCO:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return WHITEBUSB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return WHITEBUSF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return WHITEBUSL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return WHITEBUSR;
             }
             break;
         case BUS_GRIS:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return GRAYBUSB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return GRAYBUSF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return GRAYBUSL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return GRAYBUSR;
             }
             break;
         case BUS_NEGRO:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return BLACKBUSB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return BLACKBUSF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return BLACKBUSL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return BLACKBUSR;
             }
             break;
         case BUS_ROSADO:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return PINKBUSB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return PINKBUSF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return PINKBUSL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return PINKBUSR;
             }
             break;
         case BUS_CELESTE:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return LIGHTBLUEBUSB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return LIGHTBLUEBUSF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return LIGHTBLUEBUSL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return LIGHTBLUEBUSR;
             }
             break;
         case BUS_NARANJA:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return ORANGEBUSB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return ORANGEBUSF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return ORANGEBUSL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return ORANGEBUSR;
             }
             break;
         case AMBULANCIA:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return AMBULANCEB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return AMBULANCEF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return AMBULANCEL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return AMBULANCER;
             }
             break;
         case CARRO_ROJO:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return REDCARB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return REDCARF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return REDCARL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return REDCARR;
             }
             break;
         case CARRO_AZUL:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return BLUECARB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return BLUECARF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return BLUECARL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return BLUECARR;
             }
             break;
         case CARRO_VERDE:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return GREENCARB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return GREENCARF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return GREENCARL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return GREENCARR;
             }
             break;
         case CARRO_NEGRO:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return BLACKCARB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return BLACKCARF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return BLACKCARL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return BLACKCARR;
             }
             break;
         case CARRO_BLANCO:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return WHITECARB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return WHITECARF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return WHITECARL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return WHITECARR;
             }
             break;
         case CARRO_AMARILLO:
             switch (direccion) {
-                case NORTH_DIR:
+                case DIR_NORTE:
                     return YELLOWCARB;
-                case SOUTH_DIR:
+                case DIR_SUR:
                     return YELLOWCARF;
-                case WEST_DIR:
+                case DIR_OESTE:
                     return YELLOWCARL;
-                case EAST_DIR:
+                case DIR_ESTE:
                     return YELLOWCARR;
             }
             break;

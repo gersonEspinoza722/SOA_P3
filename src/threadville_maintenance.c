@@ -6,7 +6,7 @@
 #include <pthread.h>
 #include "utils.h"
 #include "interface.h"
-#include "globals.h"
+#include "globales.h"
 #include<time.h> 
 
 double ran_expo() {
@@ -34,10 +34,10 @@ _Noreturn void* run_maintenance(void *arg) {
         sleep(current_waiting_time);
 
         threadville_id = random_threadville_id();
-        StreetInfo *streetInfo = NULL;
+        InfoCalle *streetInfo = NULL;
         while(streetInfo==NULL){
             threadville_id = random_threadville_id();
-            streetInfo = lookup_street_info(mapa->tablaInfoCalle, threadville_id);
+            streetInfo = lookup_info_calle(mapa->tablaInfoCalle, threadville_id);
         }
         
         priority_semaphore *mutex = lookup(mapa->mapa, threadville_id);

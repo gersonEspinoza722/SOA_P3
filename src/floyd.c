@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "graph.h"
-#include "graph_floyd.h"
+#include "grafico.h"
+#include "grafico_floyd.h"
 #include <stdbool.h>
 #include "floyd.h"
 
@@ -21,7 +21,7 @@ void print_matriz(int matrix[CONTEO_NODOS][CONTEO_NODOS]) {
 
 void generar_archivo(){
     FILE *fp;
-    fp = fopen ("./headers/graph_floyd.h", "w");
+    fp = fopen ("./headers/grafico_floyd.h", "w");
     fputs("int threadville_graph_fast[", fp);
 
     char snum[100];

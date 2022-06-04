@@ -5,17 +5,17 @@
 #include "priority_semaphore.h"
 
 typedef struct Node {
-    int key;
+    int llave;
     priority_semaphore *valor;
     struct Node *siguiente;
 } Node;
 
 typedef struct Table {
-    int size;
-    Node **list;
+    int tamanio;
+    Node **lista;
 } Table;
 
-Table *create_table(int size);
+Table *create_table(int tamanio);
 
 int hash_code(Table*, int);
 

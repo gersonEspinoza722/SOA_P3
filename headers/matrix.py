@@ -1446,7 +1446,7 @@ temp = A.todense()
 
 a = [[0 for j in range(0, len(temp))] for i in range(0, len(temp))]
 
-f = open("graph.h", "w")
+f = open("grafico.h", "w")
 f.write("int threadville_graph[" + str(len(temp)) + "][" + str(len(temp)) + "] =  {")
 
 # iterate through rows

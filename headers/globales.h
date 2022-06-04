@@ -2,8 +2,8 @@
 // Created by bmena on 6/18/20.
 //
 
-#ifndef PROYECTO3_GLOBALS_H
-#define PROYECTO3_GLOBALS_H
+#ifndef PROYECTO3_GLOBALES_H
+#define PROYECTO3_GLOBALES_H
 
 #include <gtk/gtk.h>
 #include <gtk/gtktypes.h>
@@ -65,4 +65,4 @@ pthread_cond_t *cond_curly;
 pthread_mutex_t *mutex_shemp;
 pthread_cond_t *cond_shemp;
 
-#endif //PROYECTO3_GLOBALS_H
+#endif //PROYECTO3_GLOBALES_H

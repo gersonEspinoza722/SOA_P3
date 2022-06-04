@@ -2,46 +2,46 @@
 #include <stdlib.h>
 #include "hash_table.h"
 
-Table *create_table(int size) {
+Table *create_table(int tamanio) {
     Table *t = (Table *) malloc(sizeof(Table));
-    t->size = size;
-    t->list = (Node **) malloc(sizeof(Node *) * size);
+    t->tamanio = tamanio;
+    t->lista = (Node **) malloc(sizeof(Node *) * tamanio);
     int i;
-    for (i = 0; i < size; i++)
-        t->list[i] = NULL;
+    for (i = 0; i < tamanio; i++)
+        t->lista[i] = NULL;
     return t;
 }
 
-int hash_code(Table *t, int key) {
-    if (key < 0)
-        return -(key % t->size);
-    return key % t->size;
+int hash_code(Table *t, int llave) {
+    if (llave < 0)
+        return -(llave % t->tamanio);
+    return llave % t->tamanio;
 }
 
-void insert(Table *t, int key, priority_semaphore* valor) {
-    int pos = hash_code(t, key);
-    Node *list = t->list[pos];
+void insert(Table *t, int llave, priority_semaphore* valor) {
+    int pos = hash_code(t, llave);
+    Node *lista = t->lista[pos];
     Node *newNode = (Node *) malloc(sizeof(Node));
-    Node *temp = list;
+    Node *temp = lista;
     while (temp) {
-        if (temp->key == key) {
+        if (temp->llave == llave) {
             temp->valor = valor;
             return;
         }
         temp = temp->siguiente;
     }
-    newNode->key = key;
+    newNode->llave = llave;
     newNode->valor = valor;
-    newNode->siguiente = list;
-    t->list[pos] = newNode;
+    newNode->siguiente = lista;
+    t->lista[pos] = newNode;
 }
 
-priority_semaphore * lookup(Table *t, int key) {
-    int pos = hash_code(t, key);
-    Node *list = t->list[pos];
-    Node *temp = list;
+priority_semaphore * lookup(Table *t, int llave) {
+    int pos = hash_code(t, llave);
+    Node *lista = t->lista[pos];
+    Node *temp = lista;
     while (temp) {
-        if (temp->key == key) {
+        if (temp->llave == llave) {
             return temp->valor;
         }
         temp = temp->siguiente;

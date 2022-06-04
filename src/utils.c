@@ -2,11 +2,11 @@
 #include <sys/mman.h>
 #include <pthread.h>
 
-void *create_shared_memory(size_t size) {
+void *create_shared_memory(size_t tamanio) {
     int protection = PROT_READ | PROT_WRITE;
     int flags = MAP_SHARED | MAP_ANONYMOUS | MAP_SYNC;
 
-    return mmap(NULL, size, protection, flags, -1, 0);
+    return mmap(NULL, tamanio, protection, flags, -1, 0);
 }
 
 pthread_condattr_t get_conditional_attribute() {

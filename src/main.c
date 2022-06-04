@@ -51,7 +51,7 @@ void startShemp(
     extern pthread_cond_t *cond_shemp;
     extern pthread_mutex_t *mutex_shemp;
     // allocate memory to cond (conditional variable),
-    // thread id's and array of size threads
+    // thread id's and array of tamanio threads
     cond_shemp = (pthread_cond_t *) create_shared_memory(sizeof(pthread_cond_t) * 2);
     mutex_shemp = get_mutex(get_mutex_attributes());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
@@ -81,7 +81,7 @@ void startCurl(int idInicioNorte, int idFinNorte,
     extern pthread_cond_t *cond_curly;
     extern pthread_mutex_t *mutex_curly;
     // allocate memory to cond (conditional variable),
-    // thread id's and array of size threads
+    // thread id's and array of tamanio threads
     cond_curly = (pthread_cond_t *) create_shared_memory(sizeof(pthread_cond_t) * 2);
     mutex_curly = get_mutex(get_mutex_attributes());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
@@ -112,7 +112,7 @@ void startLarry(int idInicioNorte, int idFinNorte,
     extern pthread_mutex_t *mutex_larry;
 
     // allocate memory to cond (conditional variable),
-    // thread id's and array of size threads
+    // thread id's and array of tamanio threads
     cond_larry = (pthread_cond_t *) create_shared_memory(sizeof(pthread_cond_t) * 2);
     mutex_larry = get_mutex(get_mutex_attributes());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
@@ -143,7 +143,7 @@ void startJoe(int idInicioNorte, int idFinNorte,
     extern pthread_mutex_t *mutex_joe;
 
     // allocate memory to cond (conditional variable),
-    // thread id's and array of size threads
+    // thread id's and array of tamanio threads
     cond_joe = (pthread_cond_t *) create_shared_memory(sizeof(pthread_cond_t) * 2);
     mutex_joe = get_mutex(get_mutex_attributes());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);

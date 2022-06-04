@@ -759,7 +759,7 @@ Vehiculo *crear_bus(TipoVehiculo tipo, DireccionVehiculo direccion) {
     crear_ruta_bus(vehiculo);
 
     // El punto de inicio siempre es Y006R
-    StreetInfo *info = lookup_street_info(
+    InfoCalle *info = lookup_info_calle(
             mapa->tablaInfoCalle,
             vehiculo->ruta_actual->primerNodo->idDestino
     );
@@ -791,7 +791,7 @@ Vehiculo *crear_vehiculo(TipoVehiculo tipo, DireccionVehiculo direccion, int *de
     vehiculo->ruta_actual = crear_ruta(Y006R, destinos[0]);
 
     // Starting point is always Y006R
-    StreetInfo *info = lookup_street_info(
+    InfoCalle *info = lookup_info_calle(
             mapa->tablaInfoCalle,
             vehiculo->ruta_actual->primerNodo->idDestino
     );
@@ -939,7 +939,7 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
             }
 
             //Se pinta luego de obtener el semaforo
-            StreetInfo *infoCalle = lookup_street_info(mapa->tablaInfoCalle, nodoActual->idDestino);
+            InfoCalle *infoCalle = lookup_info_calle(mapa->tablaInfoCalle, nodoActual->idDestino);
             edit_object_with_node(
                     vehiculo->infoUI,
                     from_vehicle_type(vehiculo->tipoVehiculo, infoCalle->direccion),
@@ -968,7 +968,7 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
     unlock_priority_semaphore(prioridad, calleActual);
 }
 
-StreetDir mejor_direccion(StreetDir direccionActualP, StreetDir direccionPreviaP, StreetDir previaPreviaP) {
+DireccionCalle mejor_direccion(DireccionCalle direccionActualP, DireccionCalle direccionPreviaP, DireccionCalle previaPreviaP) {
     if (direccionActualP == direccionPreviaP) {
         return direccionActualP;
     } else if (direccionPreviaP == previaPreviaP) {
@@ -986,12 +986,12 @@ void manejar_bus(Vehiculo *vehiculo) {
     priority_semaphore *calleAnteriorAnterior = NULL;
     NodoL *nodoActual;
     int destinoActual = 0;
-    StreetInfo *infoCalle;
+    InfoCalle *infoCalle;
     ListaEnlazada *copiaRutaBus = copiar_lista(vehiculo->ruta_actual);
 
-    StreetDir direccionActual = 0;
-    StreetDir direccionAnterior = 0;
-    StreetDir direccionAnteriorAnterior = 0;
+    DireccionCalle direccionActual = 0;
+    DireccionCalle direccionAnterior = 0;
+    DireccionCalle direccionAnteriorAnterior = 0;
 
     float xActual;
     float yActual;
@@ -1111,7 +1111,7 @@ void manejar_bus(Vehiculo *vehiculo) {
                 unlock_priority_semaphore(0, calleAnteriorAnterior);
             }
 
-            infoCalle = lookup_street_info(mapa->tablaInfoCalle, nodoActual->idDestino);
+            infoCalle = lookup_info_calle(mapa->tablaInfoCalle, nodoActual->idDestino);
 
             ///Direcciones
             direccionAnteriorAnterior = direccionAnterior;
@@ -1135,8 +1135,8 @@ void manejar_bus(Vehiculo *vehiculo) {
                 xUsada = xActual;
                 yUsada = yActual;
 
-            } else if (mejor_direccion(direccionActual, direccionAnterior, direccionAnteriorAnterior) == SOUTH_DIR ||
-                       mejor_direccion(direccionActual, direccionAnterior, direccionAnteriorAnterior) == EAST_DIR) {
+            } else if (mejor_direccion(direccionActual, direccionAnterior, direccionAnteriorAnterior) == DIR_SUR ||
+                       mejor_direccion(direccionActual, direccionAnterior, direccionAnteriorAnterior) == DIR_ESTE) {
                 xUsada = xAnterior;
                 yUsada = yAnterior;
             } else {
