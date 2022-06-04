@@ -55,7 +55,6 @@ int get_id_global() {
 }
 
 int id_parada_aleatoria() {
-    srand(time(0));
     return (rand() % (R006S - A001S + 1)) + A001S;
 }
 
