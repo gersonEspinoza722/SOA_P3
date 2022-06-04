@@ -53,50 +53,50 @@ void cargar_interfaz() {
     //REPARACION 
     insertar_dict(REPARACION, crear_item("images/REPAIR.jpg", REPARACION, 0.025, 0.015), hashImagenes, TAMANIO);
     //Bus rojo
-    insertar_dict(BUSROJOIZQ, crear_item("images/RED_BL.png", BUSROJOIZQ, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSROJODER, crear_item("images/RED_BR.png", BUSROJODER, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSROJOATRAS, crear_item("images/RED_BB.png", BUSROJOATRAS, 0.050, 0.015), hashImagenes, TAMANIO);
-    insertar_dict(BUSROJOFRENTE, crear_item("images/RED_BF.png", BUSROJOFRENTE, 0.050, 0.015), hashImagenes, TAMANIO);
+    insertar_dict(BUSROJOIZQ, crear_item("images/RED_BL.png", BUSROJOIZQ, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSROJODER, crear_item("images/RED_BR.png", BUSROJODER, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSROJOATRAS, crear_item("images/RED_BB.png", BUSROJOATRAS, 0.065, 0.020), hashImagenes, TAMANIO);
+    insertar_dict(BUSROJOFRENTE, crear_item("images/RED_BF.png", BUSROJOFRENTE, 0.065, 0.020), hashImagenes, TAMANIO);
     //Bus verde
     insertar_dict(BUSVERDEIZQ, crear_item("images/GREEN_BL.png", BUSVERDEIZQ, 0.040, 0.045), hashImagenes, TAMANIO);
     insertar_dict(BUSVERDEDER, crear_item("images/GREEN_BR.png", BUSVERDEDER, 0.040, 0.045), hashImagenes, TAMANIO);
     insertar_dict(BUSVERDEATRAS, crear_item("images/GREEN_BB.png", BUSVERDEATRAS, 0.065, 0.020), hashImagenes, TAMANIO);
     insertar_dict(BUSVERDEFRENTE, crear_item("images/GREEN_BF.png", BUSVERDEFRENTE, 0.065, 0.020), hashImagenes, TAMANIO);
     //Bus azul
-    insertar_dict(BUSAZULIZQ, crear_item("images/BLUE_BL.png", BUSAZULIZQ, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSAZULDER, crear_item("images/BLUE_BR.png", BUSAZULDER, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSAZULATRAS, crear_item("images/BLUE_BB.png", BUSAZULATRAS, 0.050, 0.015), hashImagenes, TAMANIO);
-    insertar_dict(BUSAZULFRENTE, crear_item("images/BLUE_BF.png", BUSAZULFRENTE, 0.050, 0.015), hashImagenes, TAMANIO);
+    insertar_dict(BUSAZULIZQ, crear_item("images/BLUE_BL.png", BUSAZULIZQ, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSAZULDER, crear_item("images/BLUE_BR.png", BUSAZULDER, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSAZULATRAS, crear_item("images/BLUE_BB.png", BUSAZULATRAS, 0.065, 0.020), hashImagenes, TAMANIO);
+    insertar_dict(BUSAZULFRENTE, crear_item("images/BLUE_BF.png", BUSAZULFRENTE, 0.065, 0.020), hashImagenes, TAMANIO);
     //Bus blanco   
-    insertar_dict(BUSBLANCOIZQ, crear_item("images/WHITE_BL.png", BUSBLANCOIZQ, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSBLANCODER, crear_item("images/WHITE_BR.png", BUSBLANCODER, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSBLANCOATRAS, crear_item("images/WHITE_BB.png", BUSBLANCOATRAS, 0.050, 0.015), hashImagenes, TAMANIO);
-    insertar_dict(BUSBLANCOFRENTE, crear_item("images/WHITE_BF.png", BUSBLANCOFRENTE, 0.050, 0.015), hashImagenes, TAMANIO);
+    insertar_dict(BUSBLANCOIZQ, crear_item("images/WHITE_BL.png", BUSBLANCOIZQ, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSBLANCODER, crear_item("images/WHITE_BR.png", BUSBLANCODER, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSBLANCOATRAS, crear_item("images/WHITE_BB.png", BUSBLANCOATRAS, 0.065, 0.020), hashImagenes, TAMANIO);
+    insertar_dict(BUSBLANCOFRENTE, crear_item("images/WHITE_BF.png", BUSBLANCOFRENTE, 0.065, 0.020), hashImagenes, TAMANIO);
     //Bus gris
-    insertar_dict(BUSGRISIZQ, crear_item("images/GRAY_BL.png", BUSGRISIZQ, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSGRISDER, crear_item("images/GRAY_BR.png", BUSGRISDER, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSGRISATRAS, crear_item("images/GRAY_BB.png", BUSGRISATRAS, 0.050, 0.015), hashImagenes, TAMANIO);
-    insertar_dict(BUSGRISFRENTE, crear_item("images/GRAY_BF.png", BUSGRISFRENTE, 0.050, 0.015), hashImagenes, TAMANIO);
+    insertar_dict(BUSGRISIZQ, crear_item("images/GRAY_BL.png", BUSGRISIZQ, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSGRISDER, crear_item("images/GRAY_BR.png", BUSGRISDER, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSGRISATRAS, crear_item("images/GRAY_BB.png", BUSGRISATRAS, 0.065, 0.020), hashImagenes, TAMANIO);
+    insertar_dict(BUSGRISFRENTE, crear_item("images/GRAY_BF.png", BUSGRISFRENTE, 0.065, 0.020), hashImagenes, TAMANIO);
     //Bus negro
-    insertar_dict(BUSNEGROIZQ, crear_item("images/BLACK_BL.png", BUSNEGROIZQ, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSNEGRODER, crear_item("images/BLACK_BR.png", BUSNEGRODER, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSNEGROATRAS, crear_item("images/BLACK_BB.png", BUSNEGROATRAS, 0.050, 0.015), hashImagenes, TAMANIO);
-    insertar_dict(BUSNEGROFRENTE, crear_item("images/BLACK_BF.png", BUSNEGROFRENTE, 0.050, 0.015), hashImagenes, TAMANIO);
+    insertar_dict(BUSNEGROIZQ, crear_item("images/BLACK_BL.png", BUSNEGROIZQ, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSNEGRODER, crear_item("images/BLACK_BR.png", BUSNEGRODER, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSNEGROATRAS, crear_item("images/BLACK_BB.png", BUSNEGROATRAS, 0.065, 0.020), hashImagenes, TAMANIO);
+    insertar_dict(BUSNEGROFRENTE, crear_item("images/BLACK_BF.png", BUSNEGROFRENTE, 0.065, 0.020), hashImagenes, TAMANIO);
     //Bus rosado
-    insertar_dict(BUSROSADOIZQ, crear_item("images/PINK_BL.png", BUSROSADOIZQ, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSROSADODER, crear_item("images/PINK_BR.png", BUSROSADODER, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSROSADOATRAS, crear_item("images/PINK_BB.png", BUSROSADOATRAS, 0.050, 0.015), hashImagenes, TAMANIO);
-    insertar_dict(BUSROSADOFRENTE, crear_item("images/PINK_BF.png", BUSROSADOFRENTE, 0.050, 0.015), hashImagenes, TAMANIO);
+    insertar_dict(BUSROSADOIZQ, crear_item("images/PINK_BL.png", BUSROSADOIZQ, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSROSADODER, crear_item("images/PINK_BR.png", BUSROSADODER, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSROSADOATRAS, crear_item("images/PINK_BB.png", BUSROSADOATRAS, 0.065, 0.020), hashImagenes, TAMANIO);
+    insertar_dict(BUSROSADOFRENTE, crear_item("images/PINK_BF.png", BUSROSADOFRENTE, 0.065, 0.020), hashImagenes, TAMANIO);
     //Bus celeste
-    insertar_dict(BUSCELESTEIZQ, crear_item("images/LBLUE_BL.png", BUSCELESTEIZQ, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSCELESTEDER, crear_item("images/LBLUE_BR.png", BUSCELESTEDER, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSCELESTEATRAS, crear_item("images/LBLUE_BB.png", BUSCELESTEATRAS, 0.050, 0.015), hashImagenes, TAMANIO);
-    insertar_dict(BUSCELESTEFRENTE, crear_item("images/LBLUE_BF.png", BUSCELESTEFRENTE, 0.050, 0.015), hashImagenes, TAMANIO);
+    insertar_dict(BUSCELESTEIZQ, crear_item("images/LBLUE_BL.png", BUSCELESTEIZQ, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSCELESTEDER, crear_item("images/LBLUE_BR.png", BUSCELESTEDER, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSCELESTEATRAS, crear_item("images/LBLUE_BB.png", BUSCELESTEATRAS, 0.065, 0.020), hashImagenes, TAMANIO);
+    insertar_dict(BUSCELESTEFRENTE, crear_item("images/LBLUE_BF.png", BUSCELESTEFRENTE, 0.065, 0.020), hashImagenes, TAMANIO);
     //Bus naranja 
-    insertar_dict(BUSNARANJAIZQ, crear_item("images/ORANGE_BL.png", BUSNARANJAIZQ, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSNARANJADER, crear_item("images/ORANGE_BR.png", BUSNARANJADER, 0.025, 0.030), hashImagenes, TAMANIO);
-    insertar_dict(BUSNARANJAATRAS, crear_item("images/ORANGE_BB.png", BUSNARANJAATRAS, 0.050, 0.015), hashImagenes, TAMANIO);
-    insertar_dict(BUSNARANJAFRENTE, crear_item("images/ORANGE_BF.png", BUSNARANJAFRENTE, 0.050, 0.015), hashImagenes, TAMANIO);
+    insertar_dict(BUSNARANJAIZQ, crear_item("images/ORANGE_BL.png", BUSNARANJAIZQ, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSNARANJADER, crear_item("images/ORANGE_BR.png", BUSNARANJADER, 0.040, 0.045), hashImagenes, TAMANIO);
+    insertar_dict(BUSNARANJAATRAS, crear_item("images/ORANGE_BB.png", BUSNARANJAATRAS, 0.065, 0.020), hashImagenes, TAMANIO);
+    insertar_dict(BUSNARANJAFRENTE, crear_item("images/ORANGE_BF.png", BUSNARANJAFRENTE, 0.065, 0.020), hashImagenes, TAMANIO);
     //Ambulancia
     insertar_dict(AMBULANCIAIZQ, crear_item("images/AMBULANCEL.png", AMBULANCIAIZQ, 0.025, 0.015), hashImagenes, TAMANIO);
     insertar_dict(AMBULANCIADER, crear_item("images/AMBULANCER.png", AMBULANCIADER, 0.025, 0.015), hashImagenes, TAMANIO);
