@@ -154,6 +154,12 @@ int main(int argc, char *argv[]) {
     builder = gtk_builder_new();
     gtk_builder_add_from_file(builder, "glade/threadville.glade", NULL);
 
+
+        // Nuevo CCS
+    GtkCssProvider *cssProvider = gtk_css_provider_new();
+    gtk_css_provider_load_from_path(cssProvider, "glade/style.css", NULL);
+    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(), GTK_STYLE_PROVIDER(cssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
+
     // Hilo de mantenimiento 
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &hacer_mantenimiento, NULL);
