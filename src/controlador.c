@@ -54,6 +54,7 @@ void on_window_main_destroy(GtkWidget *widget, gpointer datosUsuario) {
 
 void on_press_boton_crear_carro_aleatorio(GtkWidget *widget, gpointer datosUsuario) {
     int *destinos = calloc(4, sizeof(int));
+    srand(time(0));
     destinos[0] = id_parada_aleatoria();
     destinos[1] = id_parada_aleatoria();
     destinos[2] = Z006R;
@@ -346,6 +347,7 @@ void on_press_boton_borrar_bus_negro(GtkWidget *widget, gpointer datosUsuario) {
 
 void on_press_boton_crear_ambulancia(GtkWidget *widget, gpointer datosUsuario) {
     int *destinos = calloc(4, sizeof(int));
+    srand(time(0));
     destinos[0] = id_parada_aleatoria();
     destinos[1] = id_parada_aleatoria();
     destinos[2] = Z006R;
