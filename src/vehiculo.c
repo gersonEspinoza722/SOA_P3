@@ -649,7 +649,6 @@ ListaEnlazada *crear_ruta(int puntoInicio, int puntoFin) {
     ListaEnlazada *l = crear_lista_enlazada();
     int *path = floyd_path(puntoInicio, puntoFin);
     for (int i = path[0]; i >= 1; --i) {
-        printf("%d", i);
 
         push(l, crear_nodo(path[i]));
     }
@@ -957,7 +956,11 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
         }
         siguienteDestino++;
         if (vehiculo->destinos[siguienteDestino] != -1) {
-            sleep(3);
+            if(vehiculo->tipoVehiculo == AMBULANCIA){
+                sleep(8);
+            }else {
+                sleep(3); 
+            }
             vehiculo->ruta_actual = crear_ruta_auxiliar(destinoInicio, vehiculo->destinos[siguienteDestino]);
         } else {
             break;
