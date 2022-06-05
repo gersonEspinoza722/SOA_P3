@@ -1254,6 +1254,7 @@
         </child>
         <child>
           <object class="GtkBox">
+            <property name="name">console</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_right">362</property>

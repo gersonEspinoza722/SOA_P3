@@ -166,6 +166,7 @@ void on_press_boton_crear_bus_gris(GtkWidget *widget, gpointer datosUsuario) {
     pthread_create(&hiloMantenimiento, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloMantenimiento);
     printf("%s\n", "Bus gris creado");
+    
 }
 
 void on_press_boton_borrar_bus_gris(GtkWidget *widget, gpointer datosUsuario) {
