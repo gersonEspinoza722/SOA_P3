@@ -2,6 +2,11 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">ambulance-png.webp</property>
+  </object>
   <object class="GtkWindow" id="win_threadville">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Proyecto III - SOA</property>
@@ -97,7 +102,11 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+<<<<<<< HEAD
                         <property name="label" translatable="yes">Aleatory vehicle</property>
+=======
+                        <property name="label" translatable="yes">Crear Aleatorio</property>
+>>>>>>> 04eaf012d9c4101480519393ccc452371ef22a37
                         <attributes>
                           <attribute name="font-desc" value="System-ui 16"/>
                         </attributes>
@@ -115,7 +124,11 @@
                         <property name="homogeneous">True</property>
                         <child>
                           <object class="GtkButton">
+<<<<<<< HEAD
                             <property name="label" translatable="yes">Ambulance</property>
+=======
+                            <property name="label" translatable="yes">Ambulancia</property>
+>>>>>>> 04eaf012d9c4101480519393ccc452371ef22a37
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
@@ -123,6 +136,10 @@
                             <property name="margin_right">2</property>
                             <property name="margin_top">2</property>
                             <property name="margin_bottom">2</property>
+<<<<<<< HEAD
+=======
+                            <property name="image">image1</property>
+>>>>>>> 04eaf012d9c4101480519393ccc452371ef22a37
                             <signal name="button-press-event" handler="on_press_boton_crear_ambulancia" swapped="no"/>
                           </object>
                           <packing>
@@ -174,7 +191,11 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+<<<<<<< HEAD
                         <property name="label" translatable="yes">Config vehicle</property>
+=======
+                        <property name="label" translatable="yes">Crear Personalizado</property>
+>>>>>>> 04eaf012d9c4101480519393ccc452371ef22a37
                         <attributes>
                           <attribute name="font-desc" value="System-ui 16"/>
                         </attributes>
@@ -802,6 +823,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
+                    <property name="spacing">29</property>
                     <child>
                       <object class="GtkButton">
                         <property name="label" translatable="yes">Update values</property>
@@ -945,7 +967,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">0</property>
+                    <property name="position">4</property>
                   </packing>
                 </child>
               </object>
