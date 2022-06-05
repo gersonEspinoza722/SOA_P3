@@ -31,7 +31,7 @@ void cargar_interfaz_new(struct DataItem **hashImagenes) {
     insertar_dict(SEMAFOROABAJO, crear_item("images/SD.png", SEMAFOROABAJO, 0.16, 0.040), hashImagenes, TAMANIO);
     insertar_dict(SEMAFOROARRIBA, crear_item("images/SU.png", SEMAFOROARRIBA, 0.16, 0.040), hashImagenes, TAMANIO);
     //REPARACION 
-    insertar_dict(REPARACION, crear_item("images/REPAIR.jpg", REPARACION, 0.025, 0.015), hashImagenes, TAMANIO);
+    insertar_dict(REPARACION, crear_item("images/REPAIR.png", REPARACION, 0.050, 0.040), hashImagenes, TAMANIO);
     //Bus rojo
     insertar_dict(BUSROJOIZQ, crear_item("images/RED_BL.png", BUSROJOIZQ, 0.040, 0.045), hashImagenes, TAMANIO);
     insertar_dict(BUSROJODER, crear_item("images/RED_BR.png", BUSROJODER, 0.040, 0.045), hashImagenes, TAMANIO);

@@ -10,7 +10,6 @@
 #include<time.h> 
 
 double ran_expo() {
-    srand(time(0));
     double u;
     u = rand() / (RAND_MAX + 1.0);
     // Media de 40 -> lambda = 0.025
@@ -22,6 +21,7 @@ int threadville_id_aleatorio() {
 }
 
 _Noreturn void* hacer_mantenimiento(void *arg) {
+    srand(time(0));
     int tiempoMantenimiento;
     int threadvilleId;
     double tiempoEsperaActual;
