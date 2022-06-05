@@ -97,7 +97,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Aleatory vehicle</property>
+                        <property name="label" translatable="yes">Crear Aleatorio</property>
                         <attributes>
                           <attribute name="font-desc" value="System-ui 16"/>
                         </attributes>
@@ -115,7 +115,7 @@
                         <property name="homogeneous">True</property>
                         <child>
                           <object class="GtkButton">
-                            <property name="label" translatable="yes">Ambulance</property>
+                            <property name="label" translatable="yes">Ambulancia</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
@@ -133,7 +133,7 @@
                         </child>
                         <child>
                           <object class="GtkButton">
-                            <property name="label" translatable="yes">Car</property>
+                            <property name="label" translatable="yes">Carro</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
@@ -174,7 +174,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Config vehicle</property>
+                        <property name="label" translatable="yes">Crear Personalizado</property>
                         <attributes>
                           <attribute name="font-desc" value="System-ui 16"/>
                         </attributes>
@@ -207,13 +207,13 @@
                         <property name="margin_bottom">2</property>
                         <property name="active">0</property>
                         <items>
-                          <item translatable="yes">Car Red</item>
-                          <item translatable="yes">Car Blue</item>
-                          <item translatable="yes">Car Green</item>
-                          <item translatable="yes">Car Black</item>
-                          <item translatable="yes">Car White</item>
-                          <item translatable="yes">Car Yellow</item>
-                          <item translatable="yes">Ambulance</item>
+                          <item translatable="yes">Carro Rojo</item>
+                          <item translatable="yes">Carro Azul</item>
+                          <item translatable="yes">Carro Verde</item>
+                          <item translatable="yes">Carro Negro</item>
+                          <item translatable="yes">Carro Blanco</item>
+                          <item translatable="yes">Carro Amarillo</item>
+                          <item translatable="yes">Ambulancia</item>
                         </items>
                       </object>
                       <packing>
@@ -224,7 +224,7 @@
                     </child>
                     <child>
                       <object class="GtkButton">
-                        <property name="label" translatable="yes">Create</property>
+                        <property name="label" translatable="yes">Crear</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
@@ -289,7 +289,7 @@
                             <property name="homogeneous">True</property>
                             <child>
                               <object class="GtkButton" id="btn_cbr">
-                                <property name="label" translatable="yes">Red</property>
+                                <property name="label" translatable="yes">Rojo</property>
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">True</property>
@@ -308,7 +308,7 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="btn_dbr">
-                                <property name="label" translatable="yes">Delete</property>
+                                <property name="label" translatable="yes">Eliminar</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
@@ -338,7 +338,7 @@
                             <property name="homogeneous">True</property>
                             <child>
                               <object class="GtkButton" id="btn_cbg">
-                                <property name="label" translatable="yes">Gray</property>
+                                <property name="label" translatable="yes">Gris</property>
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">True</property>
@@ -357,7 +357,7 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="btn_dbg">
-                                <property name="label" translatable="yes">Delete</property>
+                                <property name="label" translatable="yes">Eliminar</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
@@ -399,7 +399,7 @@
                             <property name="homogeneous">True</property>
                             <child>
                               <object class="GtkButton" id="btn_cbgr">
-                                <property name="label" translatable="yes">Green</property>
+                                <property name="label" translatable="yes">Verde</property>
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">True</property>
@@ -418,7 +418,7 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="btn_dbgr">
-                                <property name="label" translatable="yes">Delete</property>
+                                <property name="label" translatable="yes">Eliminar</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
@@ -448,7 +448,7 @@
                             <property name="homogeneous">True</property>
                             <child>
                               <object class="GtkButton" id="btn_cbp">
-                                <property name="label" translatable="yes">Pink</property>
+                                <property name="label" translatable="yes">Rosa</property>
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">True</property>
@@ -467,7 +467,7 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="btn_dbp">
-                                <property name="label" translatable="yes">Delete</property>
+                                <property name="label" translatable="yes">Eliminar</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
@@ -509,7 +509,7 @@
                             <property name="homogeneous">True</property>
                             <child>
                               <object class="GtkButton" id="btn_cbo">
-                                <property name="label" translatable="yes">Orange</property>
+                                <property name="label" translatable="yes">Naranja</property>
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">True</property>
@@ -528,7 +528,7 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="btn_dbo">
-                                <property name="label" translatable="yes">Delete</property>
+                                <property name="label" translatable="yes">Eliminar</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
@@ -558,7 +558,7 @@
                             <property name="homogeneous">True</property>
                             <child>
                               <object class="GtkButton" id="btn_cblb">
-                                <property name="label" translatable="yes">L Blue</property>
+                                <property name="label" translatable="yes">Celeste</property>
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">True</property>
@@ -577,7 +577,7 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="btn_dblb">
-                                <property name="label" translatable="yes">Delete</property>
+                                <property name="label" translatable="yes">Eliminar</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
@@ -619,7 +619,7 @@
                             <property name="homogeneous">True</property>
                             <child>
                               <object class="GtkButton" id="btn_cbb">
-                                <property name="label" translatable="yes">Blue</property>
+                                <property name="label" translatable="yes">Azul</property>
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">True</property>
@@ -668,7 +668,7 @@
                             <property name="homogeneous">True</property>
                             <child>
                               <object class="GtkButton" id="btn_cbw">
-                                <property name="label" translatable="yes">White</property>
+                                <property name="label" translatable="yes">Blanco</property>
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">True</property>
@@ -687,7 +687,7 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="btn_dbw">
-                                <property name="label" translatable="yes">Delete</property>
+                                <property name="label" translatable="yes">Eliminar</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
@@ -729,7 +729,7 @@
                             <property name="homogeneous">True</property>
                             <child>
                               <object class="GtkButton" id="btn_dbbl">
-                                <property name="label" translatable="yes">Delete</property>
+                                <property name="label" translatable="yes">Eliminar</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
@@ -747,7 +747,7 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="btn_cbbl">
-                                <property name="label" translatable="yes">Black</property>
+                                <property name="label" translatable="yes">Negro</property>
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">True</property>
@@ -807,7 +807,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Configurable values</property>
+                        <property name="label" translatable="yes">Valores Configurables</property>
                         <attributes>
                           <attribute name="font-desc" value="System-ui 16"/>
                         </attributes>
@@ -926,7 +926,7 @@
                     </child>
                     <child>
                       <object class="GtkButton">
-                        <property name="label" translatable="yes">Update values</property>
+                        <property name="label" translatable="yes">Actualizar</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
