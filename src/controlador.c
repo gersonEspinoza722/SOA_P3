@@ -52,6 +52,19 @@ void on_window_main_destroy(GtkWidget *widget, gpointer datosUsuario) {
     gtk_main_quit();
 }
 
+void monitor_prints(char *mensaje, char *name) {
+    GtkTextView   *text_view;
+    GtkTextBuffer *buffer;
+    GtkTextIter iter;
+    text_view = GTK_TEXT_VIEW(gtk_builder_get_object(builder, name));
+    buffer = gtk_text_view_get_buffer(text_view);
+
+    gtk_text_buffer_get_iter_at_offset(buffer, &iter, 0);
+    gtk_text_buffer_insert(buffer, &iter, mensaje, -1);
+}
+
+
+
 void on_press_boton_crear_carro_aleatorio(GtkWidget *widget, gpointer datosUsuario) {
     int *destinos = calloc(4, sizeof(int));
     srand(time(0));
@@ -67,7 +80,9 @@ void on_press_boton_crear_carro_aleatorio(GtkWidget *widget, gpointer datosUsuar
     pthread_create(&hiloVehiculo, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloVehiculo);
 
-    printf("%s\n", "\033[0;32mCarro aleatorio creado\033[0m");
+    monitor_prints("Carro aleatorio creado\n", "console");
+    
+
 }
 
 void on_press_boton_crear_carro_configurado(GtkWidget *widget, gpointer datosUsuario) {
@@ -116,7 +131,7 @@ void on_press_boton_crear_carro_configurado(GtkWidget *widget, gpointer datosUsu
                 break;
         }
 
-        printf("%s\n", "\033[0;34mCarro configurado creado\033[0m");
+        monitor_prints("Carro configurado creado\n", "console");
 
     } else {
         GtkWidget *dialogoMensaje = gtk_message_dialog_new(GTK_WINDOW(window),
@@ -141,7 +156,7 @@ void on_press_boton_crear_bus_rojo(GtkWidget *widget, gpointer datosUsuario) {
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloMantenimiento);
-    printf("%s\n", "Bus rojo creado");
+    monitor_prints("Bus rojo creado\n", "console");
 }
 
 void on_press_boton_borrar_bus_rojo(GtkWidget *widget, gpointer datosUsuario) {
@@ -150,7 +165,7 @@ void on_press_boton_borrar_bus_rojo(GtkWidget *widget, gpointer datosUsuario) {
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_rojo = false;
     pthread_mutex_unlock(&mutex_bus_activo);
-    printf("%s\n", "Proceso de remover bus rojo iniciado");
+    monitor_prints("Proceso de remover bus rojo iniciado\n", "console");
 }
 
 void on_press_boton_crear_bus_gris(GtkWidget *widget, gpointer datosUsuario) {
@@ -165,8 +180,8 @@ void on_press_boton_crear_bus_gris(GtkWidget *widget, gpointer datosUsuario) {
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloMantenimiento);
-    printf("%s\n", "Bus gris creado");
-    
+    monitor_prints("Bus gris creado\n", "console");
+
 }
 
 void on_press_boton_borrar_bus_gris(GtkWidget *widget, gpointer datosUsuario) {
@@ -175,7 +190,7 @@ void on_press_boton_borrar_bus_gris(GtkWidget *widget, gpointer datosUsuario) {
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_gris  = false;
     pthread_mutex_unlock(&mutex_bus_activo);
-    printf("%s\n", "Proceso de remover bus gris iniciado");
+    monitor_prints("Proceso de remover bus gris iniciado\n", "console");
 }
 
 void on_press_boton_crear_bus_verde(GtkWidget *widget, gpointer datosUsuario) {
@@ -190,7 +205,7 @@ void on_press_boton_crear_bus_verde(GtkWidget *widget, gpointer datosUsuario) {
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloMantenimiento);
-    printf("%s\n", "Bus verde creado");
+    monitor_prints("Bus verde creado\n", "console");
 }
 
 void on_press_boton_borrar_bus_verde(GtkWidget *widget, gpointer datosUsuario) {
@@ -199,7 +214,7 @@ void on_press_boton_borrar_bus_verde(GtkWidget *widget, gpointer datosUsuario) {
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_verde  = false;
     pthread_mutex_unlock(&mutex_bus_activo);
-    printf("%s\n", "Proceso de remover bus verde iniciado");
+    monitor_prints( "Proceso de remover bus verde iniciado\n", "console");
 }
 
 void on_press_boton_crear_bus_rosado(GtkWidget *widget, gpointer datosUsuario) {
@@ -214,7 +229,7 @@ void on_press_boton_crear_bus_rosado(GtkWidget *widget, gpointer datosUsuario) {
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloMantenimiento);
-    printf("%s\n", "Bus rosado creado");
+   monitor_prints("Bus rosado creado\n", "console");
 }
 
 void on_press_boton_borrar_bus_rosado(GtkWidget *widget, gpointer datosUsuario) {
@@ -223,7 +238,7 @@ void on_press_boton_borrar_bus_rosado(GtkWidget *widget, gpointer datosUsuario) 
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_rosado  = false;
     pthread_mutex_unlock(&mutex_bus_activo);
-    printf("%s\n", "Proceso de remover bus rosado iniciado");
+    monitor_prints("Proceso de remover bus rosado iniciado\n", "console");
 }
 
 void on_press_boton_crear_bus_naranja(GtkWidget *widget, gpointer datosUsuario) {
@@ -238,7 +253,7 @@ void on_press_boton_crear_bus_naranja(GtkWidget *widget, gpointer datosUsuario) 
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloMantenimiento);
-    printf("%s\n", "Bus naranja creado");
+    monitor_prints("Bus naranja creado\n", "console");
 }
 
 void on_press_boton_borrar_bus_naranja(GtkWidget *widget, gpointer datosUsuario) {
@@ -247,7 +262,7 @@ void on_press_boton_borrar_bus_naranja(GtkWidget *widget, gpointer datosUsuario)
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_naranja = false;
     pthread_mutex_unlock(&mutex_bus_activo);
-    printf("%s\n", "Proceso de remover bus naranja iniciado");
+   monitor_prints("Proceso de remover bus naranja iniciado\n", "console");
 }
 
 void on_press_boton_crear_bus_celeste(GtkWidget *widget, gpointer datosUsuario) {
@@ -262,7 +277,7 @@ void on_press_boton_crear_bus_celeste(GtkWidget *widget, gpointer datosUsuario) 
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloMantenimiento);
-    printf("%s\n", "Bus celeste creado");
+   monitor_prints("Bus celeste creado\n", "console");
 }
 
 void on_press_boton_borrar_bus_celeste(GtkWidget *widget, gpointer datosUsuario) {
@@ -271,7 +286,7 @@ void on_press_boton_borrar_bus_celeste(GtkWidget *widget, gpointer datosUsuario)
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_celeste = false;
     pthread_mutex_unlock(&mutex_bus_activo);
-    printf("%s\n", "Proceso de remover bus celeste iniciado");
+    monitor_prints("Proceso de remover bus celeste iniciado\n", "console");
 }
 
 void on_press_boton_crear_bus_azul(GtkWidget *widget, gpointer datosUsuario) {
@@ -286,7 +301,7 @@ void on_press_boton_crear_bus_azul(GtkWidget *widget, gpointer datosUsuario) {
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloMantenimiento);
-    printf("%s\n", "Crear bus azul");
+    monitor_prints("Crear bus azul\n", "console");
 }
 
 void on_press_boton_borrar_bus_azul(GtkWidget *widget, gpointer datosUsuario) {
@@ -295,7 +310,7 @@ void on_press_boton_borrar_bus_azul(GtkWidget *widget, gpointer datosUsuario) {
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_azul   = false;
     pthread_mutex_unlock(&mutex_bus_activo);
-    printf("%s\n", "Proceso de remover bus azul iniciado");
+   monitor_prints("Proceso de remover bus azul iniciado\n", "console");
 }
 
 void on_press_boton_crear_bus_blanco(GtkWidget *widget, gpointer datosUsuario) {
@@ -310,7 +325,7 @@ void on_press_boton_crear_bus_blanco(GtkWidget *widget, gpointer datosUsuario) {
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloMantenimiento);
-    printf("%s\n", "Bus blanco creado");
+    monitor_prints("Bus blanco creado\n", "console");
 }
 
 void on_press_boton_borrar_bus_blanco(GtkWidget *widget, gpointer datosUsuario) {
@@ -319,7 +334,7 @@ void on_press_boton_borrar_bus_blanco(GtkWidget *widget, gpointer datosUsuario) 
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_blanco   = false;
     pthread_mutex_unlock(&mutex_bus_activo);
-    printf("%s\n", "Proceso de remover bus blanco iniciado");
+    monitor_prints("Proceso de remover bus blanco iniciado\n", "console");
 }
 
 void on_press_boton_crear_bus_negro(GtkWidget *widget, gpointer datosUsuario) {
@@ -334,7 +349,7 @@ void on_press_boton_crear_bus_negro(GtkWidget *widget, gpointer datosUsuario) {
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloMantenimiento);
-    printf("%s\n", "Crear bus negro");
+    monitor_prints("Crear bus negro\n", "con_larry");
 }
 
 void on_press_boton_borrar_bus_negro(GtkWidget *widget, gpointer datosUsuario) {
@@ -343,7 +358,7 @@ void on_press_boton_borrar_bus_negro(GtkWidget *widget, gpointer datosUsuario) {
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_negro  = false;
     pthread_mutex_unlock(&mutex_bus_activo);
-    printf("%s\n", "Proceso de remover bus negro iniciado");
+    monitor_prints("Proceso de remover bus negro iniciado\n", "console");
 }
 
 void on_press_boton_crear_ambulancia(GtkWidget *widget, gpointer datosUsuario) {
@@ -360,7 +375,7 @@ void on_press_boton_crear_ambulancia(GtkWidget *widget, gpointer datosUsuario) {
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &manejar_vehiculo, vi);
     pthread_detach(hiloMantenimiento);
-    printf("%s\n", "\033[0;33mAmbulancia creada\033[0m");
+    monitor_prints("Ambulancia creada\n", "console");
 }
 
 void on_press_boton_actualizar_valores(GtkWidget *widget, gpointer datosUsuario) {
@@ -389,7 +404,7 @@ void on_press_boton_actualizar_valores(GtkWidget *widget, gpointer datosUsuario)
         N = temp_N;
         pthread_mutex_unlock(&mutex_KMN);
 
-        printf("%s\n", "\033[0;36mValores actualizados\033[0m");
+       monitor_prints("Valores actualizados\n", "console");
     }
 
     pthread_mutex_lock(&mutex_KMN);
