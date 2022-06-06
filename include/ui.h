@@ -15,23 +15,19 @@
 
 void imprimir_bienvenida();
 
-void cargar_interfaz();
+
 
 gboolean on_window_draw(GtkWidget *widget, cairo_t *cr, gpointer datosUsuario);
-
-gboolean on_tick(gpointer *parametros);
-
-NodoT *crear_objeto(int num, EnumImagenes tipoImagenP, double x, double y, char *siguienteParadaP);
-
 void borrar_objeto(int num);
-
+gboolean on_tick(gpointer *parametros);
+void editar_semaforo(int num, EnumImagenes tipoImagenP);
+EnumImagenes imagen_tipo_vehiculo(TipoVehiculo tipo, DireccionCalle direccion);
+NodoT *crear_objeto(int num, EnumImagenes tipoImagenP, double x, double y, char *siguienteParadaP);
+void cargar_interfaz();
 void editar_objeto(int num, EnumImagenes tipoImagenP, float xP, float yP, char *siguienteParadaP);
-
 void editar_objeto_con_nodo(NodoT *node, EnumImagenes tipoImagenP, float xP, float yP, char *siguienteParadaP);
 
-void editar_semaforo(int num, EnumImagenes tipoImagenP);
 
-EnumImagenes imagen_tipo_vehiculo(TipoVehiculo tipo, DireccionCalle direccion);
 
 #endif /* INTERFAZ_H */
 

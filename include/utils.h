@@ -7,13 +7,11 @@
 
 #define MAX_ID_NUMBER 984
 
+pthread_mutex_t *get_mutex(pthread_mutexattr_t *);
 void *crear_memoria_compartida(size_t);
-
+pthread_mutexattr_t *get_atributos_mutex();
 pthread_condattr_t get_atributo_condicional();
 
-pthread_mutexattr_t *get_atributos_mutex();
-
-pthread_mutex_t *get_mutex(pthread_mutexattr_t *);
 
 typedef enum IdsCarreteras {
     // De Z a Y 1
