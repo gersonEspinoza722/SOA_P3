@@ -5,7 +5,7 @@
         "controlador.h": "c",
         "utils.h": "c",
         "semaforo_prioridad.h": "c",
-        "interfaz.h": "c",
+        "ui.h": "c",
         "reparacion.h": "c"
     }
 }

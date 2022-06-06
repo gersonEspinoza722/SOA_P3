@@ -4,7 +4,7 @@
 #include <reparacion.h>
 #include <handlers_puentes.h>
 #include "mapa.h"
-#include "interfaz.h"
+#include "ui.h"
 #include "floyd.h"
 #include "controlador.h"
 

@@ -1,4 +1,4 @@
-#include"interfaz.h"
+#include"ui.h"
 #include<gtk/gtk.h>
 #include<gdk-pixbuf/gdk-pixbuf.h>
 #include<cairo.h>
@@ -9,7 +9,7 @@
 #include "utils.h"
 
 
-//#define TAMANIO 68 //Cantidad de elementos en el enum de interfaz.h
+//#define TAMANIO 68 //Cantidad de elementos en el enum de ui.h
 #define min(a, b) \
    ({ __typeof__ (a) _a = (a); \
        __typeof__ (b) _b = (b); \

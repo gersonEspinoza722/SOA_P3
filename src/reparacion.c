@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <pthread.h>
 #include "utils.h"
-#include "interfaz.h"
+#include "ui.h"
 #include "globales.h"
 #include<time.h> 
 

@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include "utils.h"
 #include "hash_table.h"
-#include "interfaz.h"
+#include "ui.h"
 #include "floyd.h"
 #include "bus.h"
 #include <stdbool.h>

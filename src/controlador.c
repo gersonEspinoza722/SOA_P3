@@ -5,7 +5,7 @@
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <stdbool.h>
-#include "interfaz.h"
+#include "ui.h"
 #include "lista_enlazada_carros.h"
 #include "conduccion.h"
 #include "utils.h"

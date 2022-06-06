@@ -16,7 +16,7 @@ add_executable(proyecto3
         include/grafico.h
         include/hash_table.h
         include/hash_table_info_calle.h
-        include/interfaz.h
+        include/ui.h
         include/lista_enlazada.h
         include/lista_enlazada_carros.h
         include/semaforo_prioridad.h

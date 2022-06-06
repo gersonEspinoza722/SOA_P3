@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <sys/mman.h>
-#include <interfaz.h>
+#include <ui.h>
 
 
 extern pthread_mutex_t mutex_KMN;
