@@ -1,8 +1,8 @@
 #include "lista_enlazada.h"
 #include "conduccion.h"
 
-#ifndef PROYECTO3_BUS_H
-#define PROYECTO3_BUS_H
+#ifndef SOA_P3_BUS_H
+#define SOA_P3_BUS_H
 
 void crear_ruta_rojo(Vehiculo* bus);
 

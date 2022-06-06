@@ -1,5 +1,5 @@
-#ifndef PROYECTO3_VEHICULO_H
-#define PROYECTO3_VEHICULO_H
+#ifndef SOA_P3_VEHICULO_H
+#define SOA_P3_VEHICULO_H
 
 #include "utils.h"
 #include "lista_enlazada.h"

@@ -1,5 +1,5 @@
-#ifndef PROYECTO3_FLOYD_H
-#define PROYECTO3_FLOYD_H
+#ifndef SOA_P3_FLOYD_H
+#define SOA_P3_FLOYD_H
 
 void floyd();
 void generar_archivo();
