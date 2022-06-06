@@ -30,7 +30,7 @@ add_executable(proyecto3
         src/dict.c
         src/semaforo_prioridad.c
         src/main.c
-        src/reparacion.h.c
+        src/reparacion.c
         src/mapa.c
         src/utils.c
         src/conduccion.c
