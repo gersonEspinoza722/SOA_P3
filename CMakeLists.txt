@@ -4,26 +4,26 @@ project(proyecto3 C)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_EXE_LINKER_FLAGS "-rdynamic")
 
-include_directories(src headers)
+include_directories(src include)
 
 add_executable(proyecto3
-        headers/bus.h
-        headers/handlers_puentes.h
-        headers/controlador.h
-        headers/dict.h
-        headers/floyd.h
-        headers/globales.h
-        headers/grafico.h
-        headers/hash_table.h
-        headers/hash_table_info_calle.h
-        headers/interfaz.h
-        headers/lista_enlazada.h
-        headers/lista_enlazada_carros.h
-        headers/semaforo_prioridad.h
-        headers/reparacion.h
-        headers/mapa.h
-        headers/utils.h
-        headers/conduccion.h
+        include/bus.h
+        include/handlers_puentes.h
+        include/controlador.h
+        include/dict.h
+        include/floyd.h
+        include/globales.h
+        include/grafico.h
+        include/hash_table.h
+        include/hash_table_info_calle.h
+        include/interfaz.h
+        include/lista_enlazada.h
+        include/lista_enlazada_carros.h
+        include/semaforo_prioridad.h
+        include/reparacion.h
+        include/mapa.h
+        include/utils.h
+        include/conduccion.h
         src/handlers_puentes.c
         src/controlador.c
         src/dict.c

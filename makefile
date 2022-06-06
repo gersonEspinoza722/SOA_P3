@@ -1,6 +1,6 @@
 OUTPUT=simulacion.o
 CURRDIR=$(shell pwd)
-HEADERS=-I$(CURRDIR)/headers/
+HEADERS=-I$(CURRDIR)/include/
 CFLAGS=-g -Wall
 LIBRARIES=-lm -pthread -lrt `pkg-config --cflags --libs gtk+-3.0` -export-dynamic
 OBJECTS=$(shell ls ./src/*.c)

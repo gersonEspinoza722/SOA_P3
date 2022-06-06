@@ -21,7 +21,7 @@ void print_matriz(int matrix[CONTEO_NODOS][CONTEO_NODOS]) {
 
 void generar_archivo(){
     FILE *fp;
-    fp = fopen ("./headers/grafico_floyd.h", "w");
+    fp = fopen ("./include/grafico_floyd.h", "w");
     fputs("int threadville_graph_fast[", fp);
 
     char snum[100];
