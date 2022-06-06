@@ -222,7 +222,7 @@ NodoT *crear_objeto(int num, EnumImagenes tipoImagenP, double x, double y, char 
     strcpy(data->siguienteParada, siguienteParadaP);
 
     pthread_mutex_lock(&lockVehiculo);
-    listaVehiculos = iniciar_push(listaVehiculos, num, data);
+    listaVehiculos = push_lista(listaVehiculos, num, data);
     pthread_mutex_unlock(&lockVehiculo);
     fflush(stdout);
     return listaVehiculos;

@@ -1,7 +1,7 @@
 
 
-#ifndef PROYECTO3_GLOBALES_H
-#define PROYECTO3_GLOBALES_H
+#ifndef SOA_P3_GLOBALES_H
+#define SOA_P3_GLOBALES_H
 
 #include <gtk/gtk.h>
 #include <gtk/gtktypes.h>

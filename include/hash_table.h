@@ -1,5 +1,5 @@
-#ifndef PROYECTO3_HASH_TABLE_H
-#define PROYECTO3_HASH_TABLE_H
+#ifndef SOA_P3_HASH_TABLE_H
+#define SOA_P3_HASH_TABLE_H
 
 #include <pthread.h>
 #include "semaforo_prioridad.h"

@@ -1,5 +1,5 @@
-#ifndef PROYECTO3_LISTA_ENLAZADA_H
-#define PROYECTO3_LISTA_ENLAZADA_H
+#ifndef SOA_P3_LISTA_ENLAZADA_H
+#define SOA_P3_LISTA_ENLAZADA_H
 
 typedef struct NodoL {
     struct NodoL *siguienteNodo;

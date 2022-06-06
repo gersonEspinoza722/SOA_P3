@@ -1,5 +1,5 @@
-#ifndef PROYECTO3_THREADVILLE_MAPA_H
-#define PROYECTO3_THREADVILLE_MAPA_H
+#ifndef SOA_P3_THREADVILLE_MAPA_H
+#define SOA_P3_THREADVILLE_MAPA_H
 
 #include "hash_table.h"
 #include "hash_table_info_calle.h"

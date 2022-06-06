@@ -17,18 +17,11 @@ typedef struct Nodo {
 } NodoT;
 
 
-NodoT *iniciar_push(NodoT *head, int valor, struct NodoData *data);
-
-NodoT *terminar_push(NodoT *head, int valor, struct NodoData *data);
+NodoT *push_lista(NodoT *head, int valor, struct NodoData *data);
 
 int pop_lista(NodoT **head);
 
-int remover_ultimo(NodoT *head);
-
-int remover_por_indice(NodoT **head, int n);
-
 NodoT *remover_por_valor(NodoT *head, int n);
 
-void imprimir_lista(NodoT *head);
 
 #endif /* LISTA_ENLAZADA_CARROS */
