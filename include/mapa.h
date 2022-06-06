@@ -38,4 +38,4 @@ void insertar_info_calle_calles(TablaInfoCalle *, IdsCalles);
 
 void insertar_info_calle_esquinas(TablaInfoCalle *, IdsEsquinas);
 
-#endif //PROYECTO3_THREADVILLE_MAPA_H
+#endif 

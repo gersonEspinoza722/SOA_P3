@@ -9,13 +9,13 @@
 #include "utils.h"
 
 
-//#define TAMANIO 68 //Cantidad de elementos en el enum de ui.h
+
 #define min(a, b) \
    ({ __typeof__ (a) _a = (a); \
        __typeof__ (b) _b = (b); \
      _a < _b ? _a : _b; })
 
-//Variables para calcular la respuesta rapidamente
+
 static struct DataItem *hashImagenes[TAMANIO];
 static struct NodoData *semaforos[5];
 static int antesHeight = 0;
@@ -28,7 +28,7 @@ static int fps = 60;
 static pthread_mutex_t lockVehiculo;
 static pthread_mutex_t lockSemaforo;
 
-//Definition of functions
+
 struct DataItem *crear_item(char *pathImagen, EnumImagenes tipoItem, float heightReal, float widthReal);
 
 GdkPixbuf *transformar_imagen(GdkPixbuf *mapaImagen, float hReal, float wReal, int heightActual, int widthActual);
@@ -43,9 +43,7 @@ NodoData *crear_semaforo(EnumImagenes tipoImagenP, float x, float y);
 
 void generar_semaforos();
 
-//Funciones
 void cargar_interfaz() {
-    //MAPA
     cargar_interfaz_new(hashImagenes);
     if (pthread_mutex_init(&lockVehiculo, NULL) != 0) {
         
@@ -69,7 +67,7 @@ void generar_semaforos() {
 NodoData *crear_semaforo(EnumImagenes tipoImagenP, float x, float y) {
     struct NodoData *data = (struct NodoData *) malloc(sizeof(struct NodoData));
 
-    //Data para dibujar imagenes
+  
     data->width = x;
     data->height = y;
     data->tipoImagen = tipoImagenP;
@@ -101,9 +99,6 @@ void pintar_vehiculos(cairo_t *cr) {
         //Posicion del texto
         int total_h = item->h_real * mapaHeight;
         int total_w = item->w_real * mapaWidth;
-        //Escribir texto para el vehiculo
-        // cairo_move_to(cr, actual->data->width * mapaWidth, actual->data->height * mapaHeight + (1.3 * (total_h) / 2));
-
         cairo_set_font_size(cr, (0.6) * min(total_w, total_h));
 
         cairo_set_source_rgb(cr, 0.0, 0.0, 0.0);
@@ -115,7 +110,6 @@ void pintar_vehiculos(cairo_t *cr) {
         cairo_move_to(cr, actual->data->width * mapaWidth, actual->data->height * mapaHeight + (1.3 * (total_h) / 2));
         cairo_show_text(cr, actual->data->siguienteParada);
         cairo_fill(cr);
-        //Siguiente elemento
         actual = actual->siguiente;
     }
 
@@ -140,7 +134,6 @@ gboolean on_tick(gpointer *parametros) {
         return G_SOURCE_CONTINUE;
     }
 
-    //Posible error de semaforos
     gtk_widget_queue_draw_area(drawing, 0, 0, antesWidth, antesHeight);
 
     ultimoTick = actual;
@@ -193,14 +186,12 @@ gboolean on_window_draw(GtkWidget *widget, cairo_t *cr, gpointer datosUsuario) {
 
     if (flat == 1) {
 
-        //Moe responsive
         struct DataItem *item_map = search(MAPA, hashImagenes, TAMANIO);
         item_map->imagen_trans = transformar_relacion_imagen(item_map->imagen, item_map->h_real, item_map->w_real,
                                                          antesHeight, antesWidth);
         mapaHeight = gdk_pixbuf_get_height(item_map->imagen_trans);
         mapaWidth = gdk_pixbuf_get_width(item_map->imagen_trans);
 
-        //Todas las imagenes responsive en el mapa
         for (int i = 0; i < TAMANIO; i++) {
             if (i != MAPA) {
                 if (hashImagenes[i] != NULL) {

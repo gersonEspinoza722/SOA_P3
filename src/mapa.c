@@ -1281,7 +1281,6 @@ void insertar_info_calle_puente(TablaInfoCalle *tablaInfo, IdsPuentes id) {
 
 void insertar_info_calle_calles(TablaInfoCalle *tablaInfo, IdsCalles id) {
     switch (id) {
-        //++Fila0
 //Segmento 0
         case A001P:
             insertar_info_calle(tablaInfo, id, crear_info_calle(0.101, 0.007, DIR_ESTE));
@@ -1397,7 +1396,6 @@ void insertar_info_calle_calles(TablaInfoCalle *tablaInfo, IdsCalles id) {
             insertar_info_calle(tablaInfo, id, crear_info_calle(0.883, 0.007, DIR_ESTE));
             break;
 
-//++Fila1
 //Segmento 0
         case A018P: // && G006P
             insertar_info_calle(tablaInfo, id, crear_info_calle(0.101, 0.194, DIR_OESTE));

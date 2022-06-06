@@ -712,7 +712,6 @@ void crear_ruta_bus(Vehiculo *vehiculo) {
 }
 
 float get_velocidad_vehiculo(TipoVehiculo tipo) {
-    //Velocidad dada en "lugares" por segundo
     float velocidad;
     switch (tipo) {
         case BUS_NARANJA:
@@ -767,7 +766,7 @@ Vehiculo *crear_bus(TipoVehiculo tipo, DireccionVehiculo direccion) {
 
     crear_ruta_bus(vehiculo);
 
-    // El punto de inicio siempre es Y006R
+
     InfoCalle *info = lookup_info_calle(
             mapa->tablaInfoCalle,
             vehiculo->ruta_actual->primerNodo->idDestino
@@ -799,7 +798,6 @@ Vehiculo *crear_vehiculo(TipoVehiculo tipo, DireccionVehiculo direccion, int *de
     vehiculo->destinos = destinos;
     vehiculo->ruta_actual = crear_ruta(Y006R, destinos[0]);
 
-    // Starting point is always Y006R
     InfoCalle *info = lookup_info_calle(
             mapa->tablaInfoCalle,
             vehiculo->ruta_actual->primerNodo->idDestino
@@ -847,24 +845,23 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
             calleAnterior = calleActual;
             calleActual = lookup(mapa->mapa, nodoActual->idDestino);
 
-            //Inicio de Larry y Joe
-            //Larry
-            if (nodoActual->idDestino == N018P) { // Larry arriba
+
+            if (nodoActual->idDestino == N018P) { 
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_arriba += 1;
                 pthread_mutex_unlock(&mutex_larry_con);
 
-            } else if (nodoActual->idDestino == G012P) { // Larry abajo
+            } else if (nodoActual->idDestino == G012P) { 
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_abajo += 1;
                 pthread_mutex_unlock(&mutex_larry_con);
 
-            } else if (nodoActual->idDestino == BU02B) {// Larry arriba get
+            } else if (nodoActual->idDestino == BU02B) {
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_arriba -= 1;
                 pthread_mutex_unlock(&mutex_larry_con);
 
-            } else if (nodoActual->idDestino == B002B) {// Larry abajo get
+            } else if (nodoActual->idDestino == B002B) {
                 pthread_mutex_lock(&mutex_larry_con);
                 larry_espera_carros_abajo -= 1;
                 pthread_mutex_unlock(&mutex_larry_con);
@@ -1168,7 +1165,7 @@ void manejar_bus(Vehiculo *vehiculo) {
                     )
             );
 
-            //Si llego a una parada duermo 5 segundos
+        
             if (vehiculo->destinos[destinoActual] == nodoActual->idDestino) {
                 calleAnteriorAnterior = NULL;
 

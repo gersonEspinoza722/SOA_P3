@@ -22,4 +22,4 @@ void crear_ruta_celeste(Vehiculo* bus);
 
 void crear_ruta_naranja(Vehiculo* bus);
 
-#endif //PROYECTO3_BUS_H
+#endif

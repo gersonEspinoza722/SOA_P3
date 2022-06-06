@@ -19,30 +19,6 @@ extern int K;
 extern int M;
 extern int N;
 
-//void iniciarPuenteLarry() {
-//    pthread_t *tid;
-//    volatile int i;
-//    extern pthread_cond_t *cond_larry;
-//
-//    cond_larry = (pthread_cond_t *) malloc(sizeof(pthread_cond_t) * 2);
-//    tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
-//
-//    bool* siguienteDireccion = crear_memoria_compartida(sizeof(bool));
-//
-//    // Linking semaforos
-//    LarryJoeInformacion* infoNorte = crearLarryJoeInfo(false, LARRY, siguienteDireccion);
-//    LarryJoeInformacion* infoSur = crearLarryJoeInfo(true, LARRY, siguienteDireccion);
-//
-//    pthread_create(&tid[0], NULL, handleCurlyShemp, (void *) infoNorte);
-//    pthread_create(&tid[1], NULL, handleCurlyShemp, (void *) infoSur);
-//
-//    // Esperando por el hilo
-//    for (i = 0; i < 2; i++) {
-//        pthread_join(tid[i], NULL);
-//    }
-//
-//}
-
 void iniciarShemp(int idInicioNorte, int idFinNorte, int idInicioSur, int idFinSur) {
     pthread_t *tid;
     extern pthread_cond_t *cond_shemp;
@@ -76,7 +52,6 @@ void iniciarCurl(int idInicioNorte, int idFinNorte, int idInicioSur, int idFinSu
     extern pthread_cond_t *cond_curly;
     extern pthread_mutex_t *mutex_curly;
 
-    // Reservar memoria para variables condicionales, ids de los hilos y el array de hilos
     cond_curly = (pthread_cond_t *) crear_memoria_compartida(sizeof(pthread_cond_t) * 2);
     mutex_curly = get_mutex(get_atributos_mutex());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
@@ -99,7 +74,7 @@ void iniciarLarry(int idInicioNorte, int idFinNorte, int idInicioSur, int idFinS
     extern pthread_cond_t *cond_larry;
     extern pthread_mutex_t *mutex_larry;
 
-    // Reservar memoria para variables condicionales, ids de los hilos y el array de hilos
+    
     cond_larry = (pthread_cond_t *) crear_memoria_compartida(sizeof(pthread_cond_t) * 2);
     mutex_larry = get_mutex(get_atributos_mutex());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
@@ -122,7 +97,7 @@ void iniciarJoe(int idInicioNorte, int idFinNorte, int idInicioSur, int idFinSur
     extern pthread_cond_t *cond_joe;
     extern pthread_mutex_t *mutex_joe;
 
-    // Reservar memoria para variables condicionales, ids de los hilos y el array de hilos
+
     cond_joe = (pthread_cond_t *) crear_memoria_compartida(sizeof(pthread_cond_t) * 2);
     mutex_joe = get_mutex(get_atributos_mutex());
     tid = (pthread_t *) malloc(sizeof(pthread_t) * 2);
@@ -142,8 +117,7 @@ void iniciarJoe(int idInicioNorte, int idFinNorte, int idInicioSur, int idFinSur
 
 int main(int argc, char *argv[]) {
     imprimir_bienvenida();
-//    floyd();  //Solo hay que ejecutarlo una vez para crear el archivo y ya
-//    generar_archivo();
+
     mapa = crear_threadville_mapa();
 
     //Inicializacion
@@ -155,23 +129,20 @@ int main(int argc, char *argv[]) {
     gtk_builder_add_from_file(builder, "glade/threadville.glade", NULL);
 
 
-        // Nuevo CCS
     GtkCssProvider *cssProvider = gtk_css_provider_new();
     gtk_css_provider_load_from_path(cssProvider, "glade/style.css", NULL);
     gtk_style_context_add_provider_for_screen(gdk_screen_get_default(), GTK_STYLE_PROVIDER(cssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
 
-    // Hilo de mantenimiento 
     pthread_t hiloMantenimiento;
     pthread_create(&hiloMantenimiento, NULL, &hacer_mantenimiento, NULL);
     pthread_detach(hiloMantenimiento);
 
-    // Inicializacion de puentes
+
     iniciarCurl(B007B, B012B, BU07B, BU12B);
     iniciarShemp(B019B, B024B, BU19B, BU24B);
     iniciarLarry(B001B, B006B, BU01B, BU06B);
     iniciarJoe(B025B, B030B, BU25B, BU30B);
 
-    //Conectar el xml con codigo del main
     window = GTK_WIDGET(gtk_builder_get_object(builder, "win_threadville"));
     drA_mapas_imagenes = GTK_WIDGET(gtk_builder_get_object(builder, "drA_mapas_imagenes"));
     g_signal_connect(drA_mapas_imagenes, "draw", G_CALLBACK(on_window_draw), NULL);

@@ -1,6 +1,4 @@
-//
-// Created by bmena on 6/18/20.
-//
+
 
 #ifndef PROYECTO3_GLOBALES_H
 #define PROYECTO3_GLOBALES_H
@@ -33,14 +31,13 @@ volatile bool is_bus_celeste  = false;
 volatile bool is_bus_blanco  = false;
 volatile bool is_bus_negro  = false;
 
-//Moe variables
-int moe_direccion = 0; // 0 libre, 1 arriba, -1 abajo
+
+int moe_direccion = 0; 
 pthread_mutex_t mutex_moe = PTHREAD_MUTEX_INITIALIZER;
 int moe_carros = 0;
 pthread_mutex_t mutex_chequear_moe = PTHREAD_MUTEX_INITIALIZER;
 
 
-//Larry and joe variables
 pthread_mutex_t mutex_larry_con = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t mutex_joe_con = PTHREAD_MUTEX_INITIALIZER;
 
@@ -52,7 +49,6 @@ volatile int joe_espera_carros_arriba = 0;
 
 
 
-// Bridges data
 pthread_mutex_t *mutex_larry;
 pthread_cond_t *cond_larry;
 
@@ -65,4 +61,4 @@ pthread_cond_t *cond_curly;
 pthread_mutex_t *mutex_shemp;
 pthread_cond_t *cond_shemp;
 
-#endif //PROYECTO3_GLOBALES_H
+#endif 

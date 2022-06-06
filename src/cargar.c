@@ -27,10 +27,9 @@ struct DataItem *crear_item(char *pathImagen, EnumImagenes tipoItem, float heigh
 }
 void cargar_interfaz_new(struct DataItem **hashImagenes) {
     insertar_dict(MAPA, crear_item("images/MAP.PNG", MAPA, 1.0, 1.0), hashImagenes, TAMANIO);
-    //Semaforo
     insertar_dict(SEMAFOROABAJO, crear_item("images/SEMVERDEARRIBA.png", SEMAFOROABAJO, 0.16, 0.040), hashImagenes, TAMANIO);
     insertar_dict(SEMAFOROARRIBA, crear_item("images/SEMVERDEABAJO.png", SEMAFOROARRIBA, 0.16, 0.040), hashImagenes, TAMANIO);
-   //REPARACION 
+   // REPARACION 
     insertar_dict(REPARACION, crear_item("images/ARREGLO.png", REPARACION, 0.050, 0.040), hashImagenes, TAMANIO);
     //Bus rojo
     insertar_dict(BUSROJOIZQ, crear_item("images/B_ROJO_IZ.png", BUSROJOIZQ, 0.040, 0.045), hashImagenes, TAMANIO);

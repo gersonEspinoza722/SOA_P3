@@ -14,7 +14,6 @@ pthread_condattr_t get_atributo_condicional();
 
 
 typedef enum IdsCarreteras {
-    // De Z a Y 1
     H001H = 1,
     H002H = 2,
     H003H = 3,
@@ -51,7 +50,6 @@ typedef enum IdsCarreteras {
     H034H = 34,
     H035H = 35,
     H036H = 36,
-    // De Z a Y 2
     H037H = 37,
     H038H = 38,
     H039H = 39,
@@ -88,7 +86,6 @@ typedef enum IdsCarreteras {
     H070H = 70,
     H071H = 71,
     H072H = 72,
-    // De Y a Z 1
     H073H = 73,
     H074H = 74,
     H075H = 75,
@@ -125,7 +122,6 @@ typedef enum IdsCarreteras {
     H106H = 106,
     H107H = 107,
     H108H = 108,
-    // De Y a Z 2
     H109H = 109,
     H110H = 110,
     H111H = 111,
@@ -165,7 +161,6 @@ typedef enum IdsCarreteras {
 } IdsCarreteras;
 
 typedef enum IdsPuentes {
-    // Larry
     B001B = 145,
     B002B = 146,
     B003B = 147,
@@ -178,7 +173,6 @@ typedef enum IdsPuentes {
     BU04B = 958,
     BU05B = 959,
     BU06B = 960,
-    // Curly
     B007B = 151,
     B008B = 152,
     B009B = 153,
@@ -191,7 +185,6 @@ typedef enum IdsPuentes {
     BU10B = 964,
     BU11B = 965,
     BU12B = 966,
-    // Moe
     B013B = 157,
     B014B = 158,
     B015B = 159,
@@ -204,7 +197,6 @@ typedef enum IdsPuentes {
     BU16B = 970,
     BU17B = 971,
     BU18B = 972,
-    // Shemp
     B019B = 163,
     B020B = 164,
     B021B = 165,
@@ -217,7 +209,6 @@ typedef enum IdsPuentes {
     BU22B = 976,
     BU23B = 977,
     BU24B = 978,
-    // Joe
     B025B = 169,
     B026B = 170,
     B027B = 171,
@@ -1000,4 +991,4 @@ typedef enum IdsEsquinas {
     X004C = 954
 } IdsEsquinas;
 
-#endif //PROYECTO3_UTILS_H
+#endif 

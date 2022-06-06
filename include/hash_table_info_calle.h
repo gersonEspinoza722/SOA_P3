@@ -35,4 +35,4 @@ void insertar_info_calle(TablaInfoCalle *, int, InfoCalle *);
 
 InfoCalle *lookup_info_calle(TablaInfoCalle *t, int);
 
-#endif //PROYECTO3_HASH_TABLE_INFO_CALLE_H
+#endif 

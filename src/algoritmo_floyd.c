@@ -108,7 +108,6 @@ int *floyd_path_auxiliar_rapido(int i, int j, int *floyd_path) {
 int *floyd_path(int i, int j) {
     int pathBuffer[CONTEO_NODOS*CONTEO_NODOS];
     pathBuffer[0] = 0;
-    // floyd_path_auxiliar(i, j, pathBuffer);
     floyd_path_auxiliar_rapido(i, j, pathBuffer);
     int largoPath = pathBuffer[0];
     int *floyd_path = malloc(sizeof(int) * (largoPath + 1));

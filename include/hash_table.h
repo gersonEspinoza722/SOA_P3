@@ -23,4 +23,4 @@ void insertar(Tabla*, int, SemaforoPrioridad*);
 
 SemaforoPrioridad *lookup(Tabla *t, int);
 
-#endif //PROYECTO3_HASH_TABLE_H
+#endif 

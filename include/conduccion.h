@@ -37,10 +37,7 @@ typedef struct Vehiculo {
     TipoVehiculo tipoVehiculo;
     DireccionVehiculo direccionVehiculo;
     double velocidad;
-    // Ruta para llegar a los destinos
     ListaEnlazada *ruta_actual;
-    // El vehiculo debe tener 2 destino y un tercero como el punto de salida
-    // Los buses tienen n destinos, el elemento final del array debe ser -1
     int *destinos;
     NodoT *infoUI;
 } Vehiculo;
@@ -83,4 +80,4 @@ int get_tamanio_destinos(const int *destinos);
 
 int *copiar_destinos(int *);
 
-#endif //PROYECTO3_VEHICULO_H
+#endif 

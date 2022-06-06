@@ -47,7 +47,7 @@ void crear_vehiculo_en_mapa(int tipoVehiculo, char *destinosSplit);
 
 void desactivar_sensibilidad_botones(char *nombreBoton);
 
-//Se llama cuando la ventana es cerrada
+
 void on_window_main_destroy(GtkWidget *widget, gpointer datosUsuario) {
     gtk_main_quit();
 }
@@ -160,7 +160,7 @@ void on_press_boton_crear_bus_rojo(GtkWidget *widget, gpointer datosUsuario) {
 }
 
 void on_press_boton_borrar_bus_rojo(GtkWidget *widget, gpointer datosUsuario) {
-    //cambiar_sensibilidad_botones("btn_cbr", "btn_dbr");
+    
     desactivar_sensibilidad_botones("btn_dbr");
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_rojo = false;
@@ -185,7 +185,7 @@ void on_press_boton_crear_bus_gris(GtkWidget *widget, gpointer datosUsuario) {
 }
 
 void on_press_boton_borrar_bus_gris(GtkWidget *widget, gpointer datosUsuario) {
-    //cambiar_sensibilidad_botones("btn_cbg", "btn_dbg");
+    
     desactivar_sensibilidad_botones("btn_dbg");
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_gris  = false;
@@ -209,7 +209,7 @@ void on_press_boton_crear_bus_verde(GtkWidget *widget, gpointer datosUsuario) {
 }
 
 void on_press_boton_borrar_bus_verde(GtkWidget *widget, gpointer datosUsuario) {
-    //cambiar_sensibilidad_botones("btn_cbgr", "btn_dbgr");
+    
     desactivar_sensibilidad_botones("btn_dbgr");
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_verde  = false;
@@ -233,7 +233,7 @@ void on_press_boton_crear_bus_rosado(GtkWidget *widget, gpointer datosUsuario) {
 }
 
 void on_press_boton_borrar_bus_rosado(GtkWidget *widget, gpointer datosUsuario) {
-    //cambiar_sensibilidad_botones("btn_cbp", "btn_dbp");
+    
     desactivar_sensibilidad_botones("btn_dbp");
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_rosado  = false;
@@ -257,7 +257,7 @@ void on_press_boton_crear_bus_naranja(GtkWidget *widget, gpointer datosUsuario) 
 }
 
 void on_press_boton_borrar_bus_naranja(GtkWidget *widget, gpointer datosUsuario) {
-    //cambiar_sensibilidad_botones("btn_cbo", "btn_dbo");
+    
     desactivar_sensibilidad_botones("btn_dbo");
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_naranja = false;
@@ -281,7 +281,7 @@ void on_press_boton_crear_bus_celeste(GtkWidget *widget, gpointer datosUsuario) 
 }
 
 void on_press_boton_borrar_bus_celeste(GtkWidget *widget, gpointer datosUsuario) {
-    //cambiar_sensibilidad_botones("btn_cblb", "btn_dblb");
+    
     desactivar_sensibilidad_botones("btn_dblb");
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_celeste = false;
@@ -305,7 +305,7 @@ void on_press_boton_crear_bus_azul(GtkWidget *widget, gpointer datosUsuario) {
 }
 
 void on_press_boton_borrar_bus_azul(GtkWidget *widget, gpointer datosUsuario) {
-    //cambiar_sensibilidad_botones("btn_cbb", "btn_dbb");
+  
     desactivar_sensibilidad_botones("btn_dbb");
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_azul   = false;
@@ -329,7 +329,7 @@ void on_press_boton_crear_bus_blanco(GtkWidget *widget, gpointer datosUsuario) {
 }
 
 void on_press_boton_borrar_bus_blanco(GtkWidget *widget, gpointer datosUsuario) {
-    //cambiar_sensibilidad_botones("btn_cbw", "btn_dbw");
+    
     desactivar_sensibilidad_botones("btn_dbw");
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_blanco   = false;
@@ -353,7 +353,7 @@ void on_press_boton_crear_bus_negro(GtkWidget *widget, gpointer datosUsuario) {
 }
 
 void on_press_boton_borrar_bus_negro(GtkWidget *widget, gpointer datosUsuario) {
-    //cambiar_sensibilidad_botones("btn_cbbl", "btn_dbbl");
+    
     desactivar_sensibilidad_botones("btn_dbbl");
     pthread_mutex_lock(&mutex_bus_activo);
     is_bus_negro  = false;
@@ -466,7 +466,6 @@ int comparar_string(char *s1, char *s2, int length) {
     }
 }
 
-// Revisar codigo posibles ciclos para paradas iguales seguidas, hay que ignorarlas
 void crear_vehiculo_en_mapa(int tipoVehiculo, char *destinosSplit) {
     int total = 3;
     int posicionActual = 0;

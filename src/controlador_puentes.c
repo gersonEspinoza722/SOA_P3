@@ -135,7 +135,7 @@ int get_n() {
 
 _Noreturn
 void *handleLarryJoe(void *arg) {
-    // Obtener el lado del puente, chequear si la direccion debe cambiar
+ 
     struct timespec tiempo;
     int kLocal;
 
@@ -145,7 +145,7 @@ void *handleLarryJoe(void *arg) {
     SemaforoPrioridad *semaforoActual;
     int *semaforoOpuesto;
     EnumImagenes imagenPuente;
-    //Mantener contador de los carros que deben de pasar
+
     int contadorLocal = 0;
     //Sur
     if (informacion->direccion) {
@@ -161,9 +161,9 @@ void *handleLarryJoe(void *arg) {
         kLocal = get_k();
         pthread_mutex_lock(mutex);
 
-        //Chequear que lado del puente esta disponible
+        
         if (informacion->direccion != *informacion->siguienteDireccion) {
-            //Dormir si este lado no debe estar disponible
+           
             pthread_cond_wait(&cond[informacion->direccion], mutex);
         }
 
@@ -239,9 +239,9 @@ void *handleCurlyShemp(void *arg) {
         //Fin de actualizacion
 
         pthread_mutex_lock(mutex);
-        //Chequear que lado del puente esta disponible
+       
         if (informacion->direccion != *informacion->siguienteDireccion) {
-            //Dormir si este lado no debe estar disponible
+        
             pthread_cond_wait(&cond[informacion->direccion], mutex);
         }
 
