@@ -8,7 +8,7 @@
 #include<gdk-pixbuf/gdk-pixbuf.h>
 #include<cairo.h>
 #include<stdio.h>
-#include <vehiculo.h>
+#include <conduccion.h>
 #include <cargar.h>
 #include <controlador.h>
 

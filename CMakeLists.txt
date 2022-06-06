@@ -20,10 +20,10 @@ add_executable(proyecto3
         headers/lista_enlazada.h
         headers/lista_enlazada_carros.h
         headers/semaforo_prioridad.h
-        headers/threadville_mantenimiento.h
+        headers/reparacion.h
         headers/threadville_mapa.h
         headers/utils.h
-        headers/vehiculo.h
+        headers/conduccion.h
         src/handlers_puentes.c
         src/controlador.c
         src/dict.c
@@ -35,7 +35,7 @@ add_executable(proyecto3
         src/lista_enlazada_carros.c
         src/semaforo_prioridad.c
         src/main.c
-        src/threadville_mantenimiento.c
+        src/reparacion.h.c
         src/threadville_mapa.c
         src/utils.c
         src/vehiculo.c

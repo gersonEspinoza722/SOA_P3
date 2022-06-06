@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <threadville_mantenimiento.h>
+#include <reparacion.h>
 #include <handlers_puentes.h>
 #include "threadville_mapa.h"
 #include "interfaz.h"

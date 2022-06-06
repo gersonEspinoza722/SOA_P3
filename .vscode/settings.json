@@ -6,6 +6,6 @@
         "utils.h": "c",
         "semaforo_prioridad.h": "c",
         "interfaz.h": "c",
-        "threadville_mantenimiento.h": "c"
+        "reparacion.h": "c"
     }
 }

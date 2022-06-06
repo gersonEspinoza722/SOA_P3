@@ -7,7 +7,7 @@
 #include <stdbool.h>
 #include "interfaz.h"
 #include "lista_enlazada_carros.h"
-#include "vehiculo.h"
+#include "conduccion.h"
 #include "utils.h"
 #include "semaforo_prioridad.h"
 #include <stdbool.h>

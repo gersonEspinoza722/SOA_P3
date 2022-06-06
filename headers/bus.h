@@ -1,5 +1,5 @@
 #include "lista_enlazada.h"
-#include "vehiculo.h"
+#include "conduccion.h"
 
 #ifndef PROYECTO3_BUS_H
 #define PROYECTO3_BUS_H
