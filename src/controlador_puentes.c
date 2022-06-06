@@ -1,5 +1,5 @@
 #include "mapa.h"
-#include "handlers_puentes.h"
+#include "controlador_puentes.h"
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>

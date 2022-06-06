@@ -3,7 +3,7 @@
 #include "grafico.h"
 #include "grafico_floyd.h"
 #include <stdbool.h>
-#include "floyd.h"
+#include "algoritmo_floyd.h"
 
 #define CONTEO_NODOS 985
 

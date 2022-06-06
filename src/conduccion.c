@@ -4,7 +4,7 @@
 #include "utils.h"
 #include "hash_table.h"
 #include "ui.h"
-#include "floyd.h"
+#include "algoritmo_floyd.h"
 #include "bus.h"
 #include <stdbool.h>
 #include<time.h>

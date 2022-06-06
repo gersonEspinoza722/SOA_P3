@@ -1,4 +1,4 @@
-#include <floyd.h>
+#include <algoritmo_floyd.h>
 #include "bus.h"
 
 void crear_ruta_rojo(Vehiculo* bus) {

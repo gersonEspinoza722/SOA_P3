@@ -8,10 +8,10 @@ include_directories(src include)
 
 add_executable(proyecto3
         include/bus.h
-        include/handlers_puentes.h
+        include/controlador_puentes.h
         include/controlador.h
         include/dict.h
-        include/floyd.h
+        include/algoritmo_floyd.h
         include/globales.h
         include/grafico.h
         include/hash_table.h
@@ -24,21 +24,21 @@ add_executable(proyecto3
         include/mapa.h
         include/utils.h
         include/conduccion.h
-        src/handlers_puentes.c
+        src/controlador_puentes.c
         src/controlador.c
         src/dict.c
-        src/floyd.c
+        src/algoritmo_floyd.c
         src/hash_table.c
         src/hash_table_info_calle.c
-        src/interfaz.c
+        src/ui.c
         src/lista_enlazada.c
         src/lista_enlazada_carros.c
         src/semaforo_prioridad.c
         src/main.c
         src/reparacion.h.c
-        src/threadville_mapa.c
+        src/mapa.c
         src/utils.c
-        src/vehiculo.c
+        src/conduccion.c
         src/bus.c)
 
 find_package(PkgConfig REQUIRED)

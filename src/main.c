@@ -2,10 +2,10 @@
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <reparacion.h>
-#include <handlers_puentes.h>
+#include <controlador_puentes.h>
 #include "mapa.h"
 #include "ui.h"
-#include "floyd.h"
+#include "algoritmo_floyd.h"
 #include "controlador.h"
 
 //Variables de interfaz
