@@ -1,4 +1,4 @@
-#include "threadville_mapa.h"
+#include "mapa.h"
 #include "handlers_puentes.h"
 #include <pthread.h>
 #include <stdio.h>

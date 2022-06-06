@@ -1,4 +1,4 @@
-OUTPUT=threadville.o
+OUTPUT=simulacion.o
 CURRDIR=$(shell pwd)
 HEADERS=-I$(CURRDIR)/headers/
 CFLAGS=-g -Wall

@@ -3,7 +3,7 @@
 
 #include "utils.h"
 #include "lista_enlazada.h"
-#include "threadville_mapa.h"
+#include "mapa.h"
 #include "lista_enlazada_carros.h"
 
 typedef enum TipoVehiculo {

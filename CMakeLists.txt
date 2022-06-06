@@ -21,7 +21,7 @@ add_executable(proyecto3
         headers/lista_enlazada_carros.h
         headers/semaforo_prioridad.h
         headers/reparacion.h
-        headers/threadville_mapa.h
+        headers/mapa.h
         headers/utils.h
         headers/conduccion.h
         src/handlers_puentes.c

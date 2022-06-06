@@ -16,4 +16,4 @@ Para poder utilizar este proyecto de simulación usted debe contar con una versi
 ### ¿Cómo usar el programa?
 Para poder excutar el programa primero debe compilarlo, haciendo uso de la herramienta make vaya al direcctorio del programa.
 ```cd ~/SOA_P3 ```
-Y ejecute: ```make``` cuando se haya finalizado la compilación usted podrá encontrar en la carpeta ```build``` un archivo listo para ejecutar hágalo desde la misma carpeta raíz con el siguiente comando: ``./build/threadville,o``
+Y ejecute: ```make``` cuando se haya finalizado la compilación usted podrá encontrar en la carpeta ```build``` un archivo listo para ejecutar hágalo desde la misma carpeta raíz con el siguiente comando: ``./build/simulacion.o``

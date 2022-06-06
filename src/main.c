@@ -3,7 +3,7 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <reparacion.h>
 #include <handlers_puentes.h>
-#include "threadville_mapa.h"
+#include "mapa.h"
 #include "interfaz.h"
 #include "floyd.h"
 #include "controlador.h"

@@ -7,7 +7,7 @@
 
 #include <gtk/gtk.h>
 #include <gtk/gtktypes.h>
-#include "threadville_mapa.h"
+#include "mapa.h"
 #include <stdbool.h>
 #include <pthread.h>
 
