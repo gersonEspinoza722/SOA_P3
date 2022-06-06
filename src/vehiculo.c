@@ -22,8 +22,8 @@ extern bool is_bus_blanco;
 extern bool is_bus_negro;
 
 extern ThreadvilleMapa *mapa;
+extern GtkWidget *window;
 extern GtkBuilder *builder;
-
 
 extern int moe_direccion; // 0 libre, 1 arriba, -1 abajo
 extern pthread_mutex_t mutex_moe;
@@ -44,6 +44,17 @@ extern pthread_mutex_t mutex_bus_activo;
 static int id_global = 0;
 
 pthread_mutex_t mutex_id_global = PTHREAD_MUTEX_INITIALIZER;
+
+void monitor_print(char *mensaje, char *name) {
+    GtkTextView   *text_view;
+    GtkTextBuffer *buffer;
+    GtkTextIter iter;
+    text_view = GTK_TEXT_VIEW(gtk_builder_get_object(builder, name));
+    buffer = gtk_text_view_get_buffer(text_view);
+
+    gtk_text_buffer_get_iter_at_offset(buffer, &iter, 0);
+    gtk_text_buffer_insert(buffer, &iter, mensaje, -1);
+}
 
 int get_id_global() {
     int resultado = 0;
@@ -890,7 +901,7 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
                     pthread_mutex_unlock(&mutex_chequear_moe);
                     pthread_mutex_lock(&mutex_moe);
                     moe_direccion = -1;
-                    printf("\033[0;31m%s\033[0m\n", "Moe cambio direccion a: Sur");
+                    monitor_print("Moe cambio direccion a: Sur\n", "con_moe");
                     editar_semaforo(2, SEMAFOROABAJO);
 
                     pthread_mutex_lock(&mutex_chequear_moe);
@@ -907,7 +918,7 @@ void manejar_vehiculo_normal(Vehiculo *vehiculo, int prioridad) {
                     pthread_mutex_unlock(&mutex_chequear_moe);
                     pthread_mutex_lock(&mutex_moe);
                     moe_direccion = 1;
-                    printf("\033[0;31m%s\033[0m\n", "Moe cambio direccion a: Norte");
+                    monitor_print("Moe cambio direccion a: Norte\n", "con_moe");
                     editar_semaforo(2, SEMAFOROARRIBA);
 
                     pthread_mutex_lock(&mutex_chequear_moe);
@@ -1067,7 +1078,7 @@ void manejar_bus(Vehiculo *vehiculo) {
                     pthread_mutex_unlock(&mutex_chequear_moe);
                     pthread_mutex_lock(&mutex_moe);
                     moe_direccion = -1;
-                    printf("\033[0;31m%s\033[0m\n", "Moe cambio direccion a: Sur");
+                    monitor_print("Moe cambio direccion a: Sur \n", "con_moe");
                     editar_semaforo(2, SEMAFOROABAJO);
 
                     pthread_mutex_lock(&mutex_chequear_moe);
@@ -1084,7 +1095,7 @@ void manejar_bus(Vehiculo *vehiculo) {
                     pthread_mutex_unlock(&mutex_chequear_moe);
                     pthread_mutex_lock(&mutex_moe);
                     moe_direccion = 1;
-                    printf("\033[0;31m%s\033[0m\n", "Moe cambio direccion a: Norte");
+                    monitor_print("Moe cambio direccion a: Norte\n", "con_moe");
                     editar_semaforo(2, SEMAFOROARRIBA);
 
                     pthread_mutex_lock(&mutex_chequear_moe);

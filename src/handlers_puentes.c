@@ -7,9 +7,24 @@
 #include <sys/mman.h>
 #include <interfaz.h>
 
-extern pthread_mutex_t mutex_KMN;
 
+extern pthread_mutex_t mutex_KMN;
 extern ThreadvilleMapa *mapa;
+
+extern GtkWidget *window;
+extern GtkBuilder *builder;
+
+void monitor_p(char *mensaje, char *name) {
+    GtkTextView   *text_view;
+    GtkTextBuffer *buffer;
+    GtkTextIter iter;
+    text_view = GTK_TEXT_VIEW(gtk_builder_get_object(builder, name));
+    buffer = gtk_text_view_get_buffer(text_view);
+
+    gtk_text_buffer_get_iter_at_offset(buffer, &iter, 0);
+    gtk_text_buffer_insert(buffer, &iter, mensaje, -1);
+}
+
 
 pthread_cond_t *get_mutex_condicional(TipoPuentes tipo) {
     extern pthread_cond_t *cond_larry;
@@ -171,9 +186,13 @@ void *handleLarryJoe(void *arg) {
             }
         }
         if (informacion->tipo == LARRY) {
-            printf("\033[0;31mLarry cambio de direccion a: %s\033[0m\n", informacion->direccion ? "Sur" : "Norte");
+            char *mensaje = (char*) malloc(sizeof(char)*50);
+            sprintf(mensaje, "%s %s", "Larry cambio de direccion a:",informacion->direccion ? "Sur\n" : "Norte\n");
+            monitor_p(mensaje, "con_larry");
         } else {
-            printf("\033[0;31mJoe cambio de direccion a: %s\033[0m\n", informacion->direccion ? "Sur" : "Norte");
+            char *mensaje = (char*) malloc(sizeof(char)*50);
+            sprintf(mensaje, "%s %s", "Joe cambio de direccion a:",informacion->direccion ? "Sur\n" : "Norte\n");
+            monitor_p(mensaje, "con_joe");
         }
         fflush(stdout);
 
@@ -231,9 +250,13 @@ void *handleCurlyShemp(void *arg) {
         sleep(*segundos);
         unlock_semaforos_puente(prioridadSemaforo[0], prioridadSemaforo[1]);
         if (informacion->tipo == CURLY) {
-            printf("\033[0;31mCurly cambio de direccion a: %s\033[0m\n", informacion->direccion ? "Sur" : "Norte");
+            char *mensaje = (char*) malloc(sizeof(char)*50);
+            sprintf(mensaje, "%s %s", "Curly cambio de direccion a:",informacion->direccion ? "Sur\n" : "Norte\n");
+            monitor_p(mensaje, "con_curly");
         } else {
-            printf("\033[0;31mShemp cambio de direccion a: %s\033[0m\n", informacion->direccion ? "Sur" : "Norte");
+            char *mensaje = (char*) malloc(sizeof(char)*50);
+            sprintf(mensaje, "%s %s", "Shemp cambio de direccion a:",informacion->direccion ? "Sur\n" : "Norte\n");
+            monitor_p(mensaje, "con_shemp");
         }
         *informacion->siguienteDireccion = !*informacion->siguienteDireccion;
 

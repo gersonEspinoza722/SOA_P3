@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.rmd": "markdown",
+        "system_error": "c",
+        "controlador.h": "c",
+        "utils.h": "c",
+        "semaforo_prioridad.h": "c",
+        "interfaz.h": "c",
+        "threadville_mantenimiento.h": "c"
+    }
+}

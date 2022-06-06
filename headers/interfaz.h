@@ -10,7 +10,7 @@
 #include<stdio.h>
 #include <vehiculo.h>
 #include <cargar.h>
-
+#include <controlador.h>
 
 
 void imprimir_bienvenida();
